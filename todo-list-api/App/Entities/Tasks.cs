@@ -13,6 +13,7 @@ namespace todo_list_api.App.Entities
         public bool Done { get; set; }
         public DateTime DateSave { get; set; }
         public DateTime DateUpdate { get; set; }
+        public  String Name {get; set;}
 
     }
 }

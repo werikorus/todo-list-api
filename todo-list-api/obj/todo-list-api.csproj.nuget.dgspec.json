@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj": {}
+    "c:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj": {
+    "c:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj",
+        "projectUniqueName": "c:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj",
         "projectName": "todo-list-api",
-        "projectPath": "C:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj",
+        "projectPath": "c:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj",
         "packagesPath": "C:\\Users\\werik\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\C#\\todo-list-API\\todo-list-api\\obj\\",
+        "outputPath": "c:\\Projetos\\C#\\todo-list-API\\todo-list-api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
