@@ -8,84 +8,17 @@ using todo_list_api.App.Entities;
 
 namespace todo_list_api.Controllers
 {
+        [Route("api/[controller]")]
+    [ApiController]
     public class TodolistController : Controller
     {
-        // GET: todolistController
-        public string MyTasks(int idList)
+        [HttpGet]
+        public List<Tasks> GetAllTasksAsync()
         {
-            // var myTodo = new Tasks();
-            var a = 'taks';
-            return a
-           
+            List<Tasks> tarefas = new List<Tasks>();
+
+            return  tarefas;
         }
 
-        // GET: todolistController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: todolistController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: todolistController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: todolistController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: todolistController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: todolistController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: todolistController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
