@@ -13,7 +13,22 @@ namespace todo_list_api.App.Entities
         public bool Done { get; set; }
         public DateTime DateSave { get; set; }
         public DateTime DateUpdate { get; set; }
-        public  String Name {get; set;}
+        public  String User {get; set;}
 
+        public Tasks(int idList, int idTask, string task, bool done, DateTime dateSave, DateTime dateUpdate, string name)
+        {
+            IdList = idList;
+            IdTask = idTask;
+            Task = task;
+            Done = done;
+            DateSave = dateSave;
+            DateUpdate = dateUpdate;
+            User = name;
+        }
+
+        public Tasks()
+        {
+
+        }
     }
 }
