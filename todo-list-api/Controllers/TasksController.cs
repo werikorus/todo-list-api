@@ -25,7 +25,9 @@ namespace todo_list_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tasks>>> GetTasks()
         {
-            return await _context.Tasks.ToListAsync();
+            return await _context
+                .Tasks
+                .ToListAsync();
         }
 
         // GET: api/Tasks/5
@@ -52,10 +54,9 @@ namespace todo_list_api.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(task).State = EntityState.Modified;
-
             try
             {
+                _context.Entry(task).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -78,9 +79,10 @@ namespace todo_list_api.Controllers
         [HttpPost]
         public async Task<ActionResult<Task>> PostTask(Tasks task)
         {
-            _context.Tasks.Add(task);
+
             try
             {
+                _context.Tasks.Add(task);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)

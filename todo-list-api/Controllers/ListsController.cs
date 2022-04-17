@@ -25,14 +25,20 @@ namespace todo_list_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<List>>> GetLists()
         {
-            return await _context.Lists.ToListAsync();
+            return await _context
+                .Lists
+                .Include(x => x.Tasks)
+                .ToListAsync();
         }
 
         // GET: api/Lists/5
         [HttpGet("{id}")]
         public async Task<ActionResult<List>> GetList(int id)
         {
-            var list = await _context.Lists.FindAsync(id);
+            var list = await _context
+                .Lists
+                .Include(x => x.Tasks)
+                .FirstOrDefaultAsync(x => x.Idlist == id);
 
             if (list == null)
             {
@@ -43,7 +49,7 @@ namespace todo_list_api.Controllers
         }
 
         // PUT: api/Lists/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutList(int id, List list)
         {
@@ -52,10 +58,9 @@ namespace todo_list_api.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(list).State = EntityState.Modified;
-
             try
             {
+                _context.Entry(list).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -78,9 +83,9 @@ namespace todo_list_api.Controllers
         [HttpPost]
         public async Task<ActionResult<List>> PostList(List list)
         {
-            _context.Lists.Add(list);
             try
             {
+                _context.Lists.Add(list);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)

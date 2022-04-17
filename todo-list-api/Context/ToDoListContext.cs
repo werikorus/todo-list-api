@@ -75,9 +75,23 @@ namespace todo_list_api.Context
                     .HasConstraintName("FK_idLists");
             });
 
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.HasKey(e => new { e.IdUser }).HasName("PK__Users__B7C926388CBF8E14");
+                entity.Property(e => e.IdUser).HasColumnName("IdUser");
+                entity.Property(e => e.Name).HasColumnName("Name");
+                entity.Property(e => e.Password).HasColumnName("Password");
+                entity.Property(e => e.Email).HasColumnName("Email");
+                entity.Property(e => e.DateCreate).HasColumnName("DateCreate");
+                entity.Property(e => e.DateUpdate).HasColumnName("DateUpdate");
+
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<todo_list_api.Models.Users> Users { get; set; }
     }
 }

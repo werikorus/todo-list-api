@@ -10,11 +10,12 @@ namespace todo_list_api.Models
         public List()
         {
             Tasks = new HashSet<Tasks>();
+            DateCreate = DateTime.Now;
         }
 
         public int Idlist { get; set; }
         public string DescriptionList { get; set; }
-        public DateTime? DateCreate { get; set; }
+        public DateTime? DateCreate { get; private set; }
         public DateTime? DateUpdate { get; set; }
 
         public virtual ICollection<Tasks> Tasks { get; set; }
