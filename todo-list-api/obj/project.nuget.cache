@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zGQnb7fpccKySV9Ltrm/2Y1oYMAo7S0IC5pDL3eRmMfEzvN9KU7vYRXpFsbU1YkfHu+BSUBxe+0OoZMLLV83rA==",
+  "dgSpecHash": "4AbKrnVweTYzQDr3GtadtiKgx2hwknLcQ3S8EMAQm32cY/fug2GvB5z97/fIEyGnnZI0FtGZip49sQ4voB7d1Q==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\C#\\todo-list-API\\todo-list-api\\todo-list-api.csproj",
+  "projectFilePath": "c:\\Projetos\\C#\\todo-list-app\\todo-list-api\\todo-list-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\werik\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
