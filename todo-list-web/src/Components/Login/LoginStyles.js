@@ -13,7 +13,7 @@ export const ButtonsArea = styled.div`
 `
 
 export const Main = styled.main`
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

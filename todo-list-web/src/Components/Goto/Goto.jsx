@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "./GotoStyles";
 import { Link } from "react-router-dom";
+import {Button} from '../Goto/GotoStyles';
 
 const Goto = (props) =>{
   const { destine, txt } = props;

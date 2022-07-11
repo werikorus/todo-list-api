@@ -1,11 +1,11 @@
 import React from "react";
 import InputElement from "../InputElement";
-import ButtonAction from "../ButtonAction";
 import { Main, LoginArea, ButtonsArea } from "./LoginStyles";
-import Goto from "../Goto";
+import Goto from '../Goto';
 
 
 const handleLogin = () =>{
+  alert("Login!!");
 };
 
 const handleCadastro = () => {
@@ -21,18 +21,9 @@ const Login = () =>{
         <InputElement placeholder="Password"/>
 
         <ButtonsArea>
-          <ButtonAction 
-            txt="Login" 
-            clickEvent={handleLogin}
-          />
-          
-          <ButtonAction 
-            txt="Cadastro" 
-            clickEvent={handleCadastro}
-          />
-          <Goto txt="Loga"/>          
-        </ButtonsArea> 
-            
+          <Goto txt="Login" destine="/Home"/>
+          <Goto txt="Cadastro" destine="/Subscribe"/>      
+        </ButtonsArea>             
       </LoginArea>     
     </Main>
   );
