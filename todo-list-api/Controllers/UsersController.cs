@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using todo_list_api.Context;
 using todo_list_api.Models;
-using todo_list_api.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
 using todo_list_api.Services.Abstraction.Interfaces;
 
 namespace todo_list_api.Controllers
@@ -19,10 +16,13 @@ namespace todo_list_api.Controllers
     {
         private readonly ToDoListContext _context;
         private readonly IUsersService _usersService;
+        
 
-        public UsersController(ToDoListContext context)
+        public UsersController(ToDoListContext context, IUsersService service)
         {
             _context = context;
+            _usersService = service;
+
         }
 
         // GET: api/Users
@@ -49,10 +49,10 @@ namespace todo_list_api.Controllers
         {
             try
             {
-                var user = await _context.Users.FindAsync(id);
+                var user = await _usersService.GetUserAsync(id);
 
                 if (user == null)
-                  return NotFound();
+                  return NotFound(); 
 
                 return Ok(user);
             }
