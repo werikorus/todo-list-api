@@ -11,7 +11,7 @@ const Rotas = () =>{
         <Route path="/Home" exact element = {<Home />}/>
       </Routes>
     </Router>
-  )
+  );
 };
 
 export default Rotas;
