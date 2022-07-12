@@ -3,14 +3,24 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using todo_list_api.Context;
+using todo_list_api.Interfaces;
+using todo_list_api.Repository;
+using todo_list_api.Services;
+using todo_list_api.Services.Abstraction.Interfaces;
+using todo_list_api.Extensions;
+
 
 namespace todo_list_api
 {
     public class Startup
     {
+        protected readonly IHostEnvironment HostEnvironment;
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,6 +44,9 @@ namespace todo_list_api
 
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            //registros de services por extension
+            services.ConfigureServices(Configuration, HostEnvironment);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,3 +80,4 @@ namespace todo_list_api
         }
     }
 }
+

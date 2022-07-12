@@ -22,5 +22,11 @@ namespace todo_list_api.Services
             var users = await _usersRepository.GetUsers();
             return users;
         }
+
+        public async Task<Users> GetUserAsync(int id)
+        {
+            var user = await _usersRepository.GetUser(id);
+            return user;
+        }
     }
 }
