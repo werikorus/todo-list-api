@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using todo_list_api.Context;
 using todo_list_api.Models;
+using todo_list_api.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using todo_list_api.Services.Abstraction.Interfaces;
 
 namespace todo_list_api.Controllers
 {
@@ -15,6 +18,7 @@ namespace todo_list_api.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ToDoListContext _context;
+        private readonly IUsersService _usersService;
 
         public UsersController(ToDoListContext context)
         {
@@ -25,21 +29,37 @@ namespace todo_list_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
-        }
-
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
-        {
-            var users = await _context.Users.FindAsync(id);
-
-            if (users == null)
+            try
             {
-                return NotFound();
-            }
+                var users = await _usersService.GetAllUsersAsync();
 
-            return users;
+                if (users == null)
+                    return NotFound();
+
+                return Ok(users);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Users>> GetUser(int id)
+        {
+            try
+            {
+                var user = await _context.Users.FindAsync(id);
+
+                if (user == null)
+                  return NotFound();
+
+                return Ok(user);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         // PUT: api/Users/5

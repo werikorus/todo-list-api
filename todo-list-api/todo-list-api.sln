@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32126.315
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todo-list-api", "todo-list-api.csproj", "{D1D955C7-70C0-470E-B04E-D57F66788184}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "todo-list-api", "todo-list-api.csproj", "{D1D955C7-70C0-470E-B04E-D57F66788184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todo-list-test", "..\todo-list-test\todo-list-test.csproj", "{DA8A0467-900A-4F19-89B1-1BA4D2240447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D1D955C7-70C0-470E-B04E-D57F66788184}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1D955C7-70C0-470E-B04E-D57F66788184}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1D955C7-70C0-470E-B04E-D57F66788184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8A0467-900A-4F19-89B1-1BA4D2240447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8A0467-900A-4F19-89B1-1BA4D2240447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8A0467-900A-4F19-89B1-1BA4D2240447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8A0467-900A-4F19-89B1-1BA4D2240447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
