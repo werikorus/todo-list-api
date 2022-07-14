@@ -7,12 +7,15 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using todo_list_api.Context;
-using todo_list_api.Interfaces;
-using todo_list_api.Repository;
-using todo_list_api.Services;
-using todo_list_api.Services.Abstraction.Interfaces;
-using todo_list_api.Extensions;
 
+using GraphQL;
+using GraphQL.MicrosoftDI;
+using GraphQL.Server;
+using GraphQL.SystemTextJson;
+using GraphQL.Types;
+
+using todo_list_api.Extensions;
+using todo_list_api.Graphql.Users;
 
 namespace todo_list_api
 {
@@ -42,11 +45,11 @@ namespace todo_list_api
             services.AddDbContext<ToDoListContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ServerConnection")));
 
-            services.AddControllers().AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-
             //registros de services por extension
             services.ConfigureServices(Configuration, HostEnvironment);
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +60,9 @@ namespace todo_list_api
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "todo_list_api v1"));
+
+                // add altair UI to development only
+                app.UseGraphQLAltair();
             }
 
             app.UseRouting();
@@ -77,6 +83,8 @@ namespace todo_list_api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseGraphQL<ISchema>();
         }
     }
 }

@@ -22,10 +22,8 @@ namespace todo_list_api.Controllers
         {
             _context = context;
             _usersService = service;
-
         }
 
-        // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
         {

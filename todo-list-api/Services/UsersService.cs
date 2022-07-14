@@ -5,6 +5,8 @@ using todo_list_api.Services.Abstraction.Interfaces;
 using todo_list_api.Interfaces;
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc;
+using todo_list_api.DTOs;
 
 namespace todo_list_api.Services
 {
@@ -27,6 +29,11 @@ namespace todo_list_api.Services
         {
             var user = await _usersRepository.GetUser(id);
             return user;
+        }
+
+        public async Task<Users> CreateNewUserAsync([FromBody] UsersCreateDTO body)
+        {
+            return null;
         }
     }
 }
