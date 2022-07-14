@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "e+S0MgwHwGjdx4QywtS9Doo/s1K3iDkXn1VIPa4fBDJBTRUpQ6E8iAEXS9LZf1hCv4847q13SNbRqVnxwk5CZQ==",
+  "dgSpecHash": "aBqfhep7dKKrSoxSeHgxiXm7D9I/iyupQt3RcyoFxk6Mgxu+qqXAI3q4CJ9pioInidmA7MTIUtn5QsJ1zWmnmg==",
   "success": true,
   "projectFilePath": "C:\\Projetos\\C#\\todo-list-app\\todo-list-test\\todo-list-test.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\werik\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\werik\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\werik\\.nuget\\packages\\graphql\\4.6.1\\graphql.4.6.1.nupkg.sha512",
     "C:\\Users\\werik\\.nuget\\packages\\graphql-parser\\7.2.0\\graphql-parser.7.2.0.nupkg.sha512",

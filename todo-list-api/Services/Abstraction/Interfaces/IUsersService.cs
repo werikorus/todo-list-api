@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using todo_list_api.DTOs;
 using todo_list_api.Models;
 
 namespace todo_list_api.Services.Abstraction.Interfaces
@@ -8,5 +10,7 @@ namespace todo_list_api.Services.Abstraction.Interfaces
     {
         Task<IEnumerable<Users>> GetAllUsersAsync();
         Task<Users> GetUserAsync(int id);
-    }
+
+        Task<Users> CreateNewUserAsync([FromBody] UsersCreateDTO body);
+    };
 }

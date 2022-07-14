@@ -13,6 +13,10 @@ namespace todo_list_api.Models
         public string Email { get; set; }
         public DateTime DateCreate { get; set; }
         public DateTime DateUpdate { get; set; }
+
+        public Users() 
+        { 
+        }
     }
 }
 

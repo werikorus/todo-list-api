@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hFJb2cTDR5oevcJQ6sHZjX2P4epR3g/v42Qih073GMYQjHuvFujVOWE14NNdmqHoMEe2RRtl0H76/ngMq9d4cg==",
+  "dgSpecHash": "Nd0w2l/sOzh58T/iw05tXMQpHVty+NZ7sxRlpkcwAOTTYRr+P/xxm5cp+cV5mnfMeNCNW1AQt5wjg0bdqxKB/A==",
   "success": true,
   "projectFilePath": "C:\\Projetos\\C#\\todo-list-app\\todo-list-api\\todo-list-api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\werik\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\werik\\.nuget\\packages\\graphql\\4.6.1\\graphql.4.6.1.nupkg.sha512",
     "C:\\Users\\werik\\.nuget\\packages\\graphql-parser\\7.2.0\\graphql-parser.7.2.0.nupkg.sha512",
     "C:\\Users\\werik\\.nuget\\packages\\graphql.dataloader\\4.1.0\\graphql.dataloader.4.1.0.nupkg.sha512",
