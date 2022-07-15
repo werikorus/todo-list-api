@@ -14,6 +14,13 @@ namespace todo_list_api.Graphql.Users
                 var service = Context.RequestServices.GetRequiredService<IUsersService>();
                 return service.GetAllUsersAsync();               
             });
+
+
+            Field<ListGraphType<UsersType>>("user", resolve: Context =>
+            {
+                var service = Context.RequestServices.GetRequiredService<IUsersService>();
+                return service.GetUserAsync(1);
+            });
         }
     }
 }
