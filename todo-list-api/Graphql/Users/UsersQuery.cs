@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿using GraphQL;
+using GraphQL.Types;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using todo_list_api.Services.Abstraction.Interfaces;
@@ -9,18 +10,27 @@ namespace todo_list_api.Graphql.Users
     {
         public UsersQuery()
         {
-            Field<ListGraphType<UsersType>>("users", resolve: Context =>
-            {
-                var service = Context.RequestServices.GetRequiredService<IUsersService>();
-                return service.GetAllUsersAsync();               
-            });
+            Field<ListGraphType<UsersType>>(
+                "users", 
+                resolve: Context =>
+                {
+                    var service = Context.RequestServices.GetRequiredService<IUsersService>();
+                    return service.GetAllUsersAsync();               
+                });
 
-
-            Field<ListGraphType<UsersType>>("user", resolve: Context =>
-            {
-                var service = Context.RequestServices.GetRequiredService<IUsersService>();
-                return service.GetUserAsync(1);
-            });
+            Field<UsersType>(
+                "user",
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> 
+                    { 
+                        Name = "idUser",
+                        Description = "Unique ID to localizate the user"
+                    }),
+                resolve: Context =>
+                {
+                    var idUser = Context.GetArgument<int>("idUser");
+                    var service = Context.RequestServices.GetRequiredService<IUsersService>();
+                    return service.GetUserAsync(idUser);
+                });
         }
     }
 }

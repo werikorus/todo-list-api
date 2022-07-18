@@ -31,9 +31,15 @@ namespace todo_list_api.Services
             return user;
         }
 
-        public async Task<Users> CreateNewUserAsync([FromBody] UsersCreateDTO body)
+        public Users CreateNewUserAsync(UsersCreateDTO requisition)
         {
-            return null;
+            var user = _usersRepository.CreateNewUser(requisition);
+            return  user;             
+        }
+
+        public int GenerateNewUserID()
+        {
+            return 0;
         }
     }
 }

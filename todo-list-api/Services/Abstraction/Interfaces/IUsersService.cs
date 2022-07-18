@@ -10,7 +10,6 @@ namespace todo_list_api.Services.Abstraction.Interfaces
     {
         Task<IEnumerable<Users>> GetAllUsersAsync();
         Task<Users> GetUserAsync(int id);
-
-        Task<Users> CreateNewUserAsync([FromBody] UsersCreateDTO body);
+        Users CreateNewUserAsync(UsersCreateDTO requisition);
     };
 }
