@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace todo_list_api.DTOs
 {
-    public class UsersCreateDTO
+    public class UsersUpdateDTO
     {
         private const string _errorMessage = "The field {0} must be informed!";
 
@@ -24,7 +24,12 @@ namespace todo_list_api.DTOs
         [Display(Name = "email")]        
         public string Email { get; set; }
 
-        public static Users ConverterParaEntidade(UsersCreateDTO requisicao)
+        [Required(ErrorMessage = _errorMessage)]
+        [RegularExpression(@"\d{2}\/\d{2}\/\d{4}", ErrorMessage = "Inform the date in brazilian default - dd/mm/aaaa")]
+        [Display(Name = "DateUpdate")]
+        public DateTime DateUpdate { get; set; }
+
+        public static Users ConverterParaEntidade(UsersUpdateDTO requisicao)
         {
             if (requisicao == null)
             {
@@ -37,7 +42,6 @@ namespace todo_list_api.DTOs
                 Name = requisicao.Name,
                 Password = requisicao.Password,
                 Email = requisicao.Email,
-                DateCreate = DateTime.Now,
                 DateUpdate = DateTime.Now
             };
         }

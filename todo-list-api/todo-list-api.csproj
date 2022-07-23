@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <Folder Include="Graphql\Lists\" />
-    <Folder Include="Graphql\Tasks\" />
   </ItemGroup>
 
 </Project>

@@ -61,5 +61,58 @@ namespace todo_list_api.Repository
                 return null;
             }
         }
+
+        public Task<Users> UpdateUser(UsersUpdateDTO userInput, int IdUser)
+         {
+            var user = GetUser(IdUser);
+            Users userObj = UsersUpdateDTO.ConverterParaEntidade(userInput);
+
+            try
+            {
+                if (user == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    _context.Entry(userObj).State = EntityState.Modified; // check thes method, are not working
+                    _context.SaveChangesAsync();
+                }
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return null;
+            }
+
+            return user;
+        }
+
+        public string DeleteUser(int idUser)
+        {
+            try
+            {
+                var user = SelectUser(idUser);
+
+                if(user != null)
+                {
+                    _context.Users.Remove(user);
+                    _context.SaveChangesAsync();
+                    return "User deleted sucessfully!";
+                }
+                else
+                {
+                    return "User not found!";
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private Users SelectUser(int idUser)
+        {
+            return _context.Users.Find(idUser);
+        }
     }
 }

@@ -2,11 +2,10 @@
 
 namespace todo_list_api.Graphql.Users
 {
-    public class UserInputType : InputObjectGraphType<DTOs.UsersCreateDTO>
+    public class UsersUpdateType : ObjectGraphType<Models.Users>
     {
-        public UserInputType()
+        public UsersUpdateType()
         {
-            Name = "userInput";
             Field(x => x.IdUser);
             Field(x => x.Name);
             Field(x => x.Password);
