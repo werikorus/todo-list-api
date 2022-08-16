@@ -21,19 +21,32 @@ namespace todo_list_api.Services
 
         public async Task<IEnumerable<Users>> GetAllUsersAsync()
         {
-            var users = await _usersRepository.GetUsers();
-            return users;
+            return await _usersRepository.GetUsers(); ;
         }
 
         public async Task<Users> GetUserAsync(int id)
         {
-            var user = await _usersRepository.GetUser(id);
-            return user;
+            return await _usersRepository.GetUser(id); ;
         }
 
-        public async Task<Users> CreateNewUserAsync([FromBody] UsersCreateDTO body)
+        public Users CreateNewUserAsync(UsersCreateDTO requisition)
+        {            
+            return _usersRepository.CreateNewUser(requisition); ;             
+        }
+
+        public int GenerateNewUserID()
         {
-            return null;
+            return 0;
+        }
+
+        public Task<Users> UpdateUserAsync(UsersUpdateDTO userInput, int IdUser)
+        {
+            return _usersRepository.UpdateUser(userInput, IdUser);
+        }
+
+        public string DeleteUserAsync(int idUser)
+        {
+            return _usersRepository.DeleteUser(idUser);
         }
     }
 }
