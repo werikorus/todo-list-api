@@ -1,7 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.Types;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
 using todo_list_api.Services.Abstraction.Interfaces;
 
 namespace todo_list_api.Graphql.Users

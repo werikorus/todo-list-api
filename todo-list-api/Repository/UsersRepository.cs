@@ -75,7 +75,9 @@ namespace todo_list_api.Repository
                 }
                 else
                 {
-                    _context.Entry(userObj).State = EntityState.Modified; // check thes method, are not working
+                    
+                    // ?????
+
                     _context.SaveChangesAsync();
                 }
             }

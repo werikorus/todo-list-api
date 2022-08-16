@@ -40,7 +40,7 @@ namespace todo_list_api.Graphql.Users
 
                     if (user == null)
                     {
-                        Context.Errors.Add(new ExecutionError("Coundn't find the User in database!"));
+                        Context.Errors.Add(new ExecutionError("Could not find the User in database!"));
                         return null;
                     }
 

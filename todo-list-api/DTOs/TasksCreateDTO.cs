@@ -8,6 +8,7 @@ namespace todo_list_api.DTOs
         public int Idtask { get; set; }
         public int Idlist { get; set; }
         public string DescriptionTask { get; set; }
+        public DateTime? DateCreate { get; set; }
         public DateTime? DateUpdate { get; set; }
         public bool? Done { get; set; }
 
