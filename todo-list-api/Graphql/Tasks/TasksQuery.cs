@@ -12,6 +12,7 @@ namespace todo_list_api.Graphql.Tasks
         {
             Field<ListGraphType<TasksType>>(
                 "Tasks",
+
                 resolve: Context =>
                 {
                     var service = Context.RequestServices.GetService<ITasksService>();
