@@ -28,9 +28,12 @@ namespace todo_list_api.Graphql.Tasks
                     }),
                 resolve: Context =>
                 {
-                    var idTask = Context.GetArgument<int>("idTask");
+                    var idUser = Context.GetArgument<int>("idUser");
                     var idList = Context.GetArgument<int>("idList");
-                    return null;
+
+                    var service = Context.RequestServices.GetService<ITasksService>();
+                    
+                    return service.GetTaskAsync(idUser, idList);
                 });
         }
     }

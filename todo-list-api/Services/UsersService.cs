@@ -5,7 +5,6 @@ using todo_list_api.Services.Abstraction.Interfaces;
 using todo_list_api.Interfaces;
 using System;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc;
 using todo_list_api.DTOs;
 
 namespace todo_list_api.Services

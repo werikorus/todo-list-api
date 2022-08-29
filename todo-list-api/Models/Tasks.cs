@@ -18,7 +18,6 @@ namespace todo_list_api.Models
         public DateTime? DateCreate { get; private set; }
         public DateTime? DateUpdate { get; set; }
         public bool? Done { get; set; }
-
         public virtual List IdlistNavigation { get; set; }
     }
 }
