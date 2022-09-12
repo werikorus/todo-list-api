@@ -1,5 +1,4 @@
 ﻿using System;
-using todo_list_api.Graphql.Tasks;
 using GraphQL.Types;
 using Microsoft.Extensions.DependencyInjection;
 

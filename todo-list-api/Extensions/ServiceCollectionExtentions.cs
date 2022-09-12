@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using todo_list_api.Graphql.Users;
+using todo_list_api.Graphql.Tasks;
 using todo_list_api.Interfaces;
 using todo_list_api.Repository;
 using todo_list_api.Services;
@@ -29,11 +30,15 @@ namespace todo_list_api.Extensions
         {
             services.TryAddScoped<IUsersService, UsersService>();
             services.TryAddScoped<IUsersRepository, UsersRepository>();
+
+            services.TryAddScoped<ITasksService, TasksService>();
+            services.TryAddScoped<ITasksRepository, TasksRepository>(); 
         }
 
         private static void RegisterGraphQLStuffs(this IServiceCollection services)
         {
             services.AddSingleton<ISchema, UsersSchema>(services => new UsersSchema(new SelfActivatingServiceProvider(services)));
+            services.AddSingleton<ISchema, TasksSchema>(services => new TasksSchema(new SelfActivatingServiceProvider(services)));
 
             services.AddGraphQL(options =>
             {

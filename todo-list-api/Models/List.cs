@@ -18,6 +18,8 @@ namespace todo_list_api.Models
         public DateTime? DateCreate { get; private set; }
         public DateTime? DateUpdate { get; set; }
 
+        public int IdUser { get; set; }
+
         public virtual ICollection<Tasks> Tasks { get; set; }
     }
 }
