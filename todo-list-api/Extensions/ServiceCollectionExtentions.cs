@@ -1,5 +1,4 @@
-﻿using GraphQL;
-using GraphQL.MicrosoftDI;
+﻿using GraphQL.MicrosoftDI;
 using GraphQL.Types;
 using GraphQL.Server;
 using GraphQL.SystemTextJson;
@@ -32,13 +31,14 @@ namespace todo_list_api.Extensions
             services.TryAddScoped<IUsersRepository, UsersRepository>();
 
             services.TryAddScoped<ITasksService, TasksService>();
-            services.TryAddScoped<ITasksRepository, TasksRepository>(); 
+            services.TryAddScoped<ITasksRepository, TasksRepository>();
         }
 
         private static void RegisterGraphQLStuffs(this IServiceCollection services)
         {
             services.AddSingleton<ISchema, UsersSchema>(services => new UsersSchema(new SelfActivatingServiceProvider(services)));
             services.AddSingleton<ISchema, TasksSchema>(services => new TasksSchema(new SelfActivatingServiceProvider(services)));
+            
 
             services.AddGraphQL(options =>
             {
