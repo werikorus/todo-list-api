@@ -1,6 +1,6 @@
-﻿using System;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace todo_list_api.Graphql.Tasks
 {
@@ -9,7 +9,7 @@ namespace todo_list_api.Graphql.Tasks
         public TasksSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             Query = serviceProvider.GetRequiredService<TasksQuery>();
-            Mutation = serviceProvider.GetRequiredService<TasksMutation>();
+            //Mutation = serviceProvider.GetRequiredService<TasksMutation>();
         }
     }
 }

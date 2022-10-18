@@ -11,7 +11,8 @@ namespace todo_list_api.Services.Abstraction.Interfaces
         Task<IEnumerable<Users>> GetAllUsersAsync();
         Task<Users> GetUserAsync(int id);
         Users CreateNewUserAsync(UsersCreateDTO requisition);
-        Task<Users> UpdateUserAsync(UsersUpdateDTO userInput, int IdUser);
+        Users UpdateUserAsync(UsersUpdateDTO userInput, int IdUser);
         string DeleteUserAsync(int idUser);
     };
 }
+ 

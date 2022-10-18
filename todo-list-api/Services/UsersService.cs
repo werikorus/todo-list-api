@@ -38,7 +38,7 @@ namespace todo_list_api.Services
             return 0;
         }
 
-        public Task<Users> UpdateUserAsync(UsersUpdateDTO userInput, int IdUser)
+        public Users UpdateUserAsync(UsersUpdateDTO userInput, int IdUser)
         {
             return _usersRepository.UpdateUser(userInput, IdUser);
         }

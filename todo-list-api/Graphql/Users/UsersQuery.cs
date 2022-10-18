@@ -10,20 +10,20 @@ namespace todo_list_api.Graphql.Users
         public UsersQuery()
         {
             Field<ListGraphType<UsersType>>(
-                "users", 
+                "users",
                 resolve: Context =>
                 {
                     var service = Context.RequestServices.GetRequiredService<IUsersService>();
-                    return service.GetAllUsersAsync();               
+                    return service.GetAllUsersAsync();
                 });
 
             Field<UsersType>(
                 "user",
-                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> 
-                    { 
-                        Name = "idUser",
-                        Description = "Unique ID to localizate the user"
-                    }),
+                arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>>
+                {
+                    Name = "idUser",
+                    Description = "Unique ID to localizate the user"
+                }),
                 resolve: Context =>
                 {
                     var idUser = Context.GetArgument<int>("idUser");

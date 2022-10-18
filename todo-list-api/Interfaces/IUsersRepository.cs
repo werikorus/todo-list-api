@@ -12,7 +12,7 @@ namespace todo_list_api.Interfaces
         Task<Users> GetUser(int id);
         Task<IEnumerable<Users>> GetUsers();
         Users CreateNewUser(UsersCreateDTO userInput);
-        Task<Users> UpdateUser(UsersUpdateDTO userInput, int IdUser);
+        Users UpdateUser(UsersUpdateDTO userInput, int IdUser);
         string DeleteUser(int idUser);
     }
 }

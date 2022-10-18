@@ -16,7 +16,7 @@ namespace todo_list_api.Graphql.Tasks
                     var service = Context.RequestServices.GetRequiredService<ITasksService>();
                     return service.GetAllTasksAsync(); 
                 });
-            
+           
             Field<TasksType>(
                 "Task",
                 arguments: new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>>
