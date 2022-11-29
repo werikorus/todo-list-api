@@ -8,9 +8,9 @@ namespace todo_list_api.DTOs
         public int Idtask { get; set; }
         public int Idlist { get; set; }
         public string DescriptionTask { get; set; }
-        public DateTime? DateCreate { get; set; }
-        public DateTime? DateUpdate { get; set; }
-        public bool? Done { get; set; }
+        public DateTime DateCreate { get; set; }
+        public DateTime DateUpdate { get; set; }
+        public bool Done { get; set; }
 
         public virtual List IdlistNavigation { get; set; }
 
@@ -25,8 +25,8 @@ namespace todo_list_api.DTOs
             {
                 Idtask = requisicao.Idtask,
                 Idlist = requisicao.Idlist,
-                DescriptionTask = requisicao.DescriptionTask,
-                DateUpdate = requisicao.DateUpdate,
+                DescriptionTask = requisicao.DescriptionTask,                
+                DateUpdate = DateTime.Now,
                 Done = requisicao.Done
             };
         }

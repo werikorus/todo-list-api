@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using todo_list_api.Models;
 
-namespace todo_list_api.Services.Abstraction.Interfaces
+namespace todo_list_api.Interfaces
 {
-    public interface ITasksService
+    public interface ITasksRepository
     {
         Task<IEnumerable<Tasks>> GetAllTasksAsync();
         Task<IEnumerable<Tasks>> GetTaskAsync(int idUser, int idList);
