@@ -1,13 +1,13 @@
 ﻿using GraphQL.MicrosoftDI;
-using GraphQL.Types;
 using GraphQL.Server;
 using GraphQL.SystemTextJson;
+using GraphQL.Types;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using todo_list_api.Graphql.Users;
 using todo_list_api.Graphql.Tasks;
+using todo_list_api.Graphql.Users;
 using todo_list_api.Interfaces;
 using todo_list_api.Repository;
 using todo_list_api.Services;
@@ -36,12 +36,11 @@ namespace todo_list_api.Extensions
 
         private static void RegisterGraphQLStuffs(this IServiceCollection services)
         {
-            services.AddSingleton<ISchema, UsersSchema>(services => new UsersSchema(new SelfActivatingServiceProvider(services)));
-<<<<<<< HEAD
-            //services.AddSingleton<ISchema, TasksSchema>(services => new TasksSchema(new SelfActivatingServiceProvider(services)));
-=======
+            //services.AddSingleton<ISchema, UsersSchema>(services => new UsersSchema(new SelfActivatingServiceProvider(services)));
+
             services.AddSingleton<ISchema, TasksSchema>(services => new TasksSchema(new SelfActivatingServiceProvider(services)));
->>>>>>> 8b9a0edbed3b018c129133185eb5f9234177bd70
+                        
+
             
 
             services.AddGraphQL(options =>

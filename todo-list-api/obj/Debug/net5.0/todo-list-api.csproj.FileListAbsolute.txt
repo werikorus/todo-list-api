@@ -138,6 +138,7 @@ C:\Projetos\C#\todo-list-API\todo-list-api\bin\Debug\net5.0\zh-Hans\Microsoft.Co
 C:\Projetos\C#\todo-list-API\todo-list-api\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Projetos\C#\todo-list-API\todo-list-api\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Projetos\C#\todo-list-API\todo-list-api\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\todo-list-api.dll
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\appsettings.Development.json
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\appsettings.json
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\todo-list-api.StaticWebAssets.xml
@@ -145,7 +146,6 @@ C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\todo-list-api.exe
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\todo-list-api.deps.json
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\todo-list-api.runtimeconfig.json
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\todo-list-api.runtimeconfig.dev.json
-C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\todo-list-api.dll
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\todo-list-api.pdb
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\AutoMapper.dll
 C:\Projetos\C#\todo-list-app\todo-list-api\bin\Debug\net5.0\GraphQL.dll
