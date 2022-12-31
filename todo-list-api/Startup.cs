@@ -3,14 +3,27 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using todo_list_api.Context;
+
+using GraphQL;
+using GraphQL.MicrosoftDI;
+using GraphQL.Server;
+using GraphQL.SystemTextJson;
+using GraphQL.Types;
+
+using todo_list_api.Extensions;
+using todo_list_api.Graphql.Users;
 
 namespace todo_list_api
 {
     public class Startup
     {
+        protected readonly IHostEnvironment HostEnvironment;
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,6 +45,9 @@ namespace todo_list_api
             services.AddDbContext<ToDoListContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ServerConnection")));
 
+            //registros de services por extension
+            services.ConfigureServices(Configuration, HostEnvironment);
+
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
@@ -44,6 +60,9 @@ namespace todo_list_api
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "todo_list_api v1"));
+
+                // add altair UI to development only
+                app.UseGraphQLAltair();
             }
 
             app.UseRouting();
@@ -64,6 +83,8 @@ namespace todo_list_api
             {
                 endpoints.MapControllers();
             });
+
+            app.UseGraphQL<ISchema>();
         }
     }
 }

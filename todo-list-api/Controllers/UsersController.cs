@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using todo_list_api.Context;
 using todo_list_api.Models;
+using todo_list_api.Services.Abstraction.Interfaces;
 
 namespace todo_list_api.Controllers
 {
@@ -15,31 +14,49 @@ namespace todo_list_api.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ToDoListContext _context;
+        private readonly IUsersService _usersService;
+        
 
-        public UsersController(ToDoListContext context)
+        public UsersController(ToDoListContext context, IUsersService service)
         {
             _context = context;
+            _usersService = service;
         }
 
-        // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
-        }
-
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
-        {
-            var users = await _context.Users.FindAsync(id);
-
-            if (users == null)
+            try
             {
-                return NotFound();
-            }
+                var users = await _usersService.GetAllUsersAsync();
 
-            return users;
+                if (users == null)
+                    return NotFound();
+
+                return Ok(users);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Users>> GetUser(int id)
+        {
+            try
+            {
+                var user = await _usersService.GetUserAsync(id);
+
+                if (user == null)
+                  return NotFound("User not found!"); 
+
+                return Ok(user);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
         }
 
         // PUT: api/Users/5

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using todo_list_api.Interfaces;
 using todo_list_api.Models;
 
 #nullable disable
@@ -42,6 +43,7 @@ namespace todo_list_api.Context
                     .ValueGeneratedNever()
                     .HasColumnName("IDList");
 
+
                 entity.Property(e => e.DateCreate).HasColumnType("datetime");
 
                 entity.Property(e => e.DateUpdate).HasColumnType("datetime");
@@ -49,6 +51,8 @@ namespace todo_list_api.Context
                 entity.Property(e => e.DescriptionList)
                     .HasMaxLength(1)
                     .IsUnicode(false);
+
+                entity.Property(e => e.IdUser).HasColumnType("IdUser");
             });
 
             modelBuilder.Entity<Tasks>(entity =>
@@ -65,8 +69,10 @@ namespace todo_list_api.Context
                 entity.Property(e => e.DateUpdate).HasColumnType("datetime");
 
                 entity.Property(e => e.DescriptionTask)
-                    .HasMaxLength(1)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
+
+                entity.Property(e => e.IdUser).HasColumnType("IdUser");
 
                 entity.HasOne(d => d.IdlistNavigation)
                     .WithMany(p => p.Tasks)
