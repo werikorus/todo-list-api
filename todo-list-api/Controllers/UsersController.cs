@@ -49,7 +49,7 @@ namespace todo_list_api.Controllers
                 var user = await _usersService.GetUserAsync(id);
 
                 if (user == null)
-                  return NotFound(); 
+                  return NotFound("User not found!"); 
 
                 return Ok(user);
             }

@@ -5,7 +5,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using todo_list_api.DTOs;
-
+using Microsoft.AspNetCore.Diagnostics;
+using GraphQL.Execution;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace todo_list_api.Repository
 {
@@ -32,6 +35,11 @@ namespace todo_list_api.Repository
 
         }
 
+        private Users SelectUser(int idUser)
+        {
+            return _context.Users.Find(idUser);
+        }
+
         public async Task<IEnumerable<Users>> GetUsers()
         {
             try
@@ -42,7 +50,7 @@ namespace todo_list_api.Repository
             {
                 return null;
             }
-            
+
         }
 
         public Users CreateNewUser(UsersCreateDTO userInput)
@@ -60,31 +68,29 @@ namespace todo_list_api.Repository
             }
         }
 
-        public Task<Users> UpdateUser(UsersUpdateDTO userInput, int IdUser)
-         {
-            var user = GetUser(IdUser);
+        public Users UpdateUser(UsersUpdateDTO userInput, int IdUser)
+        {                       
             Users userObj = UsersUpdateDTO.ConverterParaEntidade(userInput);
+
+            _context.Users.Update(userObj);
 
             try
             {
-                if (user == null)
+               _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UsersExists(IdUser))
                 {
                     return null;
                 }
                 else
                 {
-                    
-                    // ?????
-
-                    _context.SaveChangesAsync();
+                    throw;
                 }
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                return null;
-            }
 
-            return user;
+            return userObj;
         }
 
         public string DeleteUser(int idUser)
@@ -93,7 +99,7 @@ namespace todo_list_api.Repository
             {
                 var user = SelectUser(idUser);
 
-                if(user != null)
+                if (user != null)
                 {
                     _context.Users.Remove(user);
                     _context.SaveChangesAsync();
@@ -106,13 +112,13 @@ namespace todo_list_api.Repository
             }
             catch
             {
-                return null;
+                return "FAIL! Error when trying deleting User!";
             }
         }
 
-        private Users SelectUser(int idUser)
+        private bool UsersExists(int id)
         {
-            return _context.Users.Find(idUser);
+            return _context.Users.Any(e => e.IdUser == id);
         }
     }
 }
