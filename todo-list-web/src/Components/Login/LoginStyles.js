@@ -10,6 +10,7 @@ export const LoginArea = styled.div`
 export const ButtonsArea = styled.div`
   display: flex;
   justify-content: space-evenly;
+  text-decoration: none;
 `
 
 export const Main = styled.main`
