@@ -4,14 +4,6 @@ import { Main, LoginArea, ButtonsArea } from "./LoginStyles";
 import Goto from '../Goto';
 
 
-const handleLogin = () =>{
-  alert("Login!!");
-};
-
-const handleCadastro = () => {
-  alert("Cadastro!");
-}
-
 const Login = () =>{
   return(
     <Main>

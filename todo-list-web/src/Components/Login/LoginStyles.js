@@ -5,6 +5,7 @@ export const LoginArea = styled.div`
   width: 15rem;
   height: 18rem;
   align-items: center;
+  background-color: yellow;
 `;
 
 export const ButtonsArea = styled.div`
@@ -18,4 +19,5 @@ export const Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: blue;
 `;

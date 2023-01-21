@@ -1,13 +1,11 @@
 import React  from "react";
-import PageHeader from "../../Components/PageHeader";
 import { Main } from "./HomeStyles";
+import Aside from "../../Components/Aside";
 
 const Home = () => {
   return(
     <Main>
-      <PageHeader
-        title="MY TO DO"
-      />    
+      <Aside />
     </Main>    
   );
 }
