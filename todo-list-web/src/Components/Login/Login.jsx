@@ -3,7 +3,6 @@ import InputElement from "../InputElement";
 import { Main, LoginArea, ButtonsArea } from "./LoginStyles";
 import Goto from '../Goto';
 
-
 const Login = () =>{
   return(
     <Main>

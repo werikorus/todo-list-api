@@ -1,11 +1,13 @@
 import React from "react";
-import { HeaderPage } from './PageHeaderStyles';
+import { HeaderPage, Title } from './PageHeaderStyles';
+import InputElement from "../InputElement";
 
 const PageHeader = (props) => {
   const {title} = props;
   return (
     <HeaderPage>
-      <h1>{title}</h1>
+      <Title>{title}</Title>    
+      <InputElement />
     </HeaderPage>
   );
 };

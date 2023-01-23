@@ -1,10 +1,13 @@
 import React from "react";
-import { Input } from "./InputElementStyles";
+import {Form, Input, AddButton } from "./InputElementStyles";
 
 const InputElement = (props) =>{
   const {placeholder} = props
   return (
-    <Input placeholder={placeholder}/>
+    <Form onSubmit={"return false;"}>
+      <Input placeholder={placeholder} />
+      <AddButton />
+    </ Form>    
   );
 };
 
