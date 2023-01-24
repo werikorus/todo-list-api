@@ -1,9 +1,12 @@
 import React  from "react";
 import Login from "../../Components/Login";
+import { Main } from "./LandingStyles";
 
 const Landing = () => {
   return(
-    <Login />
+    <Main>
+      <Login />
+    </Main>    
   );
 }
 

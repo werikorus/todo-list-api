@@ -56,6 +56,6 @@ export const Button = styled.button`
   outline: none;
   border: none;
   border-radius: 0.8mm;
-  backgro;und: var(--color-input-background);
+  background: var(--color-input-background);
   opacity: 85%;
 `;

@@ -16,6 +16,7 @@ export const Input = styled.input`
   min-width: 100px;
   height: 3.5rem;
   color: var(--color-basic-text);
+  background-color: var(--color-input-background);
   
   align-items: center;
   border-radius: 0.6rem 0 0 0.6rem;
