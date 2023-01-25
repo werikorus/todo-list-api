@@ -34,7 +34,6 @@ export const ButtonsArea = styled.div`
 export const InputArea = styled.div`
   display: flex;
   justify-content: space-between;
-  /*background-color: yellow;*/
   align-items: center;
 `;
 
