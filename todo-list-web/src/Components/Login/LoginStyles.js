@@ -5,14 +5,13 @@ export const Main = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(79, 78, 78, 0.522) 1px 0.1px 10px;
 `;
 
 export const DivArea = styled.div`
   height: 50%;
   width: 50%;
   display: flex;
-  color: var(--color-input-background);
+  color: var(--color-input-background);    
 `;
 
 export const LoginArea = styled.div`
@@ -20,9 +19,9 @@ export const LoginArea = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   width: 45%;
-  height: 100%;
   align-items: center;
   border: solid 1px white;
+  border-left: none;
   border-radius: 0 10px 10px 0;
 `;
 

@@ -2,6 +2,7 @@ import React from "react";
 import Goto from '../Goto';
 import { FaLock } from 'react-icons/fa';
 import { FaUser } from "react-icons/fa";
+//import './../../../public/assets/home_img.avif';
 
 import {
   Main, 
@@ -9,8 +10,7 @@ import {
   LoginArea, 
   InputArea,
   ButtonsArea,
-  InputLogin, 
-  Label, 
+  InputLogin,   
   DivImage } from "./LoginStyles";
 
 const Login = () =>{
@@ -21,14 +21,12 @@ const Login = () =>{
         <LoginArea>
           <h2>Your To Do List</h2>
           <span>Log in to your account</span>
-          
-          {/*<Label htmlFor="e-mail">Email </Label>*/}
+
           <InputArea>
             <FaUser/>
             <InputLogin id="loginInput" type="text" placeholder="email"/>
           </InputArea>
 
-          {/*<Label htmlFor="e-mail">Passord</Label>*/}
           <InputArea>            
             <FaLock/> 
             <InputLogin id="passwordInput" type="password" placeholder="Password"/>

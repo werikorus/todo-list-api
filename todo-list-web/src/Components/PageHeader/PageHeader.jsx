@@ -6,8 +6,8 @@ const PageHeader = (props) => {
   const {title} = props;
   return (
     <HeaderPage>
-      <Title>{title}</Title>    
-      <InputElement />
+      <Title>{title}</Title>       
+      <InputElement placeholder="type a text here.."/>
     </HeaderPage>
   );
 };
