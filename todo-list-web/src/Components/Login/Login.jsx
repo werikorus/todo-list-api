@@ -2,7 +2,6 @@ import React from "react";
 import Goto from '../Goto';
 import { FaLock } from 'react-icons/fa';
 import { FaUser } from "react-icons/fa";
-//import './../../../public/assets/home_img.avif';
 
 import {
   Main, 
