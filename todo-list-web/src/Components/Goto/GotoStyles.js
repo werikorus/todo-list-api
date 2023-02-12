@@ -5,6 +5,7 @@ export const Button = styled.button`
   height: 2rem;
   text-decoration: none;
   background-color: var(--color-input-background);
+  background-color: var(--color-header-background);
   border: none;
   border-radius: 5px;
   transition: 0.2s;

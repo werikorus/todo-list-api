@@ -22,12 +22,12 @@ const Login = () =>{
           <span>Log in to your account</span>
 
           <InputArea>
-            <FaUser/>
+            <FaUser color={"var(--color-header-background)"}/>
             <InputLogin id="loginInput" type="text" placeholder="email"/>
           </InputArea>
 
           <InputArea>            
-            <FaLock/> 
+            <FaLock color={"var(--color-header-background)"}/> 
             <InputLogin id="passwordInput" type="password" placeholder="Password"/>
           </InputArea>
           

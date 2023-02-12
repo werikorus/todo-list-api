@@ -23,6 +23,7 @@ export const LoginArea = styled.div`
   border: solid 1px white;
   border-left: none;
   border-radius: 0 10px 10px 0;
+  background-color: var(--color-background);
 `;
 
 export const ButtonsArea = styled.div`
