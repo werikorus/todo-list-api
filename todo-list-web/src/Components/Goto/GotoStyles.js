@@ -5,11 +5,10 @@ export const Button = styled.button`
   height: 2rem;
   text-decoration: none;
   background-color: var(--color-input-background);
-  background-color: var(--color-header-background);
-  border: none;
+  border: 1px solid  var(--color-header-background);
   border-radius: 5px;
   transition: 0.2s;
-  color: var(--color-basic-text);
+  color: var(--color-line-in-white);
 
   &:hover{
     background-color: var(--color-line-in-white);

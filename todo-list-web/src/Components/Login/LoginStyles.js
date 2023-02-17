@@ -44,7 +44,7 @@ export const InputLogin = styled.input`
   color: var(--color-basic-text);
   background-color: var(--color-input-background);
   border-radius: 0.5rem;
-  border: 1px solid white;
+  border: 1px solid var(--color-header-background);
   outline: 0;
   font-size: 1rem;
   padding-left: 0.8rem;
@@ -61,4 +61,18 @@ export const DivImage = styled.img`
   border-radius: 10px 0 0 10px;
   border: none;
   position: static;
+`;
+
+export const Title = styled.h2`
+  color: var(--color-header-background);
+`;
+export const Line = styled.hr`
+  margin-top: -30px;
+  color: var(--color-header-background);
+  width: 60%;
+`;
+
+export const Subtitle = styled.span`
+  margin-top: -30px;
+  color: var(--color-header-background);
 `;

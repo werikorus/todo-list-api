@@ -10,7 +10,10 @@ import {
   InputArea,
   ButtonsArea,
   InputLogin,   
-  DivImage } from "./LoginStyles";
+  DivImage,
+  Title,
+  Subtitle,
+  Line } from "./LoginStyles";
 
 const Login = () =>{
   return(
@@ -18,8 +21,9 @@ const Login = () =>{
       <DivArea>
         <DivImage src="https://images.unsplash.com/photo-1515847049296-a281d6401047?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>
         <LoginArea>
-          <h2>Your To Do List</h2>
-          <span>Log in to your account</span>
+          <Title>Your To Do List</Title>
+          <Line/>
+          <Subtitle>Log in to your account</Subtitle>
 
           <InputArea>
             <FaUser color={"var(--color-header-background)"}/>
