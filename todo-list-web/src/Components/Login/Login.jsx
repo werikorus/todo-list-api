@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Goto from '../Goto';
 import { FaLock } from 'react-icons/fa';
 import { FaUser } from "react-icons/fa";
@@ -16,8 +16,22 @@ import {
   Title,
   Subtitle,
   Line} from "./LoginStyles";
+import { gapi } from "gapi-script";
 
 const Login = () =>{
+  useEffect(() => {
+    function start(){
+      gapi.client.init({
+        clientId: clientId,
+        scope: ""
+      })
+    }
+
+    gapi.load('client:auth2', start);
+  });
+
+
+
   return(
     <Main>
       <DivArea>
