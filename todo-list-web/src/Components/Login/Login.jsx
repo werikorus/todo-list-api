@@ -2,6 +2,8 @@ import React from "react";
 import Goto from '../Goto';
 import { FaLock } from 'react-icons/fa';
 import { FaUser } from "react-icons/fa";
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { clientId, onSuccess, onFailure } from "./logic/login";
 
 import {
   Main, 
@@ -13,13 +15,13 @@ import {
   DivImage,
   Title,
   Subtitle,
-  Line } from "./LoginStyles";
+  Line} from "./LoginStyles";
 
 const Login = () =>{
   return(
     <Main>
       <DivArea>
-        <DivImage src="https://images.unsplash.com/photo-1515847049296-a281d6401047?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>
+        <DivImage src="https://images.unsplash.com/photo-1515847049296-a281d6401047?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>                
         <LoginArea>
           <Title>Your To Do List</Title>
           <Line/>
@@ -36,9 +38,18 @@ const Login = () =>{
           </InputArea>
           
           <ButtonsArea>
-            <Goto txt="Login" destine="/Home"/>
-            <Goto txt="Sign Up" destine="/Subscribe"/>      
+            <Goto txt="Login" destiny="/Home"/>
+            <Goto txt="Sign Up" destiny="/Subscribe"/>      
           </ButtonsArea>             
+          <GoogleLogin
+            clientId={clientId}
+            buttonText="Login with Google"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={'single_host_origin'}
+            isSignedIn={true}
+            style={{"backgroundColor": "black"}}
+          />
         </LoginArea>     
       </DivArea>
     </Main>

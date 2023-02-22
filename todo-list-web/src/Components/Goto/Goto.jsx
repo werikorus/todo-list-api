@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { Button } from './GotoStyles';
 
 const Goto = (props) =>{
-  const { destine, txt } = props;
+  const { destiny, txt } = props;
   return (
     <Button>
-      <Link to={destine}>
+      <Link to={destiny}>
         {txt}
       </Link>
     </Button>

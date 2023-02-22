@@ -76,3 +76,23 @@ export const Subtitle = styled.span`
   margin-top: -30px;
   color: var(--color-header-background);
 `;
+
+export const GoogleLogin = styled.div`
+  height: 23px;
+  color: black;
+  border: 1px solid var(--color-header-background);
+  width: 10rem;
+  border-radius: 3px;
+  text-align: center;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 13px;
+  cursor: pointer;
+
+
+  &:hover{
+    background-color: var(--color-line-in-white);    
+  }
+`;
