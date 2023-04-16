@@ -1,98 +1,103 @@
-import styled from 'styled-components';
+import { createUseStyles } from 'react-jss';
 
-export const Main = styled.main`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+export const useStyles = createUseStyles({
+  main: {
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',    
+  },
 
-export const DivArea = styled.div`
-  height: 50%;
-  width: 50%;
-  display: flex;
-  color: var(--color-input-background);    
-`;
+  divArea : {
+    height: '50%',
+    width: '50%',
+    display: 'flex',
+    color: 'var(--color-input-background)',
+    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
+    overflow: 'hidden'
+  },
 
-export const LoginArea = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 45%;
-  align-items: center;
-  border: solid 1px white;
-  border-left: none;
-  border-radius: 0 10px 10px 0;
-  background-color: var(--color-background);
-`;
+  loginArea : {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-Evenly',
+    width: '45%',
+    alignItems: 'center',
+    border: 'solid 1px white',
+    borderLeft: 'none',
+    borderRadius: '0 10px 10px 0',
+    backgroundColor: 'var(--color-background)'
+  },
 
-export const ButtonsArea = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-`
-export const InputArea = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+  buttonsArea: {
+    display: 'flex',
+    justifyContent: 'space-Evenly',
+    width: '100%'
+  },
 
-export const InputLogin = styled.input`
-  height: 2rem;
-  align-content: center;
-  margin-left: 7px;
-  color: var(--color-basic-text);
-  background-color: var(--color-input-background);
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-header-background);
-  outline: 0;
-  font-size: 1rem;
-  padding-left: 0.8rem;
-`;
+  inputArea: {
+    display: 'flex',
+    justifyContent: 'spaceBetween',
+    alignItems: 'center'
+  },
 
-export const Label = styled.label`
-  justify-self: left;
-  padding-top: 1rem;
-`;
+  inputLogin: {
+    height: '2rem',
+    alignContent: 'center',
+    marginLeft: '7px',
+    color: 'var(--color-basic-text)',
+    backgroundColor: 'var(--color-input-background)',
+    borderRadius: '0.5rem',
+    border: '1px solid var(--color-header-background)',
+    outline: 0,
+    fontSize: '1rem',
+    paddingLeft: '0.8rem',
+  },
 
-export const DivImage = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px 0 0 10px;
-  border: none;
-  position: static;
-`;
+  label: {
+    justifySelf: 'left',
+    paddingTop: '1rem',
+  },
+  
+  divImage:{
+    width: '100%',
+    height: '100%',
+    borderRadius: '10px 0 0 10px',
+    border: 'none',
+    position: 'static',
+  },
 
-export const Title = styled.h2`
-  color: var(--color-header-background);
-`;
-export const Line = styled.hr`
-  margin-top: -30px;
-  color: var(--color-header-background);
-  width: 60%;
-`;
+  title: {
+    color: 'var(--color-header-background)',
+  },
 
-export const Subtitle = styled.span`
-  margin-top: -30px;
-  color: var(--color-header-background);
-`;
+  line: {
+    marginTop: '-30px',
+    color: 'var(--color-header-background)',
+    width: '60%'
+  },
+    
+  subtitle:{
+    marginTop: '-30px',
+    color: 'var(--color-header-background)',
+  },
+  
+  googleLogin: {
+    height: '23px',
+    color: 'black',
+    border: '1px solid var(--color-header-background)',
+    width: '10rem',
+    borderRadius: '3px',
+    textAlign: 'center',
+    transition: '0.2s',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'spaceEvenly',
+    fontSize: '13px',
+    cursor: 'pointer',
 
-export const GoogleLogin = styled.div`
-  height: 23px;
-  color: black;
-  border: 1px solid var(--color-header-background);
-  width: 10rem;
-  border-radius: 3px;
-  text-align: center;
-  transition: 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  font-size: 13px;
-  cursor: pointer;
-
-
-  &:hover{
-    background-color: var(--color-line-in-white);    
-  }
-`;
+    '&:hover': {
+      backgroundColor: 'var(--color-line-in-white)'  
+    }  
+  },
+})

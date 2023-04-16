@@ -1,14 +1,25 @@
 import React from "react";
-import { HeaderPage, Title } from './PageHeaderStyles';
 import InputElement from "../InputElement";
+import { gapi } from "gapi-script";
+import { useStyles } from "./PageHeaderStyles"
+
 
 const PageHeader = (props) => {
-  const {title} = props;
+  const classes = useStyles();
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+  
   return (
-    <HeaderPage>
-      <Title>{title}</Title>       
+    <header className={classes.headerPage}>
+      <h1 className={classes.title}>{props.title}</h1>       
       <InputElement placeholder="type a text here.."/>
-    </HeaderPage>
+      <a href="/" onclick={signOut}>Sign out</a>
+    </header>    
   );
 };
 

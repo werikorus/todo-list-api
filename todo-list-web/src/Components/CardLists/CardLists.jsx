@@ -1,13 +1,14 @@
 import React  from "react";
-import { Card } from  './CardListsStyles';
+import { useStyles } from "./CardListsStyles";
 
 const CardLists = (prop) =>{
+  const classes = useStyles();
+  
   return(
-    <Card onSubmit={prop.getLists}>
+    <div className={classes.card} onSubmit={prop.getLists}>
       <h1>{prop.title}</h1>
-    </Card>     
+    </div>     
   );
 }
-
 
 export default CardLists;

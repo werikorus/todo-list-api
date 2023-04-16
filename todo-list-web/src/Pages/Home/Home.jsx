@@ -1,5 +1,5 @@
 import React  from "react";
-import { Main } from "./HomeStyles";
+import { useStyles } from "./HomeStyles";
 import Aside from "../../Components/Aside";
 import PageHeader from "../../Components/PageHeader";
 import Board from "../../Components/Board";
@@ -23,13 +23,15 @@ const Home = () => {
   //  })();
   //},[]);
 
+  const classes = useStyles();
+
   return(   
     <>
       <PageHeader title="MY TO DO"/>
-      <Main>
+      <main className={classes.main}>
         <Aside Items={currentLists}/> 
         <Board />
-      </Main>   
+      </main>    
     </>     
   );
 }

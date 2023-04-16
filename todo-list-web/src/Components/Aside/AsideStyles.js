@@ -1,10 +1,12 @@
-import styled from 'styled-components'
+import { createUseStyles } from 'react-jss'
 
-export const AsideComponent = styled.aside`
-  position: absolute;
-  padding-top: 20px;
-  padding-left: 1rem;
-  max-width: 10rem;
-  height: 100%;
-  font-size: 0.7rem;
-`
+export const useStyles = createUseStyles({
+  aside:{
+    position: 'absolute',
+    paddingTop: '20px',
+    paddingLeft: '1rem',
+    maxWidth: '10rem',
+    height: '100%',
+    fontSize: '0.7rem',
+  }
+});

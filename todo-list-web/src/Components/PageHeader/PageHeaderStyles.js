@@ -1,19 +1,23 @@
-import styled from 'styled-components';
+import { createUseStyles } from 'react-jss';
 
-export const HeaderPage = styled.header`
-  display: grid;
-  justify-content: center;
-  justify-items: center;
-  background-color: blue;
-  height: 11rem;
-  flex-direction: column;
-  align-content: center;
-  align-items: baseline; 
-  background-color: var(--color-header-background);
-  background-image: var(--color-header-background-image);
-`;
+export const useStyles = createUseStyles({
+  headerPage: {
+    display: 'grid',
+    justifyContent: 'center',
+    justifyItems: 'center',
+    height: '11rem',
+    flexDirection: 'column',
+    alignContent: 'center',
+    alignItems: 'baseline',
+    backgroundColor: 'var(--color-header-background)',
+    backgroundImage: 'var(--color-header-background-image)'
+  },
 
-export const Title = styled.h1`
-  text-align: center;
-  color: white;
-`;
+  title: {
+    textAlign: 'center',
+    color: 'white'
+  }
+})
+
+
+

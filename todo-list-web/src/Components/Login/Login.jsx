@@ -4,19 +4,9 @@ import { FaLock } from 'react-icons/fa';
 import { FaUser } from "react-icons/fa";
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { clientId, onSuccess, onFailure } from "./logic/login";
-
-import {
-  Main, 
-  DivArea, 
-  LoginArea, 
-  InputArea,
-  ButtonsArea,
-  InputLogin,   
-  DivImage,
-  Title,
-  Subtitle,
-  Line} from "./LoginStyles";
 import { gapi } from "gapi-script";
+import { linkLoginImage } from "../../Helper/Helper";
+import { useStyles } from "./LoginStyles";
 
 const Login = () =>{
   useEffect(() => {
@@ -30,32 +20,33 @@ const Login = () =>{
     gapi.load('client:auth2', start);
   });
 
-
+  const classes = useStyles();
 
   return(
-    <Main>
-      <DivArea>
-        <DivImage src="https://images.unsplash.com/photo-1515847049296-a281d6401047?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>                
-        <LoginArea>
-          <Title>Your To Do List</Title>
-          <Line/>
-          <Subtitle>Log in to your account</Subtitle>
+    <main className={classes.main}>
+      <div className={classes.divArea}>
+        <img className={classes.divImage} src={linkLoginImage}/>
+        <div className={classes.loginArea}>
+          <h2 className={classes.title}>Your To Do List</h2>
+          <hr className={classes.line}/>
+          <span className={classes.subtitle}>Log in to your account</span>
 
-          <InputArea>
+          <div className={classes.inputArea}>
             <FaUser color={"var(--color-header-background)"}/>
-            <InputLogin id="loginInput" type="text" placeholder="email"/>
-          </InputArea>
+            <input className={classes.inputLogin} id="loginInput" type="text" placeholder="email"/>
+          </div>
 
-          <InputArea>            
+          <div className={classes.inputArea}>            
             <FaLock color={"var(--color-header-background)"}/> 
-            <InputLogin id="passwordInput" type="password" placeholder="Password"/>
-          </InputArea>
+            <input className={classes.inputLogin} id="passwordInput" type="password" placeholder="Password"/>
+          </div>
           
-          <ButtonsArea>
+          <div className={classes.buttonsArea}>
             <Goto txt="Login" destiny="/Home"/>
             <Goto txt="Sign Up" destiny="/Subscribe"/>      
-          </ButtonsArea>             
-          <GoogleLogin
+          </div>       
+                
+          {/*<GoogleLogin
             clientId={clientId}
             buttonText="Login with Google"
             onSuccess={onSuccess}
@@ -63,10 +54,10 @@ const Login = () =>{
             cookiePolicy={'single_host_origin'}
             isSignedIn={true}
             style={{"backgroundColor": "black"}}
-          />
-        </LoginArea>     
-      </DivArea>
-    </Main>
+          />*/}
+        </div>
+      </div>            
+    </main>
   );
 };
 
