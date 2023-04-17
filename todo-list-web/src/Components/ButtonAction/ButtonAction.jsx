@@ -1,12 +1,15 @@
 import React from "react";
 import { Button } from "./ButtonActionStyles";
+import { useStyles } from "./ButtonActionStyles";
 
 const ButtonAction = (props) =>{
+  const classes = useStyles();
+
   const { clickEvent, txt } = props;
   return (
-    <Button onClick={clickEvent}>
+    <button className={classes.button} onClick={clickEvent}>
       {txt}
-    </Button>
+    </button>
   );
 };
 

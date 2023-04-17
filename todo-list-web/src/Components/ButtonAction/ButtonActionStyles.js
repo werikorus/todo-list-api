@@ -1,6 +1,8 @@
-import styled from 'styled-components'
+import { createUseStyles } from 'react-jss'
 
-export const Button = styled.button`
-  min-width: 5rem;
-  height: 2rem;
-`
+export const useStyles = createUseStyles({
+  button:{
+    minWidth: '5rem',
+    height: '2rem',
+  }
+});
