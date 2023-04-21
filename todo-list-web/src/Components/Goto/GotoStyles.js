@@ -1,16 +1,18 @@
-import styled from 'styled-components'
+import { createUseStyles } from 'react-jss'
 
-export const Button = styled.button`
-  min-width: 5rem;
-  height: 2rem;
-  text-decoration: none;
-  background-color: var(--color-input-background);
-  border: 1px solid  var(--color-header-background);
-  border-radius: 5px;
-  transition: 0.2s;
-  color: var(--color-line-in-white);
-
-  &:hover{
-    background-color: var(--color-line-in-white);
+export const useStyles = createUseStyles({
+  button: {
+    minWidth: '5rem',
+    height: '2rem',
+    textDecoration: 'none',
+    backgroundColor: 'var(--color-input-background)',
+    border: '1px solid  var(--color-header-background)',
+    borderRadius: '5px',
+    transition: '0.2s',
+    color: 'var(--color-line-in-white)',
+  
+    '&:hover': {
+      backgroundColor: 'var(--color-line-in-white)'
+    }
   }
-`
+});

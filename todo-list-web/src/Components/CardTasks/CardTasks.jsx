@@ -3,12 +3,11 @@ import { useStyles } from "./CardTasksStyles";
 
 export const CardTasks = (item, key) => {
   const classes = useStyles();
-  console.log(item);
 
   return (  
     <li className={classes.items} key={key}> 
       <input className={classes.input} type="checkbox"/>
-      <label>{item.title}</label>
+      <label>{item.item}</label>
       <button className={classes.button}>X</button>
     </li>
   );

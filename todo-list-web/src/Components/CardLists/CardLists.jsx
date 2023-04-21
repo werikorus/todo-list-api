@@ -5,8 +5,8 @@ const CardLists = (prop) =>{
   const classes = useStyles();
   
   return(
-    <div className={classes.card} onSubmit={prop.getLists}>
-      <h1>{prop.title}</h1>
+    <div className={classes.card} onClick={prop.getTasks}>
+      <h2>{prop.title}</h2>
     </div>     
   );
 }

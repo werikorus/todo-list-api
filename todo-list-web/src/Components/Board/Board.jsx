@@ -1,6 +1,6 @@
 import React from "react";
 import { useStyles } from  "./BoardStyles";
-import { ItemsTasks1 } from "../../Mock/ItemsTasksMock";
+import { ItemsTasks1, ItemsTasks2 } from "../../Mock/ItemsTasksMock";
 import CardTasks from "../CardTasks/CardTasks";
 
 const Board = (prop) =>{
@@ -9,7 +9,7 @@ const Board = (prop) =>{
   return(
     <div className={classes.boardArea}>
       <ul className={classes.areaItems}>
-        {ItemsTasks1.map((item, key) => <CardTasks item={item} key={key}/>) }
+        {ItemsTasks1.map((item, key) => <CardTasks item={item} key={key}/>)}
       </ul>      
     </div>
   );

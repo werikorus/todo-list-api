@@ -18,7 +18,7 @@ const PageHeader = (props) => {
     <header className={classes.headerPage}>
       <h1 className={classes.title}>{props.title}</h1>       
       <InputElement placeholder="type a text here.."/>
-      <a href="/" onclick={signOut}>Sign out</a>
+      <a href="/" onClick={signOut}>Sign out</a>
     </header>    
   );
 };
