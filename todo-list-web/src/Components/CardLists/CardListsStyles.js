@@ -10,8 +10,7 @@ export const useStyles = createUseStyles({
     transition: '0.4s',
     justifyContent: 'center',
     justifyItems: 'center',
-    alignItems: 'center',
-    paddingBottom: '0.5rem',
+    alignItems: 'center',    
     marginBottom: '0.5rem',    
 
     '&:hover':{

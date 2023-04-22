@@ -19,8 +19,8 @@ const Aside = (props) => {
     //setCurrentUserId(userId);
   }
 
-  const handleTest = ()=>{
-    console.log('Teste!');
+  const handleNewList = () => {
+    window.alert('Not implemented yet!');
   }
 
   return(   
@@ -42,14 +42,14 @@ const Aside = (props) => {
             <CardLists 
               title={item.descriptionList} 
               key={item.id} 
-              getTasks={handleTest}
+              getTasks={handleCurrentUserID(item.idUser, item.descriptionList)}
             />
           ))}           
         </ul>     
         <br />    
       <ButtonAction 
         txt="Add new List!" 
-        clickEvent={handleGetListByUserId(props.Items)}
+        clickEvent={handleGetListByUserId(props.Items)}        
       />
     </aside>
   );
