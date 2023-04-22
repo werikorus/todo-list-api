@@ -25,7 +25,7 @@ const Login = () =>{
   return(
     <main className={classes.main}>
       <div className={classes.divArea}>
-        <img className={classes.divImage} src={linkLoginImage}/>
+        <img className={classes.divImage} src={linkLoginImage} alt="loading"/>
         <div className={classes.loginArea}>
           <h2 className={classes.title}>Your To Do List</h2>
           <hr className={classes.line}/>

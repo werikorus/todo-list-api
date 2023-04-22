@@ -34,5 +34,9 @@ export const useStyles = createUseStyles({
     alignContent: 'center',
     borderRadius: '0 0.6rem 0.6rem 0',
     transition: '0.2s',
+  },
+  addImg:{
+    height: '12mm',
+    paddingTop: '1.3mm',
   }
 });

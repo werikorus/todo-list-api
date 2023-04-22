@@ -1,7 +1,10 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { useStyles } from "./AsideStyles"; 
 import CardLists from "../CardLists";
 import ButtonAction from "../ButtonAction";
+import { getListsByUserId } from "./../../Services/ListsAPI";
+
+import { useRef } from "react";
 
 const Aside = (props) => {  
   const classes = useStyles();
@@ -16,6 +19,10 @@ const Aside = (props) => {
     //setCurrentUserId(userId);
   }
 
+  const handleTest = ()=>{
+    console.log('Teste!');
+  }
+
   return(   
     <aside className={classes.aside}>
       <span>
@@ -23,21 +30,23 @@ const Aside = (props) => {
           ? "My Lists" 
           : "You haven't any list yet. Create your first one!"
         }
-      </span>
-      <hr />      
-      {(props.Items.length === 1)
-        ? <CardLists 
-            title={props.Items.descriptionList} 
-            key={props.Items.id}
-          />
-        : props.Items.map((item, _key) => (
-          <CardLists 
-            title={item.descriptionList} 
-            key={item.id} 
-            getTasks={handleCurrentUserID(item.idUser, item.descriptionList)}
-          />
-        ))} 
-        <hr />    
+      </span>      
+      <ul className={classes.ul}>
+      <hr /> 
+        {(props.Items.length === 1)
+          ? <CardLists 
+              title={props.Items.descriptionList} 
+              key={props.Items.id}
+            />
+          : props.Items.map((item, _key) => (
+            <CardLists 
+              title={item.descriptionList} 
+              key={item.id} 
+              getTasks={handleTest}
+            />
+          ))}           
+        </ul>     
+        <br />    
       <ButtonAction 
         txt="Add new List!" 
         clickEvent={handleGetListByUserId(props.Items)}

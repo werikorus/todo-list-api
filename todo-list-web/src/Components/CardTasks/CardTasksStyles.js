@@ -29,6 +29,7 @@ export const useStyles = createUseStyles({
     alignItems: 'center',
     background: 'var(--color-input-background)',
     border: '1px solid var(--color-line-in-white)',
+    cursor: 'pointer'
   },
   button:{
     display: 'flex',
@@ -44,6 +45,11 @@ export const useStyles = createUseStyles({
     border: 'none',
     borderRadius: '0.8mm',
     background: 'var(--color-input-background)',
-    opacity: '85%',    
+    opacity: '85%', 
+    cursor: 'pointer'   
+  },
+  delImg:{
+    width: '100%',
+    height: '100%',
   }
 });

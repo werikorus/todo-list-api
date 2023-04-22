@@ -1,7 +1,7 @@
 import { createUseStyles } from 'react-jss';
 
 export const useStyles = createUseStyles({
-  card:{
+  card:{ 
     display: 'flex',
     width: '100%',
     height: '2.5rem',
@@ -12,12 +12,13 @@ export const useStyles = createUseStyles({
     justifyItems: 'center',
     alignItems: 'center',
     paddingBottom: '0.5rem',
+    marginBottom: '0.5rem',    
 
     '&:hover':{
+      color: 'white',
       cursor: 'pointer',
       backgroundColor: 'var(--color-header-background)',
-      backgroundImage: 'var(--color-header-background-image)',
-      color: 'white',
+      backgroundImage: 'var(--color-header-background-image)',      
     }
   }
 });

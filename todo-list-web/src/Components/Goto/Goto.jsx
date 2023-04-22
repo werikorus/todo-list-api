@@ -7,11 +7,9 @@ const Goto = (props) =>{
 
   const { destiny, txt } = props;
   return (
-    <button className={classes.button}>
-      <Link to={destiny}>
-        {txt}
-      </Link>
-    </button>
+    <Link to={destiny} className={classes.button}>
+      {txt}     
+    </Link>
   );
 };
 
