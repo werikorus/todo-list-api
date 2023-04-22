@@ -8,6 +8,7 @@ export const useStyles = createUseStyles({
     marginRight: '0.8rem',
     justifyContent: 'center',
     alignSelf: 'center',
+    marginBottom: '1rem'
   },
   input:{
     display: 'flex',

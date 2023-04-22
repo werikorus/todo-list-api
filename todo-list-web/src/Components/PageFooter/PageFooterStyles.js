@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 export const useStyles = createUseStyles({
   pageFooter:{        
     display: 'flex',    
-    //background: 'yellow',      
+  
     justifyContent: 'center',
     justifySelf: 'flex-end',
     fontSize: '0.8rem',    

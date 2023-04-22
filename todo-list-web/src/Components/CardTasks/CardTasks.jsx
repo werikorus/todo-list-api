@@ -1,11 +1,11 @@
 import React from "react";
 import { useStyles } from "./CardTasksStyles";
 
-export const CardTasks = (item, key) => {
+const CardTasks = (item, key, idItem) => {
   const classes = useStyles();
-  
+
   const handleDelete = () =>{
-    window.alert('Not implemented yet!')
+    window.alert(`Not implemented yet: \n ${item.item} \n ${idItem}`);
   }
 
   return (  
@@ -16,11 +16,11 @@ export const CardTasks = (item, key) => {
         <img 
           className={classes.delImg}
           src="https://i.ibb.co/LDTwxn0/delete-IMG.png" 
-          alt="del" />
+          alt="del"
+        />
       </button>
     </li>
   );
 };
-
 
 export default CardTasks;

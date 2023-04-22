@@ -24,7 +24,13 @@ const Board = (prop) =>{
     <div className={classes.boardArea}>
       <Aside Items={currentLists}/>
       <ul className={classes.areaItems}>
-        {ItemsTasks1.map((item, key) => <CardTasks item={item} key={key}/>)}        
+        {ItemsTasks1.map((item, key) => 
+          <CardTasks 
+            item={item} 
+            key={key} 
+            idItem={item.id}
+          />
+        )}        
       </ul>       
       <CardFooter />           
     </div>

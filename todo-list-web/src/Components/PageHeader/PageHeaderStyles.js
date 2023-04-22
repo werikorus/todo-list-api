@@ -2,15 +2,15 @@ import { createUseStyles } from 'react-jss';
 
 export const useStyles = createUseStyles({
   headerPage: {
-    display: 'grid',
+    display: 'flex',
     justifyContent: 'center',
-    justifyItems: 'center',
-    height: '11rem',
+    justifyItems: 'center',    
     flexDirection: 'column',
-    alignContent: 'center',
-    alignItems: 'baseline',
+    //alignContent: 'center',
+    //alignItems: 'baseline',
     backgroundColor: 'var(--color-header-background)',
     backgroundImage: 'var(--color-header-background-image)'
+    
   },
 
   title: {
