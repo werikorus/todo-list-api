@@ -1,5 +1,18 @@
-import styled from "styled-components";
+import { createUseStyles } from "react-jss";
 
-export const Main = styled.main`
-  background-color: whitesmoke;
-`;
+export const useStyles = createUseStyles({
+  main: {
+    display: 'flex',    
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  subscribeArea:{    
+    display: 'flex',    
+    maring: 'auto',
+    background: 'yellow'
+  },
+  avatarProfile:{
+    width: '10rem',
+    borderRadius: '50%',
+  }
+});

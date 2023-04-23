@@ -1,8 +1,10 @@
-import styled from "styled-components";
+import { createUseStyles } from "react-jss";
 
-export const Main = styled.main`
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--color-header-background);
-  background-image: var(--color-header-background-image);
-`;
+export const useStyles = createUseStyles({
+  main: {
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'var(--color-header-background)',
+    backgroundImage: 'var(--color-header-background-image)',
+  }
+});

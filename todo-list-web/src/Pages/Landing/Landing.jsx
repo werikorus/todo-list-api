@@ -1,12 +1,14 @@
 import React  from "react";
 import Login from "../../Components/Login";
-import { Main } from "./LandingStyles";
+import { useStyles } from "./LandingStyles";
 
 const Landing = () => {
+  const classes = useStyles();
+
   return(
-    <Main>
+    <main className={classes.main}>
       <Login />
-    </Main>    
+    </main>    
   );
 }
 

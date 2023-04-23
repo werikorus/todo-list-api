@@ -11,18 +11,21 @@ const Board = (prop) =>{
   const list = useRef([]);
   const [currentLists, setCurrentLists] = useState([]);
   const idUser = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+  const [loading, setLoading] = useState(false);
   
   useEffect(()=>{(
-    async () =>{
+    async () =>{            
+      setLoading(true);
       const data = await getListsByUserId(idUser);
       list.current = data;
-      setCurrentLists(list.current);
+      setCurrentLists(list.current);        
+      setLoading(false);           
     })();
   },[]);
 
   return(
     <div className={classes.boardArea}>
-      <Aside Items={currentLists}/>
+      <Aside Items={currentLists} loading={loading}/>
       <ul className={classes.areaItems}>
         {ItemsTasks1.map((item, key) => 
           <CardTasks 
