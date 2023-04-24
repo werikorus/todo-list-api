@@ -3,9 +3,9 @@ import { useStyles } from "./InputDefaultStyles";
 
 const InputDefault = (props) =>{
   const classes = useStyles();
-  const {placeholder} = props
+  const {placeholder, width} = props
   return (
-    <input placeholder={placeholder} className={classes.input}/>    
+    <input style={{width: width}} placeholder={placeholder} className={classes.input}/>    
   );
 };
 

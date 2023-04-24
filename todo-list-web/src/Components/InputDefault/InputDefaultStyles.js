@@ -2,14 +2,12 @@ import { createUseStyles } from 'react-jss';
 
 export const useStyles = createUseStyles({
   input:{
-    display: 'flex',
-    width: '100%',
-    maxWidth: '300px',
-    minWidth: '100px',
+    display: 'flex',    
+    maxWidth: '300px',    
     height: '3.5rem',
     color: 'var(--color-basic-text)',
     backgroundColor: 'var(--color-input-background)',
-    
+    margin: '0.3rem',    
     alignItems: 'center',
     borderRadius: '0.6rem',
     border: '1px solid white',
