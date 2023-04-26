@@ -44,7 +44,7 @@ export const setNewUser = async (valuesNewUser) => {
     }).catch(
       console.log('Error ocurred when set new user')
     );
-    console.log('Response: ',service);
+    console.log('Response: ', service);
   }catch(error){
     console.log(error)
   }
