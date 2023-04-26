@@ -14,8 +14,8 @@ const Subscribe = () => {
     setTimeout( async () => {      
       const newUser = {
         ...values,
-        dateCreate: GetAtualDate(),
-        dateUpdate: GetAtualDate(),
+        dateCreate: new Date(),
+        dateUpdate: new Date(),
       };      
       console.log(JSON.stringify(newUser));
       await setNewUser(JSON.stringify(newUser));

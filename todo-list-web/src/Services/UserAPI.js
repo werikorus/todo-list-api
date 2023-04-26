@@ -35,6 +35,10 @@ export const getUsers = async () =>{
 export const setNewUser = async (valuesNewUser) => {
   try{
     const service = await fetch(`${externalApiServerURL_v1}/User`, {
+      headers: {
+        'Content-Type': 'application/json', 
+        'charset': 'utf-8'
+      },
       "method": "POST",
       "body": valuesNewUser,      
     }).catch(
