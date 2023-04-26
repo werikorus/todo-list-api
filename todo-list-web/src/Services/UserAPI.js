@@ -1,4 +1,6 @@
 import { apiserverURL_v1 } from '../Helper/Helper';
+import { externalApiServerURL_v1 } from '../Helper/Helper';
+import { externalApiServerURL_v2 } from '../Helper/Helper';
 
 export const getUserById = async (userId) =>{
   try{
@@ -32,11 +34,13 @@ export const getUsers = async () =>{
 
 export const setNewUser = async (valuesNewUser) => {
   try{
-    const service = await fetch(`${apiserverURL_v1}/User`, {
-      "method": "PUT",
-      "body": valuesNewUser,
-    });
-  
+    const service = await fetch(`${externalApiServerURL_v1}/User`, {
+      "method": "POST",
+      "body": valuesNewUser,      
+    }).catch(
+      console.log('Error ocurred when set new user')
+    );
+    console.log('Response: ',service);
   }catch(error){
     console.log(error)
   }

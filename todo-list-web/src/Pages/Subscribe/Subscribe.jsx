@@ -10,19 +10,15 @@ const Subscribe = () => {
   const classes = useStyles();
   const [saving, isSaving] = useState(false);
 
-  useEffect(()=>{
-     console.log(initialValues)
-  },[]);
-
   const onSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      console.log('Werik', values)
+    setTimeout( async () => {      
       const newUser = {
         ...values,
         dateCreate: GetAtualDate(),
         dateUpdate: GetAtualDate(),
-      };
-      alert(JSON.stringify(newUser, null, 2));
+      };      
+      console.log(JSON.stringify(newUser));
+      await setNewUser(JSON.stringify(newUser));
       setSubmitting(false);
     }, 400);
   };
