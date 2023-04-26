@@ -1,32 +1,104 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useStyles } from "./SubscribeStyles"
-import InputDefault from "../../Components/InputDefault/InputDefault";
 import ButtonAction from "../../Components/ButtonAction/ButtonAction";
-import PageHeader from "../../Components/PageHeader/PageHeader";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { initialValues, validationsSchema } from "../../Helper/Helper";
+import { setNewUser } from "../../Services/UserAPI";
+import { GetAtualDate } from "../../Helper/Helper";
 
 const Subscribe = () => {
   const classes = useStyles();
+  const [saving, isSaving] = useState(false);
+
+  useEffect(()=>{
+     console.log(initialValues)
+  },[]);
+
+  const onSubmit = (values, { setSubmitting }) => {
+    setTimeout(() => {
+      console.log('Werik', values)
+      const newUser = {
+        ...values,
+        dateCreate: GetAtualDate(),
+        dateUpdate: GetAtualDate(),
+      };
+      alert(JSON.stringify(newUser, null, 2));
+      setSubmitting(false);
+    }, 400);
+  };
+  
   return (
     <body className={classes.body}>      
       <main className={classes.main}>
         <section className={classes.section}>
           <img 
             className={classes.avatarProfile} 
-            src="https://avatars.githubusercontent.com/u/50995153?v=4" 
+            src="https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" 
             alt="profile" 
           /> 
+          <span>New User</span>
           <div className={classes.subscribeArea}>
-            <form onSubmit="return false;" className={classes.form}>
-              <InputDefault  placeholder="Name" width= '20rem'/>
-              <InputDefault  placeholder="email" width= '30rem'/>
-              <InputDefault  placeholder="Password"/>          
-              <InputDefault  placeholder="Phone Number"/>
-              <InputDefault  placeholder="Role"/>  
-            </form> 
-            <div className={classes.buttonArea}>
-              <ButtonAction  txt="Cancel"/>    
-              <ButtonAction txt="Subscribe"/>    
-            </div>          
+            <Formik
+              initialValues={initialValues}              
+              validationSchema={validationsSchema}
+              onSubmit={onSubmit}
+              validateOnMount            
+            >
+              {({values, isValid, isSubmitting, resetForm}) => (
+                <Form className={classes.form}>
+                <Field 
+                  className={classes.input}
+                  type="text"
+                  name="name"
+                  placeholder='Name'                  
+                />
+                <ErrorMessage 
+                  name="name" 
+                  style={{color: "red", fontSize: "15px" }}
+                  component="span"
+                />  
+
+                <Field 
+                  className={classes.input} 
+                  name="email"
+                  placeholder="Email" 
+                  type="email"
+                />
+                <ErrorMessage 
+                  name="email"                   
+                  style={{color: "red", fontSize: "15px" }}
+                  component="span"
+                />  
+
+                <Field 
+                  className={classes.input} 
+                  name="password"
+                  placeholder="Password" 
+                  type="password"
+                />
+                <ErrorMessage 
+                  name="password" 
+                  style={{color: "red", fontSize: "15px" }}
+                  component="span"
+                />  
+
+                <Field className={classes.input} name="role" placeholder="Role"  as="select">
+                  <option select>Role</option>
+                  <option value={'Amin'}>Admin</option>
+                  <option>User</option>   
+                </Field>
+                <ErrorMessage 
+                  name="role" 
+                  style={{color: "red", fontSize: "15px" }}
+                  component="span"
+                />  
+                <div className={classes.buttonArea}>
+                  <ButtonAction txt="Clear" clickEvent={resetForm}/>    
+                  <ButtonAction txt="Subscribe"/>    
+                </div>  
+              </Form>
+              )}
+            </Formik>        
           </div>      
         </section>
       </main>

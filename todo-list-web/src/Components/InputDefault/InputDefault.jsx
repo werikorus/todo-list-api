@@ -3,9 +3,14 @@ import { useStyles } from "./InputDefaultStyles";
 
 const InputDefault = (props) =>{
   const classes = useStyles();
-  const {placeholder, width} = props
+  const {placeholder, width , type = 'text'} = props
   return (
-    <input style={{width: width}} placeholder={placeholder} className={classes.input}/>    
+    <input 
+      type={type} 
+      style={{width: width}} 
+      placeholder={placeholder} 
+      className={classes.input}
+    />    
   );
 };
 

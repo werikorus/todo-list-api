@@ -6,7 +6,7 @@ const ButtonAction = (props) =>{
   const { clickEvent, txt } = props;
 
   return (
-    <button className={classes.button} onClick={clickEvent}>
+    <button type="submit" className={classes.button} onClick={clickEvent}>
       {txt}
     </button>
   );

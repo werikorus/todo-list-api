@@ -29,3 +29,15 @@ export const getUsers = async () =>{
     console.log(error)
   }
 }
+
+export const setNewUser = async (valuesNewUser) => {
+  try{
+    const service = await fetch(`${apiserverURL_v1}/User`, {
+      "method": "PUT",
+      "body": valuesNewUser,
+    });
+  
+  }catch(error){
+    console.log(error)
+  }
+}

@@ -44,5 +44,35 @@ export const useStyles = createUseStyles({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     margin: '0.8rem'
-  }
+  },
+  selectRole: {    
+    display: 'flex',        
+    height: '3.5rem',
+    color: 'var(--color-basic-text)',
+    backgroundColor: 'var(--color-input-background)',
+    margin: '0.3rem',    
+    alignItems: 'center',
+    borderRadius: '0.6rem',
+    border: '1px solid white',
+    outline: '0',
+    paddingLeft: '30px',
+    fontSize: '1.5rem',
+    '& > option':{
+      color: 'var(--color-basic-text)',
+    }    
+  },
+  input:{
+    display: 'flex',    
+    maxWidth: '300px',    
+    height: '3.5rem',
+    color: 'var(--color-basic-text)',
+    backgroundColor: 'var(--color-input-background)',
+    margin: '0.3rem',    
+    alignItems: 'center',
+    borderRadius: '0.6rem',
+    border: '1px solid white',
+    outline: '0',
+    paddingLeft: '30px',
+    fontSize: '1.5rem',
+  },
 });
