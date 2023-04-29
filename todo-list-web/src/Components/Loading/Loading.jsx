@@ -1,10 +1,10 @@
 import React from "react";
 import ReactLoading from 'react-loading';
 
-const Loading = () =>{
+const Loading = (prop) =>{
   return (
     <>    
-      <h1>Loading...</h1>
+      <h1>{prop.text}</h1>
       <ReactLoading 
         type={"cylon"} 
         color="#8BC6EC" 

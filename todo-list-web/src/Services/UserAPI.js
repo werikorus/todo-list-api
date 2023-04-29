@@ -34,18 +34,25 @@ export const getUsers = async () =>{
 
 export const setNewUser = async (valuesNewUser) => {
   try{
-    const service = await fetch(`${externalApiServerURL_v1}/User`, {
+    return await fetch(`${externalApiServerURL_v1}/Usesr`, {
       headers: {
         'Content-Type': 'application/json', 
         'charset': 'utf-8'
       },
       "method": "POST",
       "body": valuesNewUser,      
-    }).catch(
-      console.log('Error ocurred when set new user')
-    );
-    console.log('Response: ', service);
+      }).then((response)=>{
+        if(Response.ok){
+          console.log('Registered: ', response);
+          return response;
+        }else{
+          console.log('Not Registered: ', response);
+          return response;
+        }
+      }).catch((error)=>{
+        console.log('Error Ocurred: ', error);
+      });
   }catch(error){
-    console.log(error)
+    console.log(error);
   }
 }

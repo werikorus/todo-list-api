@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-
 export const apiserverURL_v1 = 'https://localhost:7237/api/v-1';
 export const apiserverURL_v2 = 'https://localhost:7237/api/v-2';
 
@@ -28,7 +27,7 @@ export const validationsSchema = yup.object().shape({
   role: yup
     .string('Enter your role for Authorizations')
     .max(8, 'Your password should have only 8 characters')
-    .required('Password is required!'),
+    .required('Role is required!'),
 });
 
 export const  GetAtualDate = () =>{

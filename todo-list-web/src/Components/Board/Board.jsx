@@ -13,7 +13,7 @@ const Board = (prop) =>{
   const idUser = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
   const [loading, setLoading] = useState(false);
   
-  useEffect(()=>{(
+  useEffect(() => {(
     async () =>{            
       setLoading(true);
       const data = await getListsByUserId(idUser);
@@ -25,7 +25,7 @@ const Board = (prop) =>{
 
   return(
     <div className={classes.boardArea}>
-      <Aside Items={currentLists} loading={loading}/>
+      <Aside Items={currentLists} loading={loading} />
       <ul className={classes.areaItems}>
         {ItemsTasks1.map((item, key) => 
           <CardTasks 

@@ -41,8 +41,9 @@ const Aside = (props) => {
           <hr />
           {(props.Items.length === 1)
             ? <CardLists
-              title={props.Items.descriptionList}
-              key={props.Items.id} />
+                title={props.Items.descriptionList}
+                key={props.Items.id} 
+              />
             : props.Items.map((item, _key) => (
               <CardLists
                 title={item.descriptionList}

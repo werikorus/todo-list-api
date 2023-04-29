@@ -12,30 +12,32 @@ export const useStyles = createUseStyles({
   },
   section:{
     display: 'flex',
-    flexDirection: 'column',
-    height: '100%',  
+    minWidth: '22%',
+    flexDirection: 'column',    
+    height: '100%',
     boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',  
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: '0.8rem',
-    background: 'white',       
+    background: 'white',
   },
   avatarProfile:{
     width: '10rem',
     borderRadius: '50%',
     justifySelf: 'center',
     marginTop: '1rem',
-    marginBottom: '1rem'
+    marginBottom: '1rem',    
   },
   subscribeArea:{    
-    display: 'grid',   
+    display: 'grid', 
+    flex: '100%',
     flexDirection: 'column',    
-    justifyContent: 'center'
+    justifyContent: 'center',    
   },
   form: {
     display: 'grid',
     justifyContent: 'space-evenly',
-    margin: '1rem',
+    margin: '1rem',    
   },
   buttonArea:{
     display: 'flex',
@@ -64,15 +66,19 @@ export const useStyles = createUseStyles({
   input:{
     display: 'flex',    
     maxWidth: '300px',    
-    height: '3.5rem',
+    height: '3rem',
     color: 'var(--color-basic-text)',
     backgroundColor: 'var(--color-input-background)',
     margin: '0.3rem',    
     alignItems: 'center',
-    borderRadius: '0.6rem',
-    border: '1px solid white',
+    borderRadius: '0.6rem',    
     outline: '0',
     paddingLeft: '30px',
     fontSize: '1.5rem',
+    border: 'solid 1px var(--color-input-border)',
   },
+  loadingComponent:{
+    position: "absolute",
+    opacity: '0%'
+  }
 });

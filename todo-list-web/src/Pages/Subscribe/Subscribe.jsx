@@ -1,39 +1,103 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import { useStyles } from "./SubscribeStyles"
 import ButtonAction from "../../Components/ButtonAction/ButtonAction";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { initialValues, validationsSchema } from "../../Helper/Helper";
 import { setNewUser } from "../../Services/UserAPI";
-import { GetAtualDate } from "../../Helper/Helper";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import ReactLoading from 'react-loading';
 
 const Subscribe = () => {
   const classes = useStyles();
-  const [saving, isSaving] = useState(false);
-
+  const [saving, setSaving] = useState(false);
+  
   const onSubmit = (values, { setSubmitting }) => {
-    setTimeout( async () => {      
-      const newUser = {
+    setSubmitting(true);    
+    setTimeout(async () => {    
+      setSaving(true);
+      setVisibilityLoading();
+     
+      let newUser = {
         ...values,
         dateCreate: new Date(),
         dateUpdate: new Date(),
-      };      
-      console.log(JSON.stringify(newUser));
-      await setNewUser(JSON.stringify(newUser));
-      setSubmitting(false);
-    }, 400);
+      };     
+      
+      if(newUser.role==='Role'){
+        toast.info('You need to choose a role!');        
+        return;
+      };
+      
+      let response = await setNewUser(JSON.stringify(newUser));      
+
+      if(!response.ok){
+        notifyFail();
+        return;
+      };
+
+      setSaving(false);
+      setVisibilityLoading();
+      notifySuccess();  
+    
+    }, 1000);
+    setSubmitting(false);
   };
-  
+
+  const notifySuccess = () => toast.success('User successfully registered!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+  });
+
+  const notifyFail = () => toast.error('Failed when registering new user!', {    
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
+  const setVisibilityLoading = async () => {
+    const subscribeArea = document.getElementById('subcribeArea');
+    const loadingComponent = document.getElementById('loadingComponent');
+    console.log('Elements: ', {subscribeArea, loadingComponent})
+    
+    if(saving){      
+      subscribeArea.style.visibility = '20%';
+      loadingComponent.style.visibility = '100%';
+    }else{
+      subscribeArea.style.visibility = '100%';
+      loadingComponent.style.visibility = '0%';
+    };
+  };
+
   return (
     <body className={classes.body}>      
-      <main className={classes.main}>
-        <section className={classes.section}>
+      <main className={classes.main}>        
+        <section className={classes.section}> 
+          <ReactLoading 
+            type="spinningBubbles" 
+            color="#8BC6EC"  
+            height={100} 
+            width={100}
+            className={classes.loadingComponent}
+            id="loadingComponent"    
+          />
+          <div className={classes.subscribeArea} id="subcribeArea">
           <img 
             className={classes.avatarProfile} 
             src="https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" 
-            alt="profile" 
-          /> 
-          <span>New User</span>
-          <div className={classes.subscribeArea}>
+            alt="profile"             
+          />
             <Formik
               initialValues={initialValues}              
               validationSchema={validationsSchema}
@@ -78,10 +142,10 @@ const Subscribe = () => {
                   component="span"
                 />  
 
-                <Field className={classes.input} name="role" placeholder="Role"  as="select">
+                <Field className={classes.input} name="role" placeholder="Role" as="select">
                   <option select>Role</option>
-                  <option value={'Amin'}>Admin</option>
-                  <option>User</option>   
+                  <option value='Admin'>Admin</option>
+                  <option value='User'>User</option>                  
                 </Field>
                 <ErrorMessage 
                   name="role" 
@@ -90,11 +154,14 @@ const Subscribe = () => {
                 />  
                 <div className={classes.buttonArea}>
                   <ButtonAction txt="Clear" clickEvent={resetForm}/>    
-                  <ButtonAction txt="Subscribe"/>    
+                  <ButtonAction txt="Subscribe" disabled={isSubmitting}/>                      
                 </div>  
-              </Form>
+                </Form>
               )}
-            </Formik>        
+            </Formik>
+            <div>              
+              <ToastContainer />
+            </div>
           </div>      
         </section>
       </main>
