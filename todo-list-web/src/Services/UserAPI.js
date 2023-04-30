@@ -17,16 +17,20 @@ export const getUserById = async (userId) =>{
   }
 }
 
-export const getUsers = async () =>{
+export const login = async (user) =>{
   try{
-    const data = await fetch(`${apiserverURL_v1}/User`, {
+    const data = await fetch(`${externalApiServerURL_v1}/login`, {
+      headers: {
+        'Content-Type': 'application/json', 
+        'charset': 'utf-8',
+      },
       "method": "GET",
+      "body": user,
+    }).then((response) => {
+      return response;
+    }).catch((error)=>{
+      console.log('Error Ocurred: ', error);
     });
-
-    if(data){
-      const users = await data.json();
-      return users;
-    }
   }catch(error){
     console.log(error)
   }
@@ -34,10 +38,10 @@ export const getUsers = async () =>{
 
 export const setNewUser = async (valuesNewUser) => {
   try{
-    return await fetch(`${externalApiServerURL_v1}/Usesr`, {
+    return await fetch(`${externalApiServerURL_v1}/User`, {
       headers: {
         'Content-Type': 'application/json', 
-        'charset': 'utf-8'
+        'charset': 'utf-8',
       },
       "method": "POST",
       "body": valuesNewUser,      

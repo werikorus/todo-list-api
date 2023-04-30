@@ -13,11 +13,12 @@ const Subscribe = () => {
   const [saving, setSaving] = useState(false);
   
   const onSubmit = (values, { setSubmitting }) => {
-    setSubmitting(true);    
+    setSubmitting(true);
+    
     setTimeout(async () => {    
+      setVisibilityLoading();    
       setSaving(true);
-      setVisibilityLoading();
-     
+
       let newUser = {
         ...values,
         dateCreate: new Date(),
@@ -37,10 +38,10 @@ const Subscribe = () => {
       };
 
       setSaving(false);
+      notifySuccess();      
       setVisibilityLoading();
-      notifySuccess();  
-    
     }, 1000);
+    
     setSubmitting(false);
   };
 
@@ -84,14 +85,14 @@ const Subscribe = () => {
     <body className={classes.body}>      
       <main className={classes.main}>        
         <section className={classes.section}> 
-          <ReactLoading 
+          {/*<ReactLoading 
             type="spinningBubbles" 
             color="#8BC6EC"  
             height={100} 
             width={100}
             className={classes.loadingComponent}
             id="loadingComponent"    
-          />
+          />*/}
           <div className={classes.subscribeArea} id="subcribeArea">
           <img 
             className={classes.avatarProfile} 
@@ -104,7 +105,7 @@ const Subscribe = () => {
               onSubmit={onSubmit}
               validateOnMount            
             >
-              {({values, isValid, isSubmitting, resetForm}) => (
+              {({ values, isValid, isSubmitting, resetForm }) => (
                 <Form className={classes.form}>
                 <Field 
                   className={classes.input}
@@ -143,7 +144,7 @@ const Subscribe = () => {
                 />  
 
                 <Field className={classes.input} name="role" placeholder="Role" as="select">
-                  <option select>Role</option>
+                  <option defaultChecked>Role</option>
                   <option value='Admin'>Admin</option>
                   <option value='User'>User</option>                  
                 </Field>

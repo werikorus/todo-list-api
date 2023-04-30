@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Goto from '../Goto';
 import { FaLock } from 'react-icons/fa';
 import { FaUser } from "react-icons/fa";
@@ -7,8 +7,17 @@ import { clientId, onSuccess, onFailure } from "./logic/login";
 import { gapi } from "gapi-script";
 import { linkLoginImage } from "../../Helper/Helper";
 import { useStyles } from "./LoginStyles";
+import ButtonAction from '../ButtonAction';
+import { login } from "../../Services/UserAPI";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () =>{
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [nameUser, setNameUser] = useState('');
+  
   useEffect(() => {
     function start(){
       gapi.client.init({
@@ -18,6 +27,36 @@ const Login = () =>{
     }
 
     gapi.load('client:auth2', start);
+  },[]);
+
+  const handleLogin = async () => {
+    setLoading(true);
+
+    const user = {
+      email: email,
+      password: password
+    }
+
+    console.log('User: ', user);
+
+    const { response } = await login(user);
+    if(!response.ok){
+      notifyFail();
+      return;
+    };
+
+    setNameUser(response.data.name);
+  };
+
+  const notifyFail = () => toast.error('E-mail or Password uncorrect!', {    
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
   });
 
   const classes = useStyles();
@@ -33,17 +72,32 @@ const Login = () =>{
 
           <div className={classes.inputArea}>
             <FaUser color={"var(--color-header-background)"}/>
-            <input className={classes.inputLogin} id="loginInput" type="text" placeholder="email"/>
+            <input 
+              className={classes.inputLogin} 
+              id="loginInput" 
+              type="text" 
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           <div className={classes.inputArea}>            
             <FaLock color={"var(--color-header-background)"}/> 
-            <input className={classes.inputLogin} id="passwordInput" type="password" placeholder="Password"/>
+            <input 
+              className={classes.inputLogin} 
+              id="passwordInput" 
+              type="password" 
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           
           <div className={classes.buttonsArea}>
-            <Goto txt="Login" destiny="/Home"/>
-            <Goto txt="Sign Up" destiny="/Subscribe"/>      
+            <ButtonAction txt="Login" clickEvent={handleLogin}/>
+            <ButtonAction txt="Sign Up" />      
+          </div>
+          <div>              
+            <ToastContainer />
           </div>       
                 
           {/*<GoogleLogin
