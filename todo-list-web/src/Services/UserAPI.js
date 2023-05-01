@@ -19,18 +19,25 @@ export const getUserById = async (userId) =>{
 
 export const login = async (user) =>{
   try{
-    const data = await fetch(`${externalApiServerURL_v1}/login`, {
+    const data = await fetch(`${externalApiServerURL_v1}/Authenticator/Login`, {
       headers: {
         'Content-Type': 'application/json', 
         'charset': 'utf-8',
       },
-      "method": "GET",
+      "method": "POST",
       "body": user,
-    }).then((response) => {
-      return response;
+    }).then((response) => {   
+      if(response.ok){
+        const data = response.json(); 
+        return data;
+      };
+      
+      return;      
     }).catch((error)=>{
       console.log('Error Ocurred: ', error);
     });
+
+    return data;
   }catch(error){
     console.log(error)
   }
@@ -46,13 +53,13 @@ export const setNewUser = async (valuesNewUser) => {
       "method": "POST",
       "body": valuesNewUser,      
       }).then((response)=>{
-        if(Response.ok){
-          console.log('Registered: ', response);
-          return response;
+        if(Response.ok){          
+          const data = response.json();
+          return data;
         }else{
-          console.log('Not Registered: ', response);
           return response;
         }
+        
       }).catch((error)=>{
         console.log('Error Ocurred: ', error);
       });

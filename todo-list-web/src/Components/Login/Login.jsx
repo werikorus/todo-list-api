@@ -11,12 +11,16 @@ import ButtonAction from '../ButtonAction';
 import { login } from "../../Services/UserAPI";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import useAuth from '../../Hooks/useAuth';
 
 const Login = () =>{
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [nameUser, setNameUser] = useState('');
+  const [error, setError ] = useState('');
   
   useEffect(() => {
     function start(){
@@ -30,6 +34,11 @@ const Login = () =>{
   },[]);
 
   const handleLogin = async () => {
+    if(!email || !password){      
+      notifyFail("All fields is required!");
+      return;
+    }
+
     setLoading(true);
 
     const user = {
@@ -37,18 +46,18 @@ const Login = () =>{
       password: password
     }
 
-    console.log('User: ', user);
+    const res = await signIn(user.email, user.password);    
 
-    const { response } = await login(user);
-    if(!response.ok){
-      notifyFail();
+    if(res!==undefined){
+      notifyFail(res);
       return;
     };
 
-    setNameUser(response.data.name);
+    setLoading(false);
+    navigate("/Home");
   };
 
-  const notifyFail = () => toast.error('E-mail or Password uncorrect!', {    
+  const notifyFail = (message) => toast.error(`Login fail: ${message}`, {    
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -58,8 +67,12 @@ const Login = () =>{
     progress: undefined,
     theme: "light",
   });
-
+  
   const classes = useStyles();
+
+  const handleSubscribePage = () => {
+    navigate("/Subscribe");
+  };
 
   return(
     <main className={classes.main}>
@@ -94,9 +107,9 @@ const Login = () =>{
           
           <div className={classes.buttonsArea}>
             <ButtonAction txt="Login" clickEvent={handleLogin}/>
-            <ButtonAction txt="Sign Up" />      
+            <ButtonAction txt="Sign Up" clickEvent={handleSubscribePage} />      
           </div>
-          <div>              
+          <div>             
             <ToastContainer />
           </div>       
                 

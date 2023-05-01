@@ -7,10 +7,14 @@ import { setNewUser } from "../../Services/UserAPI";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import ReactLoading from 'react-loading';
+import { Navigate, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Subscribe = () => {
   const classes = useStyles();
   const [saving, setSaving] = useState(false);
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
   
   const onSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
@@ -30,19 +34,22 @@ const Subscribe = () => {
         return;
       };
       
-      let response = await setNewUser(JSON.stringify(newUser));      
+      let response = await signUp(newUser);
 
       if(!response.ok){
         notifyFail();
         return;
       };
 
-      setSaving(false);
-      notifySuccess();      
-      setVisibilityLoading();
+      setSaving(false);           
+      notifySuccess();        
+      setVisibilityLoading();            
     }, 1000);
     
     setSubmitting(false);
+    setTimeout(() => {
+      navigate('/');  
+    }, 6000);    
   };
 
   const notifySuccess = () => toast.success('User successfully registered!', {

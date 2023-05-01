@@ -3,7 +3,7 @@ import { useStyles } from "./Avatar.styles";
 
 const Avatar = (prop) => {
   const classes = useStyles();
-  const { name } = prop
+  const { name, onClick } = prop
 
   return(
     <div className={classes.divPhoto}>
@@ -14,7 +14,7 @@ const Avatar = (prop) => {
       /> 
       <div className={classes.nameAvatar}>
         <span>{name} | </span>
-        <a href="/">Sign out</a>  
+        <a onClick={onClick}>Sign out</a>  
       </div>         
     </div>    
   );
