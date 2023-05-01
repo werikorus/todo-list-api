@@ -3,7 +3,6 @@ import { useStyles } from "./SubscribeStyles"
 import ButtonAction from "../../Components/ButtonAction/ButtonAction";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { initialValues, validationsSchema } from "../../Helper/Helper";
-import { setNewUser } from "../../Services/UserAPI";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import ReactLoading from 'react-loading';
