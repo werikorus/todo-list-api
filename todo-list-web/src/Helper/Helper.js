@@ -43,3 +43,6 @@ export const  GetAtualDate = () =>{
   const today = `${year}-${month}-${day}T${hour}:${min}:${sec}.${mill}Z`;
   return today;
  };
+
+//for loading modal component
+// https://www.kindacode.com/article/react-show-a-loading-dialog/
