@@ -14,11 +14,10 @@ const Aside = (props) => {
   const [currentUserId, setCurrentUserId] = useState('');
 
   const handleGetListByUserId = (userId) => {
-    console.log('User id:', userId);
+    
   }
   
-  const handleCurrentUserID = (userId, currentListDescription) =>{
-    console.log('Current List: ', currentListDescription)
+  const handleCurrentUserID = (userId, currentListDescription) =>{    
     //setCurrentUserId(userId);
   }
 

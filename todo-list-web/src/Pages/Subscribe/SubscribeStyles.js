@@ -77,6 +77,28 @@ export const useStyles = createUseStyles({
     fontSize: '1.5rem',
     border: 'solid 1px var(--color-input-border)',
   },
+  select:{
+    display: 'flex',    
+    maxWidth: '300px',    
+    height: '3rem',
+    color: 'var(--color-basic-text)',
+    backgroundColor: 'var(--color-input-background)',
+    margin: '0.3rem',    
+    alignItems: 'center',
+    borderRadius: '0.6rem',    
+    outline: '0',
+    paddingLeft: '30px',
+    fontSize: '1.5rem',
+    border: 'solid 1px var(--color-input-border)',
+    justifyContent: 'center',
+    background: 'url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd',
+    appearance: 'none',
+    backgroundPositionX: '253px',
+  },
+  options:{
+    display: 'flex',
+    textAlign: 'center',
+  },
   loadingComponent:{
     position: "absolute",
     opacity: '0%'

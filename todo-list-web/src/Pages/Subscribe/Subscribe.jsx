@@ -76,7 +76,6 @@ const Subscribe = () => {
   const setVisibilityLoading = async () => {
     const subscribeArea = document.getElementById('subcribeArea');
     const loadingComponent = document.getElementById('loadingComponent');
-    console.log('Elements: ', {subscribeArea, loadingComponent})
     
     if(saving){      
       subscribeArea.style.visibility = '20%';
@@ -149,10 +148,10 @@ const Subscribe = () => {
                   component="span"
                 />  
 
-                <Field className={classes.input} name="role" placeholder="Role" as="select">
-                  <option defaultChecked>Role</option>
-                  <option value='Admin'>Admin</option>
-                  <option value='User'>User</option>                  
+                <Field className={classes.select} name="role" placeholder="Role" as="select">
+                  <option defaultChecked className={classes.options}>Role</option>
+                  <option value='Admin' className={classes.options}>Admin</option>
+                  <option value='User' className={classes.options}>User</option>                  
                 </Field>
                 <ErrorMessage 
                   name="role" 
