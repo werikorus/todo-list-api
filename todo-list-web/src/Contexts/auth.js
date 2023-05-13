@@ -8,12 +8,12 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   useEffect(()=>{
-    const userToken = localStorage.getItem("user_token");
-  
+    const userToken = JSON.parse(localStorage.getItem("user_token"));
     if(userToken){
-      setUser(JSON.parse(userToken));      
+      setUser(DecodeToken(userToken.access_token));
+      login('Atual token: ', user);
     }
-  },[]);
+  },[user]);
 
   const signIn =  async (email, password) => {
     const user = {
@@ -27,12 +27,10 @@ export const AuthProvider = ({ children }) => {
     }
 
     if(response){
-      localStorage.setItem("user_token", JSON.stringify({email, access_token: response.access_token}));
+      localStorage.setItem("user_token", JSON.stringify({access_token: response.access_token}));
       
       const decoded = DecodeToken(response.access_token);
-      console.log('user decoded: ', decoded);
-      
-      setUser(decoded);       
+      setUser(decoded);     
       return;
     };
   }

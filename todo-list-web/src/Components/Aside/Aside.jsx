@@ -1,26 +1,40 @@
-import React, { useState, } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import { useStyles, styleModal } from "./AsideStyles"; 
 import CardLists from "../CardLists";
 import ButtonAction from "../ButtonAction";
 import { getListsByUserId } from "./../../Services/ListsAPI";
 import Loading from "../Loading/Loading";
 import InputDefault from "../InputDefault/InputDefault";
-import { setNewList } from "../../Services/ListsAPI";
 import { saveNewList } from "./operation/setNewList";
-
+import useAuth from "../../Hooks/useAuth";
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 const Aside = (props) => {  
-  const { loading } = props;
   const [ open, setOpen ] = useState(false);
   const [descriptionList, setDescriptionList] = useState('');
+
+  const [ loading, setLoading ] = useState(false);
+  const list = useRef([]);
+  const [currentLists, setCurrentLists] = useState([]);
   
   const classes = useStyles();
-  const [currentUserId, setCurrentUserId] = useState('');
 
+  const { user } = useAuth();
+
+  useEffect(() => {(
+    async () => {            
+      setLoading(true);
+      const data = await getListsByUserId(user.given_name);
+      list.current = data;
+      setCurrentLists(list.current);        
+      setLoading(false);           
+    })();
+  },[user.given_name]);
+
+ 
   const handleComponent = (loadingData) =>{
     if(loadingData){
       return <Loading />
@@ -28,22 +42,21 @@ const Aside = (props) => {
       return (
       <>
         <span>
-          {props.Items.length > 0
+          {currentLists.length > 0
             ? "My Lists"
             : "You haven't any list yet. Create your first one!"}
         </span>
         <ul className={classes.ul}>
           <hr />
-          {(props.Items.length === 1)
+          {(currentLists.length === 1)
             ? <CardLists
-                title={props.Items.descriptionList}
-                key={props.Items.id} 
+                title={currentLists.descriptionList}
+                key={currentLists.id} 
               />
-            : props.Items.map((item, _key) => (
+            : currentLists.map((item, _key) => (
               <CardLists
                 title={item.descriptionList}
-                key={item.id}
-                //getTasks={handleCurrentUserID(item.idUser, item.descriptionList)}
+                key={item.id}                
               />
             )
           )}
@@ -53,10 +66,8 @@ const Aside = (props) => {
     )};
   }
 
-  const idUser = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
-
   const handleSaveNewList =  () => {
-    saveNewList(descriptionList, idUser);
+    saveNewList(descriptionList, user.given_name);
 
     props.Items.push(descriptionList);
     setOpen(false);
@@ -67,7 +78,7 @@ const Aside = (props) => {
       {handleComponent(loading)}
       <ButtonAction 
         txt="Add new List!"   
-        clickEvent={() => setOpen(true)}
+        clickEvent={() => setOpen(true)}        
       />
     
       <div className={classes.ModalNewList}>

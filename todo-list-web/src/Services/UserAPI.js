@@ -19,7 +19,7 @@ export const getUserById = async (userId) =>{
 
 export const login = async (user) =>{
   try{
-    const data = await fetch(`${externalApiServerURL_v1}/Authenticator/Login`, {
+    const data = await fetch(`${externalApiServerURL_v2}/Authenticator/Login`, {
       headers: {
         'Content-Type': 'application/json', 
         'charset': 'utf-8',

@@ -4,33 +4,34 @@ import { ItemsTasks1, ItemsTasks2 } from "../../Mock/ItemsTasksMock";
 import CardTasks from "../CardTasks/CardTasks";
 import CardFooter from "../CardFooter/CardFooter";
 import Aside from "../Aside/Aside";
-import { getListsByUserId } from "../../Services/ListsAPI";
+import { getTasks } from "../../Services/TasksAPI";
+import useAuth from "../../Hooks/useAuth";
 
 const Board = (prop) =>{
   const classes = useStyles();  
-  const list = useRef([]);
-  const [currentLists, setCurrentLists] = useState([]);
-  const idUser = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
-  const [loading, setLoading] = useState(false);
+  const tasks = useRef([]);
+  const [currentTasks, setCurrentTasks] = useState([]);
+
+  const [ loading, setLoading ] = useState(false);
+  
+  const { user } = useAuth();
   
   useEffect(() => {(
     async () => {            
       setLoading(true);
-      const data = await getListsByUserId(idUser);
-      list.current = data;
-      setCurrentLists(list.current);        
+      console.log('USER atual: ', user);
+      const data = await getTasks(user.given_name);
+      tasks.current = data;
+      setCurrentTasks(tasks.current);        
       setLoading(false);           
     })();
   },[]);
   
   return(
     <div className={classes.boardArea}>
-      <Aside 
-        Items={currentLists}         
-        setLoading={setLoading}            
-      />
+      <Aside />
       <ul className={classes.areaItems}> 
-        {ItemsTasks1.map((item, key) => 
+        {currentTasks?.map((item, key) => 
           <CardTasks 
             item={item} 
             key={key} 
