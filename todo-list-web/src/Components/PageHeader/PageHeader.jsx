@@ -18,7 +18,6 @@ const PageHeader = (props) => {
       <Avatar name="Werik" onClick={signOutEvent}/>
       <h1 className={classes.title}>{props.title}</h1>       
       <InputElement placeholder="type a text here.."/>
-      {/*<a href="/" onClick={signOut}>Sign out</a>*/}
     </header>    
   );
 };

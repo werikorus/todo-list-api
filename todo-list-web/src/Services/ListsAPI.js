@@ -32,23 +32,23 @@ export const getLists = async (userId) =>{
 
 export const setNewList = async (newList) => {  
   try{
-    const data = await fetch(`${externalApiServerURL_v1}/Lisst`, {
+    const data = await fetch(`${externalApiServerURL_v1}/List`, {
       headers: {
         'content-Type': 'application/json',
         'charset': 'uft-8',
       },
       "method": "POST",
       "body": newList
-    }).then((response)=>{
-      if(!response.ok){
-        const data = response.json();
-        return data;
-      }
-      return;
-    }).catch((error)=>{
-      console.log('Error Ocurred: ', JSON.parse(error));
-      return error;
-    });
+      }).then((response)=>{
+        if(!response.ok){
+          const data = response.json();
+          return data;
+        }
+        return;
+      }).catch((error)=>{
+        console.log('Error Ocurred when save new List: ', JSON.parse(error));
+        return error;
+      });
 
     return data;
   }catch(error){

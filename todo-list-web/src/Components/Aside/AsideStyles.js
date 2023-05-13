@@ -26,5 +26,28 @@ export const useStyles = createUseStyles({
 
   ul:{
     paddingLeft: '0rem',     
-  }
+  },
+
+  header:{    
+    textAlign: 'center',    
+    marginBottom: '10px',
+  },
+  footer:{
+    display: 'flex',
+    flexDirection: 'grid',    
+    justifyContent: 'space-evenly',
+    margin: '10px',    
+  },
 });
+
+export const styleModal = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',  
+  maxHeight: '150px',
+  transform: 'translate(-50%, -50%)',  
+  bgcolor: 'background.paper',
+  borderRadius: '15px',
+  boxShadow: 24,
+  p: 3,  
+}

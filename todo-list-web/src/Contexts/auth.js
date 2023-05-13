@@ -1,23 +1,19 @@
 import { createContext, useEffect, useState } from "react"; 
 import { login, setNewUser } from "../Services/UserAPI";
 import { gapi } from "gapi-script";
+import { DecodeToken } from "../Helper/TokenDecode";
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
+
+  useEffect(()=>{
+    const userToken = localStorage.getItem("user_token");
   
-  //useEffect(()=>{
-  //  const userToken = localStorage.getItem("user_token");
-  //  const userStorage = localStorage.getItem("user_db");
-  
-  //  if(userToken && userStorage){
-  //    const hasUser = JSON.parse(userStorage)?.filter(
-  //      (user) => user.email === JSON.parse(userToken).email
-  //    );
-  
-  //    if(hasUser) setUser(hasUser[0]);
-  //  }
-  //},[]);
+    if(userToken){
+      setUser(JSON.parse(userToken));      
+    }
+  },[]);
 
   const signIn =  async (email, password) => {
     const user = {
@@ -32,14 +28,18 @@ export const AuthProvider = ({ children }) => {
 
     if(response){
       localStorage.setItem("user_token", JSON.stringify({email, access_token: response.access_token}));
-      setUser({ email, password });
+      
+      const decoded = DecodeToken(response.access_token);
+      console.log('user decoded: ', decoded);
+      
+      setUser(decoded);       
       return;
     };
   }
 
-  const signUp = async (user) => {
+  const signUp = async (userModel) => {
     const newUser = {
-      ...user,
+      ...userModel,
       dateCreate: new Date(),
       dateUpdate: new Date(),
     };

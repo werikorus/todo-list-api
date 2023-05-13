@@ -1,13 +1,17 @@
-import React, { useState } from "react";
-import IputDefault from './../InputDefault';
+import React, { useState, useEffect } from "react";
+import InputDefault from './../InputDefault';
 import ButtonAction from "../ButtonAction/ButtonAction";
-import { useStyles } from "./ModalNewListStyles";
+import { useStyles, styleModal } from "./ModalNewListStyles";
 import { setNewList } from "../../Services/ListsAPI";
 
-const ModalNewList = () => {
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+const ModalNewList = (open, onClose) => {
   const [descriptionList, setDescriptionList] = useState('');
-  const [open, setOpen] = useState(false);
-  
+  //const [open, setOpen] = useState(props.open);
+
   const classes = useStyles();
 
   const idUser = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
@@ -20,26 +24,40 @@ const ModalNewList = () => {
   }
 
   const handleSave = async () => {
-    const response = await setNewList(JSON.stringify(newList));    
-    console.log('Error when creating new List: ', response);    
-  };
+    if(descriptionList===""){
+      alert('Type your list');
+      return;
+    }
 
-  const handleCancel = () => {
-    setOpen(false);
+    const response = await setNewList(JSON.stringify(newList));
+
+    if(!response.ok){
+      alert('Error whem save new list: ', response.status);
+    }
   };
 
   return(
-    <div className={classes.container}>
-      <header className={classes.header}>
-        <span>Type your new List bellow</span>
-      </header>
+    <div>
+      <Modal
+        open={() => open}
+        onClose={() => onClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={styleModal}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Type your new List bellow
+          </Typography>
+          <br />
+        
+          <InputDefault OnChange={(e) => setDescriptionList(e.target.value)} />
 
-      <IputDefault OnChange={(e) => setDescriptionList(e.target.value)} />   
-
-      <footer className={classes.footer}>
-        <ButtonAction txt="Cancel" clickEvent={handleCancel} />
-        <ButtonAction txt="Save" clickEvent={handleSave} />
-      </footer>
+          <footer className={classes.footer}>
+            <ButtonAction txt="Cancel" clickEvent={onClose} />
+            <ButtonAction txt="Save" clickEvent={handleSave} />
+          </footer>
+        </Box>
+      </Modal>
     </div>
   );
 };

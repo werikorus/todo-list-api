@@ -8,10 +8,9 @@ import { gapi } from "gapi-script";
 import { linkLoginImage } from "../../Helper/Helper";
 import { useStyles } from "./LoginStyles";
 import ButtonAction from '../ButtonAction';
-import { login } from "../../Services/UserAPI";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from '../../Hooks/useAuth';
 
 const Login = () =>{
@@ -41,12 +40,7 @@ const Login = () =>{
 
     setLoading(true);
 
-    const user = {
-      email: email,
-      password: password
-    }
-
-    const res = await signIn(user.email, user.password);    
+    const res = await signIn(email, password);    
 
     if(res!==undefined){
       notifyFail(res);

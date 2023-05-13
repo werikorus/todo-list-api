@@ -19,7 +19,7 @@ export const getUserById = async (userId) =>{
 
 export const login = async (user) =>{
   try{
-    const data = await fetch(`${externalApiServerURL_v2}/Authenticator/Login`, {
+    const data = await fetch(`${externalApiServerURL_v1}/Authenticator/Login`, {
       headers: {
         'Content-Type': 'application/json', 
         'charset': 'utf-8',
@@ -39,7 +39,7 @@ export const login = async (user) =>{
 
     return data;
   }catch(error){
-    console.log(error)
+    console.log(error);
   }
 }
 
