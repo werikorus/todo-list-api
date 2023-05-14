@@ -15,17 +15,17 @@ const Board = (prop) =>{
   const [ loading, setLoading ] = useState(false);
   
   const { user } = useAuth();
+  const userId = user?.given_name;
   
   useEffect(() => {(
     async () => {            
-      setLoading(true);
-      console.log('USER atual: ', user);
-      const data = await getTasks(user.given_name);
+      setLoading(true);      
+      const data = await getTasks(userId);
       tasks.current = data;
       setCurrentTasks(tasks.current);        
       setLoading(false);           
     })();
-  },[]);
+  },[userId]);
   
   return(
     <div className={classes.boardArea}>

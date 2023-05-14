@@ -6,14 +6,13 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
-
+  
   useEffect(()=>{
-    const userToken = JSON.parse(localStorage.getItem("user_token"));
-    if(userToken){
-      setUser(DecodeToken(userToken.access_token));
-      login('Atual token: ', user);
+    const userToken = JSON.parse(localStorage.getItem("user_token")); 
+    if(userToken !== null){
+      setUser(DecodeToken(userToken.access_token));    
     }
-  },[user]);
+  },[]);
 
   const signIn =  async (email, password) => {
     const user = {

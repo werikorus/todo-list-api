@@ -17,7 +17,7 @@ const PageHeader = (props) => {
   
   return (
     <header className={classes.headerPage}>
-      <Avatar name={user.unique_name} onClick={signOutEvent}/>
+      <Avatar name={user?.unique_name} onClick={signOutEvent}/>
       <h1 className={classes.title}>{props.title}</h1>       
       <InputElement placeholder="type a text here.."/>
     </header>    

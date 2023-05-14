@@ -6,7 +6,7 @@ const InputElement = (props) =>{
 
   const {placeholder} = props
   return (
-    <form onSubmit="return false;" className={classes.form}>
+    <div className={classes.form}>
       <input placeholder={placeholder} className={classes.input}/>
       <button className={classes.addButton}>
         <img 
@@ -15,7 +15,7 @@ const InputElement = (props) =>{
           alt="add" 
         />
       </button>
-    </form>    
+    </div>    
   );
 };
 
