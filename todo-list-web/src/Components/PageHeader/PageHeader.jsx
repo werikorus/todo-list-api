@@ -3,13 +3,18 @@ import InputElement from "../InputElement";
 import { useStyles } from "./PageHeaderStyles"
 import Avatar from "../Avatar/Avatar";
 import useAuth from "../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const PageHeader = (props) => {
   const { signOut } = useAuth();
   const classes = useStyles();
+  
+  const navigate = useNavigate();
+
   const signOutEvent = () => {
     setTimeout(()=>{
-      signOut();      
+      signOut();  
+      navigate("/");
     },2000);
   }
 
