@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react"; 
 import { login, setNewUser } from "../Services/UserAPI";
-import { gapi } from "gapi-script";
+//import { gapi } from "gapi-script";
 import { DecodeToken } from "../Helper/TokenDecode";
 export const AuthContext = createContext({});
 
@@ -32,6 +32,8 @@ export const AuthProvider = ({ children }) => {
       setUser(decoded);     
       return;
     };
+
+    console.log('IDUser: ', user.givenName);
   }
 
   const signUp = async (userModel) => {

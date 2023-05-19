@@ -6,7 +6,6 @@ import CardFooter from "../CardFooter/CardFooter";
 import Aside from "../Aside/Aside";
 import { getTasks } from "../../Services/TasksAPI";
 import useAuth from "../../Hooks/useAuth";
-import useTasks from "../../Hooks/useTasks";
 
 const Board = (prop) =>{
   const classes = useStyles();  
@@ -17,18 +16,16 @@ const Board = (prop) =>{
   
   const { user } = useAuth();
   const userId = user?.given_name;
-
-  const { getTasksUser } = useTasks;
   
-  useEffect(() => {(
-    async () => {            
-      setLoading(true);      
-      const data = await getTasksUser(userId);
-      tasks.current = data;
-      setCurrentTasks(tasks.current);        
-      setLoading(false);           
-    })();
-  },[userId]);
+  //useEffect(() => {(
+  //  async () => {            
+  //    setLoading(true);      
+  //    const data = await getTasksUser(userId);
+  //    tasks.current = data;
+  //    setCurrentTasks(tasks.current);        
+  //    setLoading(false);           
+  //  })();
+  //},[userId]);
   
   return(
     <div className={classes.boardArea}>

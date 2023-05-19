@@ -15,7 +15,7 @@ const Avatar = (prop) => {
       <div className={classes.nameAvatar}>
         <span>{name} | </span>
         <a onClick={onClick}>Sign out</a>  
-      </div>         
+      </div>       
     </div>    
   );
 };
