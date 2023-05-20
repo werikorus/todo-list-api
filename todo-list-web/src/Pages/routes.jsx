@@ -14,8 +14,7 @@ const Rotas = () => {
   return(
     <Router>
       <Routes>
-        <Route path="/" element = {<Landing />}/>
-        {/*<Route path="/Home" exact element = {<Home />}/>*/}
+        <Route path="/" element = {<Landing />}/>        
         <Route exact path="/home" element = {<Private Item={Home} />}  />
         <Route path="/Subscribe" exact element = {<Subscribe />}/>
         <Route path="*" exact element ={<PageNotFound />}/>        

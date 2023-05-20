@@ -9,7 +9,7 @@ export const getUserById = async (userId) =>{
     });
 
     if(data){
-      const user = await data.json();
+      const user = await data?.json();
       return user;
     }
   }catch(error){

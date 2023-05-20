@@ -1,38 +1,34 @@
-import { apiserverURL_v1, externalApiServerURL_v1, externalApiServerURL_v2 } from '../Helper/Helper';
+import { externalApiServerURL_v1 } from '../Helper/Helper';
 
 export const getListsByUserId = async (userId) =>{
+  var data = []
+
   try{
-    const data = await fetch(`${externalApiServerURL_v2}/List`, {
+    await fetch(`${externalApiServerURL_v1}/List/UserId/${userId}`, {      
+      "headers": {
+        'content-Type': 'application/json',
+        'charset': 'uft-8',
+      },
       "method": "GET",
-    });
-
-    if(data){
-      const lists = await data.json();   
-      return lists;   
-    }
+      "signal": new AbortController().signal
+    }).then((response) => {
+      if(response.ok){
+        data = response.json();
+        return data;
+      };
+    }).catch((error) => console.log(error));
+    
   }catch(error){
-    console.log(error)
+    console.log(error);
+    return error;
   }
-}
 
-export const getLists = async (userId) =>{
-  try{
-    const data = await fetch(`${apiserverURL_v1}/List`, {
-      "method": "GET",
-    });
-
-    if(data){
-      const lists = await data.json();
-      return lists;
-    }
-  }catch(error){
-    console.log(error)
-  }
-}
+  return data;
+};
 
 export const setNewList = async (newList) => {  
   try{
-    const data = await fetch(`${externalApiServerURL_v1}/List`, {
+    await fetch(`${externalApiServerURL_v1}/List`, {
       headers: {
         'content-Type': 'application/json',
         'charset': 'uft-8',
@@ -40,18 +36,16 @@ export const setNewList = async (newList) => {
       "method": "POST",
       "body": newList
       }).then((response)=>{
-        if(!response.ok){
+        if(response.ok){
           const data = response.json();
           return data;
-        }
-        return;
+        }        
       }).catch((error)=>{
         console.log('Error Ocurred when save new List: ', JSON.parse(error));
         return error;
       });
-
-    return data;
   }catch(error){
     console.log(error);
+    return error;
   } 
-}
+};

@@ -6,13 +6,14 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [ localizedUser, setLocalizedUser ] = useState(false);
   
-  useEffect(()=>{
+  useEffect(() => {
     const userToken = JSON.parse(localStorage.getItem("user_token")); 
     if(userToken !== null){
       setUser(DecodeToken(userToken.access_token));    
     }
-  },[]);
+  },[localizedUser]);
 
   const signIn =  async (email, password) => {
     const user = {
@@ -33,7 +34,7 @@ export const AuthProvider = ({ children }) => {
       return;
     };
 
-    console.log('IDUser: ', user.givenName);
+    setLocalizedUser(true);
   }
 
   const signUp = async (userModel) => {

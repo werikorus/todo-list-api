@@ -1,11 +1,15 @@
 import Rotas from "./Pages/routes";
 import { AuthProvider } from "./Contexts/auth";
+import { AllProviders } from "./Contexts/AllProviders";
 
 function App () {
   return (
-    <AuthProvider>
+    //<AuthProvider>
+    //  <Rotas />
+    //</AuthProvider>    
+    <AllProviders>
       <Rotas />
-    </AuthProvider>    
+    </AllProviders>
   );
 };
 

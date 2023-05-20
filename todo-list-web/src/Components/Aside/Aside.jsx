@@ -6,82 +6,62 @@ import Loading from "../Loading/Loading";
 import InputDefault from "../InputDefault/InputDefault";
 import { saveNewList } from "./operation/setNewList";
 import useAuth from "../../Hooks/useAuth";
-import { useTasksContext } from "../../Hooks/useTasksContext/useTasksContext";
-
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { getListsByUserId } from '../../Services/ListsAPI';
 
 const Aside = (props) => {  
   const [ open, setOpen ] = useState(false);
-  const [descriptionList, setDescriptionList] = useState('');
-
   const [ loading, setLoading ] = useState(false);
-  const list = useRef([]);
-  const [currentLists, setCurrentLists] = useState([]);
-
-  const { user } = useAuth();
-
-  const { tasks } = useTasksContext();
+  const [descriptionList, setDescriptionList] = useState('');
+  const [currentLists, setCurrentLists] = useState([]);  
   
+  const list = useRef([]);
   const classes = useStyles();
 
-  //id werik= 3fa85f64-5717-4562-b3fc-2c963f66afa6
+  const { user } = useAuth();
+  const userId = user.given_name;
 
   useEffect(() => {(
-    async () => {            
-      setLoading(true);      
-      list.current = tasks;
-      setCurrentLists(list.current);        
-      setLoading(false);           
-    })();
-  },[tasks]);
+    async () => {
+      setLoading(true);
+      if(userId!==undefined) {
+        let data = await getListsByUserId(userId);             
+        list.current = data;
+        setCurrentLists([list.current]);         
+        setLoading(false);
+      }      
+    })()
+  },[userId]);
 
-  //useEffect(() => {(
-  //  async () => {            
-  //    setLoading(true);
-  //    const data = await getListsByUserId(user.given_name);
-  //    list.current = data;
-  //    setCurrentLists(list.current);        
-  //    setLoading(false);           
-  //  })();
-  //},[user.given_name]);
-
-   const handleComponent = (loadingData) =>{
+  const handleComponent = (loadingData) => {
     if(loadingData){
       return <Loading />
-    }else{
-      return (
+    }
+    return (
       <>
-        <span>
+        <h3>
           {currentLists?.length > 0
             ? "My Lists"
             : "You haven't any list yet. Create your first one!"}
-        </span>
+        </h3>
         <ul className={classes.ul}>
-          <hr />
-          {(currentLists?.length === 1)
-            ? <CardLists
-                title={currentLists?.descriptionList}
-                key={currentLists?.id} 
-              />
-            : currentLists?.map((item, _key) => (
-              <CardLists
-                title={item.descriptionList}
-                key={item.id}                
-              />
-            )
-          )}
+          <hr />                
+          {currentLists?.map((list) => (
+            <CardLists
+              id={list.id}
+              title={list.descriptionList}
+            />
+          ))}
         </ul>
         <br />
       </> 
-    )};
-  }
+    );    
+  };
 
-  const handleSaveNewList =  () => {
-    saveNewList(descriptionList, user.given_name);
-
-    props.Items.push(descriptionList);
+  const handleSaveNewList = () => {
+    saveNewList(descriptionList, userId);
     setOpen(false);
   };
 
@@ -92,7 +72,6 @@ const Aside = (props) => {
         txt="Add new List!"   
         clickEvent={() => setOpen(true)}        
       />
-    
       <div className={classes.ModalNewList}>
         <Modal
           open={open}

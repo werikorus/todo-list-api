@@ -8,7 +8,6 @@ export const saveNewList = async (descriptionList, idUser) => {
     idUser: idUser,
   }
 
-
   if(descriptionList===""){
     alert('Type your list');
     return;
