@@ -1,10 +1,13 @@
 import { useMemo } from "react";
 import { externalApiServerURL_v1 } from "../../Helper/Helper";
+import useAuth from "../../Hooks/useAuth";
 
-//const id = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
-export function useTasksFetcher (userId) {
+export function useTasksFetcher() {
+  const { user } = useAuth();
+  const userId = user?.given_name;
+
   let data = null;
-  fetch(`${externalApiServerURL_v1}/List/UserId/${userId}`, {      
+  fetch(`${externalApiServerURL_v1}/Tasks/UserId/${userId}`, {      
     "headers": {
       'content-Type': 'application/json',
       'charset': 'uft-8',

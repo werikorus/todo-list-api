@@ -1,19 +1,28 @@
-
-import React, { createContext } from "react";
+import React, { createContext, useState, useEffect, useRef } from "react";
 import PropTypes from 'prop-types';
-import { useTasksFetcher } from "../../Services/Tasks/useTasksFetcher";
 import useAuth from "../../Hooks/useAuth";
+import { useTasksFetcher } from "../../Services/Tasks/useTasksFetcher";
 
 
-export const TasksContext = createContext({});
+export const TasksContext = createContext();
 
-export function TasksContextProvider ({ children }){
-  const { user } = useAuth();
-  const { tasks } = useTasksFetcher(user.given_name);
+export const TasksContextProvider = ({ children }) => {
+  const [currentTasks, setcurrentTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  return(
-    <TasksContext.Provider
-      value={ tasks }
+  const  { tasks } = useTasksFetcher();
+
+  useEffect(()=>{
+    setcurrentTasks(tasks);
+  }, [tasks])
+
+  return (
+    <TasksContext.Provider 
+      value={{ 
+        tasks: currentTasks ?? [],
+        loading,
+        setLoading
+      }}
     >
       {children}
     </TasksContext.Provider>

@@ -1,7 +1,7 @@
 import React  from "react";
 import { useStyles } from "./CardListsStyles";
 
-const CardLists = (prop) =>{
+const CardLists = (prop) => {
   const { id, title } = prop; 
 
   const classes = useStyles();

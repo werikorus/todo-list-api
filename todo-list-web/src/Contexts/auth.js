@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react"; 
-import { login, setNewUser } from "../Services/UserAPI";
+import { login, setNewUser } from "../Services/User/UserAPI";
 //import { gapi } from "gapi-script";
 import { DecodeToken } from "../Helper/TokenDecode";
 export const AuthContext = createContext({});

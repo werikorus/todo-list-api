@@ -1,4 +1,4 @@
-import { setNewList } from "../../../Services/ListsAPI";
+import { setNewList } from "../../../Services/Lists/ListsService";
 
 export const saveNewList = async (descriptionList, idUser) => {
   const newList = {    

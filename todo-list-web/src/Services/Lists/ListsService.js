@@ -1,4 +1,4 @@
-import { externalApiServerURL_v1 } from '../Helper/Helper';
+import { externalApiServerURL_v1 } from '../../Helper/Helper';
 
 export const getListsByUserId = async (userId) =>{
   var data = []

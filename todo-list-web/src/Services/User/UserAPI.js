@@ -1,6 +1,6 @@
-import { apiserverURL_v1 } from '../Helper/Helper';
-import { externalApiServerURL_v1 } from '../Helper/Helper';
-import { externalApiServerURL_v2 } from '../Helper/Helper';
+import { apiserverURL_v1 } from '../../Helper/Helper';
+import { externalApiServerURL_v1 } from '../../Helper/Helper';
+import { externalApiServerURL_v2 } from '../../Helper/Helper';
 
 export const getUserById = async (userId) =>{
   try{

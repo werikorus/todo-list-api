@@ -20,7 +20,7 @@ export const PageNotFound = () => {
           We're sorry, the page you requested could not be found. It may have been moved or deleted.
         </p>
         <p className={classes.subtitle}>Please check the URL for any typos, or go back to the 
-          <a href="/" className={classes.homeButton}>homepage.</a>
+          <a href="/Home" className={classes.homeButton}>homepage.</a>
         </p>
       </div>
     </body>

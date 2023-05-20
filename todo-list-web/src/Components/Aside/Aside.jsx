@@ -4,39 +4,28 @@ import CardLists from "../CardLists";
 import ButtonAction from "../ButtonAction";
 import Loading from "../Loading/Loading";
 import InputDefault from "../InputDefault/InputDefault";
-import { saveNewList } from "./operation/setNewList";
 import useAuth from "../../Hooks/useAuth";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { getListsByUserId } from '../../Services/ListsAPI';
+import { useListsContext } from "../../Hooks/useListscontext";
 
-const Aside = (props) => {  
+const Aside = () => {  
   const [ open, setOpen ] = useState(false);
-  const [ loading, setLoading ] = useState(false);
   const [descriptionList, setDescriptionList] = useState('');
-  const [currentLists, setCurrentLists] = useState([]);  
-  
-  const list = useRef([]);
-  const classes = useStyles();
-
+  const [currentLists, setCurrentLists] = useState();  
   const { user } = useAuth();
   const userId = user.given_name;
+  const classes = useStyles();
 
-  useEffect(() => {(
-    async () => {
-      setLoading(true);
-      if(userId!==undefined) {
-        let data = await getListsByUserId(userId);             
-        list.current = data;
-        setCurrentLists([list.current]);         
-        setLoading(false);
-      }      
-    })()
-  },[userId]);
+  const { lists, loading, saveNewList } = useListsContext();
 
-  const handleComponent = (loadingData) => {
-    if(loadingData){
+  useEffect(()=>{
+    setCurrentLists(lists);
+  }, [lists])
+
+  const handleComponent = () => {
+    if(loading){
       return <Loading />
     }
     return (
@@ -67,7 +56,7 @@ const Aside = (props) => {
 
   return(
     <aside className={classes.aside}>      
-      {handleComponent(loading)}
+      {handleComponent()}
       <ButtonAction 
         txt="Add new List!"   
         clickEvent={() => setOpen(true)}        
