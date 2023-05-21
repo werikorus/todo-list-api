@@ -1,21 +1,19 @@
 
 import React, { createContext } from "react";
 import PropTypes from 'prop-types';
-import { useTasksFetcher } from "../../Services/Tasks/useTasksFetcher";
-import useAuth from "../../Hooks/useAuth";
+import { useAuthContext } from "../../Hooks/index";
 import { useEffect, useState, useRef } from "react";
 import { getListsByUserId } from "../../Services/Lists/ListsService";
 import { saveNewList } from "../../Components/Aside/operation/setNewList";
 
 export const ListsContext = createContext({});
-
 export function ListsContextProvider ({ children }){
   const [ currentLists, setCurrentLists ] = useState([]);  
-  const [ currentListId, setCurrentListId ] = useState(null);
+  const [ currentListId, setCurrentListId ] = useState('');
   const [ loading, setLoading ] = useState(false);
-  
+    
   const list = useRef([]);
-  const { user } = useAuth();  
+  const { user } = useAuthContext();  
   const userId = user.given_name;
 
   useEffect(() => {(
@@ -25,7 +23,7 @@ export function ListsContextProvider ({ children }){
         let data = await getListsByUserId(userId);             
         list.current = data;
         setCurrentLists([list.current]);       
-        setCurrentListId(list.current[0]?.id);          
+        setCurrentListId(list.current?.id);    
       }
       setLoading(false);     
     })()

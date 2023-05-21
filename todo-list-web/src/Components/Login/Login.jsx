@@ -11,10 +11,10 @@ import ButtonAction from '../ButtonAction';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
-import useAuth from '../../Hooks/useAuth';
+import { useAuthContext } from "../../Hooks";
 
 const Login = () =>{
-  const { signIn } = useAuth();
+  const { signIn } = useAuthContext();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');

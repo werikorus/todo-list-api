@@ -1,10 +1,15 @@
 import { createContext, useEffect, useState } from "react"; 
-import { login, setNewUser } from "../Services/User/UserAPI";
+import PropTypes from 'prop-types';
+import { login, setNewUser } from "../../Services/User/UserAPI";
 //import { gapi } from "gapi-script";
-import { DecodeToken } from "../Helper/TokenDecode";
+import { DecodeToken } from "../../Helper/TokenDecode";
+import { ListsContext } from "../ListsContext";
+
+
 export const AuthContext = createContext({});
 
-export const AuthProvider = ({ children }) => {
+
+export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [ localizedUser, setLocalizedUser ] = useState(false);
   
@@ -67,4 +72,11 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthContextProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };

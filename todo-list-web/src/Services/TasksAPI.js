@@ -6,7 +6,7 @@ export const getTasks = async (userId) =>{
       return;
     }
     
-    const data = await fetch(`${externalApiServerURL_v1}/Task/UserId/${userId}`, {
+    const data = await fetch(`${externalApiServerURL_v1}/TaskList/UserId/${userId}`, {
       "method": "GET",
     });
 

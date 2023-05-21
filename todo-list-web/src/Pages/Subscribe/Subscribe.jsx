@@ -4,15 +4,16 @@ import ButtonAction from "../../Components/ButtonAction/ButtonAction";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { initialValues, validationsSchema } from "../../Helper/Helper";
 import { ToastContainer, toast } from "react-toastify";
+
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../Hooks";
+
 import 'react-toastify/dist/ReactToastify.css';
-import ReactLoading from 'react-loading';
-import { Navigate, useNavigate } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
 
 const Subscribe = () => {
   const classes = useStyles();
   const [saving, setSaving] = useState(false);
-  const { signUp } = useAuth();
+  const { signUp } = useAuthContext();
   const navigate = useNavigate();
   
   const onSubmit = (values, { setSubmitting }) => {

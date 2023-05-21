@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect } from "react";
 import { useStyles, styleModal } from "./AsideStyles"; 
 import CardLists from "../CardLists";
 import ButtonAction from "../ButtonAction";
 import Loading from "../Loading/Loading";
 import InputDefault from "../InputDefault/InputDefault";
-import useAuth from "../../Hooks/useAuth";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+
 import { useListsContext } from "../../Hooks/useListscontext";
+import { useAuthContext } from "../../Hooks/useAuthContext";
 
 const Aside = () => {  
   const [ open, setOpen ] = useState(false);
   const [descriptionList, setDescriptionList] = useState('');
   const [currentLists, setCurrentLists] = useState();  
-  const { user } = useAuth();
+  const { user } = useAuthContext();
   const userId = user.given_name;
   const classes = useStyles();
 

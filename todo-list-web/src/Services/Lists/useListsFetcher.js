@@ -1,16 +1,15 @@
 import { useMemo } from "react";
 import { externalApiServerURL_v1 } from "../../Helper/Helper";
 import { useAuthContext } from "../../Hooks/index"
-import { useListsContext } from "../../Hooks/index";
 
-export function useTasksFetcher() {
+export function useListsFetcher() {
   const { user } = useAuthContext();
   const userId = user?.given_name;
-  
-  const { currentListId } = useListsContext();
 
   let data = null;
-  fetch(`${externalApiServerURL_v1}/TaskList/ListId/${currentListId}/UserId/${userId}`, {      
+  
+  fetch(`${externalApiServerURL_v1}/List/UserId/${userId}`, {      
+  
     "headers": {
       'content-Type': 'application/json',
       'charset': 'uft-8',
@@ -23,10 +22,10 @@ export function useTasksFetcher() {
     };
   }).catch((error) => console.log(error));
 
-  const tasks =  useMemo(
+  const lists =  useMemo(
     () => data ?? [],
     [data]
   );
 
-  return { tasks };
+  return { lists };
 };

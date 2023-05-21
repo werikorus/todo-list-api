@@ -1,12 +1,8 @@
 import Rotas from "./Pages/routes";
-import { AuthProvider } from "./Contexts/auth";
 import { AllProviders } from "./Contexts/AllProviders";
 
 function App () {
-  return (
-    //<AuthProvider>
-    //  <Rotas />
-    //</AuthProvider>    
+  return ( 
     <AllProviders>
       <Rotas />
     </AllProviders>
@@ -14,3 +10,7 @@ function App () {
 };
 
 export default App;
+
+
+//projeto modelo
+//https://todoist.com/pt-BR

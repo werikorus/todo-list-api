@@ -1,7 +1,9 @@
 import React from "react";
-import { AuthProvider } from "./auth";
-import { ListsContextProvider } from "./ListsContext";
-import { TasksContextProvider } from "./TasksContext";
+import { 
+  AuthContextProvider, 
+  ListsContextProvider, 
+  TasksContextProvider 
+} from "./index";
 
 const composeProviders = (...providers) => {
   return(props) => {
@@ -13,7 +15,7 @@ const composeProviders = (...providers) => {
 };
 
 export const AllProviders = composeProviders(  
-  AuthProvider,
+  AuthContextProvider,
   ListsContextProvider,
   TasksContextProvider,
 );

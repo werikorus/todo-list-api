@@ -1,8 +1,6 @@
-import React, { createContext, useState, useEffect, useRef } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import PropTypes from 'prop-types';
-import useAuth from "../../Hooks/useAuth";
 import { useTasksFetcher } from "../../Services/Tasks/useTasksFetcher";
-
 
 export const TasksContext = createContext();
 

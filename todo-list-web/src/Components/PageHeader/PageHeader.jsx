@@ -2,11 +2,11 @@ import React from "react";
 import InputElement from "../InputElement";
 import { useStyles } from "./PageHeaderStyles"
 import Avatar from "../Avatar/Avatar";
-import useAuth from "../../Hooks/useAuth";
+import { useAuthContext } from "../../Hooks";
 import { useNavigate } from "react-router-dom";
 
 const PageHeader = (props) => {
-  const { signOut } = useAuth();
+  const { signOut } = useAuthContext();
   const classes = useStyles();
   
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const PageHeader = (props) => {
     },2000);
   }
 
-  const  { user } = useAuth();
+  const  { user } = useAuthContext();
   
   return (
     <header className={classes.headerPage}>
