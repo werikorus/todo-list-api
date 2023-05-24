@@ -12,7 +12,7 @@ const Home = () => {
       <main className={classes.main}>        
         <Board />        
       </main> 
-      <PageFooter />   
+      {/*<PageFooter />   */}
     </>     
   );
 }

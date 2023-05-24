@@ -1,7 +1,7 @@
 import { externalApiServerURL_v1 } from '../../Helper/Helper';
 
 export const getListsByUserId = async (userId) =>{
-  var data = []
+  var data = [];
 
   try{
     await fetch(`${externalApiServerURL_v1}/List/UserId/${userId}`, {      

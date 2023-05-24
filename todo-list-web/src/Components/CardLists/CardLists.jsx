@@ -1,13 +1,23 @@
 import React  from "react";
 import { useStyles } from "./CardListsStyles";
+import { useListsContext } from "../../Hooks";
 
 const CardLists = (prop) => {
   const { id, title } = prop; 
 
+  const {     
+    setCurrentListId,
+    setLoading,
+  } = useListsContext();
+
   const classes = useStyles();
-  const handleGetTasks = () => {
-    alert(`Id: ${id}`);
-    return [];
+  const handleGetTasks = async () => {
+    setTimeout(async() => {
+      setLoading(true);    
+      await setCurrentListId(id);            
+      setLoading(false);        
+    }, 3000);
+
   }
  
   return(

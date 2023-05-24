@@ -19,7 +19,7 @@ const Aside = () => {
   const userId = user.given_name;
   const classes = useStyles();
 
-  const { lists, loading, saveNewList } = useListsContext();
+  const { lists, loading, saveNewList,} = useListsContext();
 
   useEffect(()=>{
     setCurrentLists(lists);
@@ -56,34 +56,36 @@ const Aside = () => {
   };
 
   return(
-    <aside className={classes.aside}>      
-      {handleComponent()}
-      <ButtonAction 
-        txt="Add new List!"   
-        clickEvent={() => setOpen(true)}        
-      />
-      <div className={classes.ModalNewList}>
-        <Modal
-          open={open}
-          onClose={() => setOpen(false)}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={styleModal}>
-            <header className={classes.header}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Type your new List bellow
-              </Typography>
+    <aside className={classes.aside}>
+      <scroll>      
+        {handleComponent()}
+        <ButtonAction 
+          txt="Add new List!"   
+          clickEvent={() => setOpen(true)}        
+        />
+        <div className={classes.ModalNewList}>
+          <Modal
+            open={open}
+            onClose={() => setOpen(false)}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={styleModal}>
+              <header className={classes.header}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Type your new List bellow
+                </Typography>
 
-            </header>
-            <InputDefault OnChange={(e) => setDescriptionList(e.target.value)} />          
-            <footer className={classes.footer}>
-              <ButtonAction txt="Cancel" clickEvent={()=> setOpen(false)} />
-              <ButtonAction txt="Save" clickEvent={handleSaveNewList} />
-            </footer>
-          </Box>
-        </Modal>
-      </div>
+              </header>
+              <InputDefault OnChange={(e) => setDescriptionList(e.target.value)} />          
+              <footer className={classes.footer}>
+                <ButtonAction txt="Cancel" clickEvent={()=> setOpen(false)} />
+                <ButtonAction txt="Save" clickEvent={handleSaveNewList} />
+              </footer>
+            </Box>
+          </Modal>
+        </div>
+      </scroll> 
     </aside>
   );
 };

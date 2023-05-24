@@ -6,20 +6,25 @@ export const TasksContext = createContext();
 
 export const TasksContextProvider = ({ children }) => {
   const [currentTasks, setcurrentTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  const  { tasks } = useTasksFetcher();
+  const { tasks } = useTasksFetcher();
 
   useEffect(()=>{
-    setcurrentTasks(tasks);
+    setcurrentTasks(tasks);    
   }, [tasks])
+
+  const deleteCurrentTask = (taskId)=>{
+    alert(`Are you sure you want to delete this task? ${taskId}`);
+  }
 
   return (
     <TasksContext.Provider 
       value={{ 
         tasks: currentTasks ?? [],
         loading,
-        setLoading
+        setLoading,
+        deleteCurrentTask
       }}
     >
       {children}

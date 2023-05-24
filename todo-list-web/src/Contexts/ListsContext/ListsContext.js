@@ -22,8 +22,8 @@ export function ListsContextProvider ({ children }){
       if(userId!==undefined) {
         let data = await getListsByUserId(userId);             
         list.current = data;
-        setCurrentLists([list.current]);       
-        setCurrentListId(list.current?.id);    
+        setCurrentLists(list.current);       
+        setCurrentListId(list.current[0].id);      
       }
       setLoading(false);     
     })()

@@ -3,35 +3,39 @@ import { useStyles } from  "./BoardStyles";
 import CardTasks from "../CardTasks/CardTasks";
 import CardFooter from "../CardFooter/CardFooter";
 import Aside from "../Aside/Aside";
-import { useListsContext } from "../../Hooks/useListscontext";
 import Loading from "../Loading/Loading";
-
-
-const Board = (prop) =>{
+import { useTasksContext } from "../../Hooks";
+ 
+const Board = () =>{
   const classes = useStyles();  
   const [currentTasks, setCurrentTasks] = useState([]);
     
-  const { tasks, loading } = useListsContext();
+  const { tasks, loading } = useTasksContext();
 
   useEffect(()=>{
     setCurrentTasks(tasks);
+    console.log('Trying to setcurrentTasks', tasks);
   }, [tasks])
 
-  const handleLists = () => {
+  const handleTasks = () => {
     if(loading){
       return <Loading />
     }
     
     return (
       <> 
-        {currentTasks?.map((item, key) => 
-          <CardTasks 
-            item={item} 
-            key={key} 
-            idItem={item.id}
-          />
-        )}   
-        <CardFooter />
+        {
+          (currentTasks.length === 0) 
+            ? <span>Create your first task right now! :)</span>            
+            : currentTasks?.map((item, key) => 
+              <CardTasks 
+                item={item} 
+                key={key} 
+                idItem={item.id}
+              />
+            )         
+          //currentTasks.length === 0? <CardFooter /> : null
+        }           
       </> 
     );
   }
@@ -40,7 +44,7 @@ const Board = (prop) =>{
     <div className={classes.boardArea}>
       <Aside />      
       <ul className={classes.areaItems}>  
-        {handleLists()}  
+        {handleTasks()}  
       </ul>         
     </div>
   );
