@@ -9,7 +9,7 @@ export const useStyles = createUseStyles({
     paddingLeft: '1rem',    
     paddingRight: '1rem',     
     flexDirection: 'column', 
-    width: '100%',   
+    width: '100%',
     maxWidth: '11.5rem',    
     flexWrap: 'wrap',
     fontSize: '0.6rem',
@@ -20,7 +20,7 @@ export const useStyles = createUseStyles({
   },
 
   ul:{
-    paddingLeft: '0rem',     
+    paddingLeft: '0rem',  
   },
 
   header:{    
@@ -33,6 +33,12 @@ export const useStyles = createUseStyles({
     justifyContent: 'space-evenly',
     margin: '10px',    
   },
+  scroll:{
+    width: '100%',    
+    maxHeight: '25rem',    
+    overflowY: 'auto',    
+    overflowX: 'hidden',
+  }
 });
 
 export const styleModal = {

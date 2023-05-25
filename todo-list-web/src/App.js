@@ -11,6 +11,5 @@ function App () {
 
 export default App;
 
-
 //projeto modelo
 //https://todoist.com/pt-BR

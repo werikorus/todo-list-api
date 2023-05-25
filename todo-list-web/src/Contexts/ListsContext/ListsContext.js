@@ -23,7 +23,7 @@ export function ListsContextProvider ({ children }){
         let data = await getListsByUserId(userId);             
         list.current = data;
         setCurrentLists(list.current);       
-        setCurrentListId(list.current[0].id);      
+        setCurrentListId(list.current[0].id);        
       }
       setLoading(false);     
     })()

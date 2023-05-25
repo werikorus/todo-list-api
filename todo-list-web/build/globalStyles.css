@@ -14,6 +14,10 @@
   --color-basic-text: rgb(73, 73, 73);
 }
 
+html {
+  height: 100%;
+}
+
 body{
   margin: 0;
   padding: 0;
@@ -24,6 +28,7 @@ body{
   flex-direction: column;
   font-family: Poppins, sans-serif;
   background: var(--color-background);
+  /*background: blueviolet;*/
   color: var(--color-basic-text); 
 }
 

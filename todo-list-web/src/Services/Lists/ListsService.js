@@ -13,8 +13,7 @@ export const getListsByUserId = async (userId) =>{
       "signal": new AbortController().signal
     }).then((response) => {
       if(response.ok){
-        data = response.json();
-        return data;
+        data = response.json();        
       };
     }).catch((error) => console.log(error));
     

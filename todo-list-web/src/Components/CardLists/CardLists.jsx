@@ -11,13 +11,11 @@ const CardLists = (prop) => {
   } = useListsContext();
 
   const classes = useStyles();
-  const handleGetTasks = async () => {
-    setTimeout(async() => {
-      setLoading(true);    
-      await setCurrentListId(id);            
-      setLoading(false);        
-    }, 3000);
-
+  
+  const handleGetTasks = async () => {    
+    setLoading(true);        
+    await setCurrentListId(id);            
+    setLoading(false);            
   }
  
   return(
