@@ -7,7 +7,7 @@ import { useListsContext } from "../../Hooks";
 export const TasksContext = createContext();
 
 export const TasksContextProvider = ({ children }) => {
-  const [currentTasks, setcurrentTasks] = useState([]);
+  const [currentTasks, setCurrentTasks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [ currentTaskId, setCurrentTaskId ] = useState('');
     
@@ -24,7 +24,7 @@ export const TasksContextProvider = ({ children }) => {
       if(userId!==undefined) {
         let data = await getTasksByListIdAndUserId(currentListId, userId);        
         list.current = data;
-        setcurrentTasks(list.current);        
+        setCurrentTasks(list.current);        
       };
       setLoading(false);     
     })()
@@ -40,7 +40,7 @@ export const TasksContextProvider = ({ children }) => {
         return;
       }
       
-      alert('Task Deleted Successfully!');
+      alert('Task deleted Successfully!');
       setLoading(false);
     };
   }
@@ -54,7 +54,8 @@ export const TasksContextProvider = ({ children }) => {
         setNewTask,
         currentTaskId,
         setCurrentTaskId,
-        deleteCurrentTask
+        deleteCurrentTask,
+        setCurrentTasks
       }}
     >
       {children}

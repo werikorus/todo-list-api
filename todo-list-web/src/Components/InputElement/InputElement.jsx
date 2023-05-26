@@ -6,17 +6,19 @@ import { useAuthContext, useListsContext, useTasksContext } from "../../Hooks";
 
 const InputElement = (props) =>{
  const classes = useStyles();
- const [ decriptionTask, setDescriptionTask ] = useState();
+ const [ decriptionTask, setDescriptionTask ] = useState(null);
  const { currentListId } = useListsContext();
  const { user } = useAuthContext();
- const { setNewTask, setLoading } = useTasksContext();
-  
- const saveNewtask = async () => {  
-    if(decriptionTask===""){
-      alert('Type your task before saving!');
-    }
+ const { tasks, setNewTask, setLoading, setCurrentTasks } = useTasksContext();
+ const { placeholder } = props
 
-    const userId = user.given_name;
+  const userId = user.given_name;
+  
+  const saveNewtask = async () => {  
+    if(decriptionTask===null){
+      alert('Type your task before saving!');
+      return;
+    }
 
     const newTask = {    
       idList: currentListId,
@@ -29,10 +31,10 @@ const InputElement = (props) =>{
     
     setLoading(true);
     await setNewTask(newTask);
+    //setCurrentTasks([...tasks, newTask]);    
     setLoading(false);
   }
-
-  const {placeholder} = props
+  
   return (
     <div className={classes.form}>
       <input 

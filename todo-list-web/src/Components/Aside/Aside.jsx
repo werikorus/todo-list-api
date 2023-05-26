@@ -12,7 +12,7 @@ import { useAuthContext, useListsContext } from '../../Hooks';
 
 const Aside = () => {  
   const [ open, setOpen ] = useState(false);
-  const [descriptionList, setDescriptionList] = useState('');  
+  const [descriptionList, setDescriptionList] = useState(null);  
   const { user } = useAuthContext();
   const userId = user.given_name;
   const classes = useStyles();
@@ -35,11 +35,11 @@ const Aside = () => {
         </h3>                
         <scroll className={classes.scroll}>                          
           <ul className={classes.ul}>        
-            {lists?.map((list, index) => (
+            {lists?.map((list, index, key) => (
               <CardLists                 
-                id={list.id} 
+                id={list.id}
                 index={index} 
-                title={list.descriptionList} 
+                title={list.descriptionList}                
               />
             ))}
           </ul>
@@ -50,8 +50,15 @@ const Aside = () => {
   };
 
   const handleSaveNewList = () => {
+    if(descriptionList===null){
+      alert('Please enter a list description');
+      return;
+    }
+
     saveNewList(descriptionList, userId);    
-    setOpen(false);    
+    lists.push({ descriptionList: descriptionList });    
+    setOpen(false);  
+    setDescriptionList(null);
   };
 
   return(

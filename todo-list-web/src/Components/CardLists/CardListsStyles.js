@@ -18,13 +18,12 @@ export const useStyles = createUseStyles({
     marginLeft: '1rem',
     paddingLeft: '0.5rem',
     paddingRight: '0.5rem',
-    
+
     '&:hover':{
       color: 'white',
       cursor: 'pointer',
       backgroundColor: 'var(--color-header-background)',
       backgroundImage: 'var(--color-header-background-image)',      
     }
-    
   }
 });

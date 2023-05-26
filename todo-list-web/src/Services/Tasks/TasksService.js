@@ -67,8 +67,6 @@ export const deleteTask = async (taskId) => {
         console.log('Error Ocurred when delete task: ', JSON.parse(error));
         return false;
       });
-
-     return true; 
   }catch(error){
     console.log(error);
     return false;

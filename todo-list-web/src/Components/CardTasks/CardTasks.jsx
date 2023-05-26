@@ -4,12 +4,11 @@ import { useTasksContext } from "../../Hooks";
 
 const CardTasks = (item, key) => {
   const classes = useStyles();
-  const { deleteCurrentTask, setCurrentTaskId, currentTaskId } = useTasksContext();
+  const { deleteCurrentTask, setCurrentTaskId } = useTasksContext();
   const task = item.item;
 
   const handleDelete = () => {    
-    setCurrentTaskId(task.id);
-    console.log('Current task id: ', currentTaskId);
+    setCurrentTaskId(task.id);    
     deleteCurrentTask();
   }
 
