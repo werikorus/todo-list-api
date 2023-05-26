@@ -31,7 +31,7 @@ export const TasksContextProvider = ({ children }) => {
   },[userId, currentListId]);
 
   const deleteCurrentTask = async () => {
-    if(window.confirm(`Are you sure you want to delete this task? ${currentTaskId}`)){
+    if(window.confirm(`Are you sure you want to delete this task?`)){
       setLoading(true)
       const response = await deleteTask(currentTaskId);
       

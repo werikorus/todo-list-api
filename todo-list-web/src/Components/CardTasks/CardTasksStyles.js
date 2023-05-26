@@ -46,7 +46,7 @@ export const useStyles = createUseStyles({
     borderRadius: '0.8mm',
     background: 'var(--color-input-background)',
     opacity: '85%', 
-    cursor: 'pointer'   
+    cursor: 'pointer'
   },
   delImg:{
     width: '100%',

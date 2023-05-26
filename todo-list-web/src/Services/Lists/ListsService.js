@@ -33,7 +33,7 @@ export const setNewList = async (newList) => {
         'charset': 'uft-8',
       },
       "method": "POST",
-      "body": newList
+      "body": JSON.stringify(newList),
       }).then((response)=>{
         if(response.ok){
           const data = response.json();

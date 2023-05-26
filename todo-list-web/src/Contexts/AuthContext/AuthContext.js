@@ -1,13 +1,10 @@
 import { createContext, useEffect, useState } from "react"; 
 import PropTypes from 'prop-types';
 import { login, setNewUser } from "../../Services/User/UserAPI";
-//import { gapi } from "gapi-script";
+import { gapi } from "gapi-script";
 import { DecodeToken } from "../../Helper/TokenDecode";
-import { ListsContext } from "../ListsContext";
-
 
 export const AuthContext = createContext({});
-
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -53,16 +50,16 @@ export const AuthContextProvider = ({ children }) => {
     return response;    
   }
 
-  const signOut = () => {
-    //var auth2 = gapi.auth2.getAuthInstance();
-    //if(auth2!=null){
-    //  auth2.signOut().then(function () {
-    //    console.log('User signed out.');
-    //  });
-    //};
+  const signOut = () => {    
+    var auth2 = gapi.auth2.getAuthInstance();
+    if(auth2!=null){
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    };
     
     setUser({});
-    localStorage.removeItem("user_token");    
+    localStorage.removeItem("user_token");
   }
 
   return (

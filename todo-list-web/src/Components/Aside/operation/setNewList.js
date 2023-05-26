@@ -13,7 +13,7 @@ export const saveNewList = async (descriptionList, idUser) => {
     dateUpdate: new Date(),    
   }
 
-  const response = await setNewList(JSON.stringify(newList));
+  const response = await setNewList(newList);
 
   if(!response.ok){
     alert('Error when save new list: ', response.status);

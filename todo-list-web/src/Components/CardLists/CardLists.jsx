@@ -1,15 +1,11 @@
-import React  from "react";
+import React from "react";
 import { useStyles } from "./CardListsStyles";
 import { useListsContext } from "../../Hooks";
 
 const CardLists = (prop) => {
-  const { id, title } = prop; 
-
-  const {     
-    setCurrentListId,
-    setLoading,
-  } = useListsContext();
-
+  const { id, title, index } = prop; 
+  const { setCurrentListId, setLoading } = useListsContext();
+  
   const classes = useStyles();
   
   const handleGetTasks = async () => {    
@@ -19,7 +15,12 @@ const CardLists = (prop) => {
   }
  
   return(
-    <li id={`${id}`} key={id} className={classes.card} onClick={handleGetTasks}>
+    <li 
+      key={id} 
+      id={`item[${index}]-${id}`}    
+      className={classes.card} 
+      onClick={handleGetTasks}
+    >
       <h2>{title}</h2>
     </li>     
   );

@@ -8,8 +8,7 @@ const PageFooter = () => {
   return(
     <footer className={classes.pageFooter}>
       <div className={classes.copyright}>
-        <p>CopyRight &copy;</p>
-        <p>Werik Santos - 2023</p>
+        <p>CopyRight &copy; | Werik Santos - 2023</p>        
       </div>     
     </footer>
   );

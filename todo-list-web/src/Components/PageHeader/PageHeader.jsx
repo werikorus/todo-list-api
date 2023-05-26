@@ -11,9 +11,9 @@ const PageHeader = (props) => {
   
   const navigate = useNavigate();
 
-  const signOutEvent = () => {
-    setTimeout(()=>{
-      signOut();  
+  const signOutEvent =  () => {
+    setTimeout(async()=>{
+      await signOut();  
       navigate("/");
     },2000);
   }
@@ -24,7 +24,7 @@ const PageHeader = (props) => {
     <header className={classes.headerPage}>
       <Avatar name={user?.unique_name} onClick={signOutEvent}/>
       <h1 className={classes.title}>{props.title}</h1>       
-      <InputElement placeholder="type a text here.."/>      
+      <InputElement placeholder="Type a text here.."/>      
     </header>    
   );
 };

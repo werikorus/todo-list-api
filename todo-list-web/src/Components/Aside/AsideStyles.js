@@ -18,11 +18,12 @@ export const useStyles = createUseStyles({
     transition: '0.2s',     
     overflow: 'auto',
   },
-
+  title: {
+    textDecoration: 'underline',
+  },
   ul:{
     paddingLeft: '0rem',  
   },
-
   header:{    
     textAlign: 'center',    
     marginBottom: '10px',
@@ -34,10 +35,10 @@ export const useStyles = createUseStyles({
     margin: '10px',    
   },
   scroll:{
-    width: '100%',    
-    maxHeight: '25rem',    
+    width: '100%', 
+    maxHeight: '24.5rem',    
     overflowY: 'auto',    
-    overflowX: 'hidden',
+    overflowX: 'hidden',    
   }
 });
 

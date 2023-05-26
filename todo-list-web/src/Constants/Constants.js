@@ -1,0 +1,1 @@
+export const msgAddNewList = 'Add new List';

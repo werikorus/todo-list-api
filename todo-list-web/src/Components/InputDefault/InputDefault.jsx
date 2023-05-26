@@ -17,6 +17,7 @@ const InputDefault = (props) =>{
       placeholder={placeholder} 
       className={classes.input}
       onChange={OnChange}
+      autoFocus      
     />    
   );
 };
