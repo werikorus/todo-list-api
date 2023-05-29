@@ -37,6 +37,7 @@ export const TasksContextProvider = ({ children }) => {
       
       if(!response){
         alert('Error when deleting!');
+        setLoading(false);
         return;
       }
       

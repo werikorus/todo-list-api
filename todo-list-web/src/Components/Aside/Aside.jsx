@@ -13,10 +13,9 @@ import { useAuthContext, useListsContext } from '../../Hooks';
 const Aside = () => {  
   const [ open, setOpen ] = useState(false);
   const [descriptionList, setDescriptionList] = useState(null);  
+  const classes = useStyles();
   const { user } = useAuthContext();
   const userId = user.given_name;
-  const classes = useStyles();
-
   const { lists, loading, saveNewList } = useListsContext();
   
   const handleComponent = () => {
@@ -35,11 +34,12 @@ const Aside = () => {
         </h3>                
         <scroll className={classes.scroll}>                          
           <ul className={classes.ul}>        
-            {lists?.map((list, index, key) => (
+            {lists?.map((list, index) => (
               <CardLists                 
                 id={list.id}
+                key={list.id}
                 index={index} 
-                title={list.descriptionList}                
+                title={list.descriptionList}          
               />
             ))}
           </ul>
@@ -55,8 +55,7 @@ const Aside = () => {
       return;
     }
 
-    saveNewList(descriptionList, userId);    
-    lists.push({ descriptionList: descriptionList });    
+    saveNewList(descriptionList, userId);        
     setOpen(false);  
     setDescriptionList(null);
   };

@@ -19,7 +19,7 @@ const PageHeader = (props) => {
   }
 
   const  { user } = useAuthContext();
-  
+    
   return (
     <header className={classes.headerPage}>
       <Avatar name={user?.unique_name} onClick={signOutEvent}/>

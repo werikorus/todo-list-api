@@ -5,12 +5,9 @@ export const useStyles = createUseStyles({
     display: 'flex',
     justifyContent: 'center',
     justifyItems: 'center',    
-    flexDirection: 'column',
-    //alignContent: 'center',
-    //alignItems: 'baseline',
+    flexDirection: 'column',    
     backgroundColor: 'var(--color-header-background)',
-    backgroundImage: 'var(--color-header-background-image)'
-    
+    backgroundImage: 'var(--color-header-background-image)'    
   },
 
   title: {

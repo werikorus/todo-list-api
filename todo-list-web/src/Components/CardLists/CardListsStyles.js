@@ -23,7 +23,8 @@ export const useStyles = createUseStyles({
       color: 'white',
       cursor: 'pointer',
       backgroundColor: 'var(--color-header-background)',
-      backgroundImage: 'var(--color-header-background-image)',      
+      backgroundImage: 'var(--color-header-background-image)',     
+      scale: '1.1', 
     }
   }
 });

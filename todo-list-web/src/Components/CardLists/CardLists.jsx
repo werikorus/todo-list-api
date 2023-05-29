@@ -21,7 +21,7 @@ const CardLists = (prop) => {
       key={id} 
       id={`item[${index}]-${id}`}    
       className={classes.card} 
-      onClick={handleGetTasks}      
+      onClick={handleGetTasks}   
     >
       <h2>{title}</h2>
     </li>     

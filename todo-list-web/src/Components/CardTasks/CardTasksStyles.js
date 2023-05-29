@@ -6,18 +6,21 @@ export const useStyles = createUseStyles({
     color: 'var(--color-basic-text)',
     display: 'flex',
     marginBottom: '2mm',
-    fontSize: '1.3rem',
+    fontSize: '1rem',
     transition: '0.2s',
     backgroundColor: 'var(--color-footer)',
     justifyContent: 'space-between',  
     padding: '10px',
     borderRadius: '0.3rem',
     boxShadow: 'rgba(79, 78, 78, 0.522) 1px 0.1px 10px',
-  
+    width: '100%',
+    maxWidth: '300px',
+    alignContent: 'center',
+    
     '&:hover':{
       backgroundColor: 'var(--color-header-background)',
       backgroundImage: 'var(--color-header-background-image)',
-      color: 'white',
+      color: 'white',      
     }
   },
   input:{
@@ -44,12 +47,12 @@ export const useStyles = createUseStyles({
     outline: 'none',
     border: 'none',
     borderRadius: '0.8mm',
-    background: 'var(--color-input-background)',
+    background: 'var(--color-input-background)',    
     opacity: '85%', 
     cursor: 'pointer'
   },
   delImg:{
-    width: '100%',
+    display: 'flex',    
     height: '100%',
   }
 });
