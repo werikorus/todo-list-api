@@ -22,7 +22,11 @@ const PageHeader = (props) => {
     
   return (
     <header className={classes.headerPage}>
-      <Avatar name={user?.unique_name} onClick={signOutEvent}/>
+      <Avatar 
+        name = {user?.unique_name} 
+        url_img_user = {user?.Uri}
+        onClick = {signOutEvent}         
+      />
       <h1 className={classes.title}>{props.title}</h1>       
       <InputElement placeholder="Type a text here.."/>      
     </header>    

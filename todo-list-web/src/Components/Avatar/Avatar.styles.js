@@ -12,7 +12,8 @@ export const useStyles = createUseStyles({
   },
   img:{
     borderRadius: '50%',
-    width: '3rem'
+    width: '3rem',
+    height: '3rem',
   },
   nameAvatar:{
     marginTop: '0.5mm',

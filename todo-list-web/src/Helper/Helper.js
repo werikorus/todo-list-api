@@ -44,5 +44,7 @@ export const  GetAtualDate = () =>{
   return today;
  };
 
+export const default_img_user = 'https://cseastus1003200035e0b130.blob.core.windows.net/user-avatar/b8da7497-8dc6-4779-8cce-efc6cb7dadaa.jpg';
+
 //for loading modal component
 // https://www.kindacode.com/article/react-show-a-loading-dialog/

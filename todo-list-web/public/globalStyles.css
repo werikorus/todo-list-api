@@ -32,6 +32,7 @@ body{
   /*background: var(--color-background);*/
   /*background: blueviolet;*/
   color: var(--color-basic-text); 
+  overflow: hidden;
 }
 
 a{

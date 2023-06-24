@@ -4,6 +4,8 @@ import ButtonAction from "../../Components/ButtonAction/ButtonAction";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { initialValues, validationsSchema } from "../../Helper/Helper";
 import { ToastContainer, toast } from "react-toastify";
+import Dropzone from "react-dropzone";
+import {newUserImg} from '../../Assets/default-user-image.png';
 
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Hooks";
@@ -100,11 +102,18 @@ const Subscribe = () => {
             id="loadingComponent"    
           />*/}
           <div className={classes.subscribeArea} id="subcribeArea">
-          <img 
-            className={classes.avatarProfile} 
-            src="https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" 
-            alt="profile"             
-          />
+            <Dropzone>
+              {({getRootProps, getInputProps})=>(
+                <div {...getRootProps()} className={classes.avatarProfile} >
+                  <img 
+                    className={classes.avatarProfile} 
+                    src="https://api-private.atlassian.com/users/5efe877a0b9d60f79b33a8c10d29ee90/avatar" 
+                    alt="profile"             
+                  />
+                  <input {...getInputProps()} />
+                </div>
+              )}
+            </Dropzone>
             <Formik
               initialValues={initialValues}              
               validationSchema={validationsSchema}
