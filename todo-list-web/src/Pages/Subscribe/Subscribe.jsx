@@ -1,22 +1,34 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { useStyles } from "./SubscribeStyles"
 import ButtonAction from "../../Components/ButtonAction/ButtonAction";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { initialValues, validationsSchema } from "../../Helper/Helper";
 import { ToastContainer, toast } from "react-toastify";
-import Dropzone from "react-dropzone";
-import {newUserImg} from '../../Assets/default-user-image.png';
-
+import Dropzone, { useDropzone } from "react-dropzone";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Hooks";
+import { setNewFile } from "../../Services/UploladFiles";
 
 import 'react-toastify/dist/ReactToastify.css';
+import newUserImg from '../../Assets/default-user-image.png';
+
 
 const Subscribe = () => {
   const classes = useStyles();
   const [saving, setSaving] = useState(false);
   const { signUp } = useAuthContext();
   const navigate = useNavigate();
+
+  const [files, setFiles] = useState([]);
+  const {acceptedFiles, getRootProps, getInputProps} = useDropzone({
+    accept: {
+      'image/*': []
+    },
+    onDrop: acceptedFiles => {
+      setFiles(acceptedFiles)
+    }
+  });
+  
   
   const onSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
@@ -89,6 +101,26 @@ const Subscribe = () => {
     };
   };
 
+  const handleUploadFile = () => {    
+    const uploladedFiles = files.map(file => ({
+      file, 
+      id: `${Math.random(1, 5646321654)}`,
+      name: file.name,
+      preview: URL.createObjectURL(file),
+      progress: 0,
+      error: false,
+      url: null,
+    }));
+
+    this.useState({
+      uploladedFiles: this.useState.uploladedFiles.concat(uploladedFiles)
+    });
+
+
+    setFiles(uploladedFiles);
+    console.log('files:', files);
+  }
+
   return (
     <body className={classes.body}>      
       <main className={classes.main}>        
@@ -102,18 +134,19 @@ const Subscribe = () => {
             id="loadingComponent"    
           />*/}
           <div className={classes.subscribeArea} id="subcribeArea">
-            <Dropzone>
+            <Dropzone onDrop={handleUploadFile}>
               {({getRootProps, getInputProps})=>(
                 <div {...getRootProps()} className={classes.avatarProfile} >
                   <img 
                     className={classes.avatarProfile} 
-                    src="https://api-private.atlassian.com/users/5efe877a0b9d60f79b33a8c10d29ee90/avatar" 
+                    src={files.preview ? files.preview : newUserImg} 
                     alt="profile"             
                   />
                   <input {...getInputProps()} />
                 </div>
+                
               )}
-            </Dropzone>
+            </Dropzone>            
             <Formik
               initialValues={initialValues}              
               validationSchema={validationsSchema}
