@@ -1,34 +1,22 @@
 import React, { useState, useEffect} from "react";
 import { useStyles } from "./SubscribeStyles"
 import ButtonAction from "../../Components/ButtonAction/ButtonAction";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form, ErrorMessage, replace } from "formik";
 import { initialValues, validationsSchema } from "../../Helper/Helper";
 import { ToastContainer, toast } from "react-toastify";
-import Dropzone, { useDropzone } from "react-dropzone";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Hooks";
 import { setNewFile } from "../../Services/UploladFiles";
-
+import  AvatarProfile  from '../../Components/AvatarProfile';
+import {default_img_user} from '../../Helper/Helper';
 import 'react-toastify/dist/ReactToastify.css';
-import newUserImg from '../../Assets/default-user-image.png';
-
 
 const Subscribe = () => {
   const classes = useStyles();
   const [saving, setSaving] = useState(false);
+  const [srcImg, setSrcImg] = useState('');
   const { signUp } = useAuthContext();
   const navigate = useNavigate();
-
-  const [files, setFiles] = useState([]);
-  const {acceptedFiles, getRootProps, getInputProps} = useDropzone({
-    accept: {
-      'image/*': []
-    },
-    onDrop: acceptedFiles => {
-      setFiles(acceptedFiles)
-    }
-  });
-  
   
   const onSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
@@ -37,17 +25,19 @@ const Subscribe = () => {
       setVisibilityLoading();    
       setSaving(true);
 
+      const urlImage = await setNewFile(srcImg);
       let newUser = {
         ...values,
         dateCreate: new Date(),
         dateUpdate: new Date(),
+        UrlAvatar: urlImage ? urlImage : `${default_img_user}`,
       };     
       
       if(newUser.role==='Role'){
         toast.info('You need to choose a role!');        
         return;
       };
-      
+
       let response = await signUp(newUser);
 
       if(!response.ok){
@@ -101,52 +91,14 @@ const Subscribe = () => {
     };
   };
 
-  const handleUploadFile = () => {    
-    const uploladedFiles = files.map(file => ({
-      file, 
-      id: `${Math.random(1, 5646321654)}`,
-      name: file.name,
-      preview: URL.createObjectURL(file),
-      progress: 0,
-      error: false,
-      url: null,
-    }));
-
-    this.useState({
-      uploladedFiles: this.useState.uploladedFiles.concat(uploladedFiles)
-    });
-
-
-    setFiles(uploladedFiles);
-    console.log('files:', files);
-  }
-
   return (
     <body className={classes.body}>      
       <main className={classes.main}>        
         <section className={classes.section}> 
-          {/*<ReactLoading 
-            type="spinningBubbles" 
-            color="#8BC6EC"  
-            height={100} 
-            width={100}
-            className={classes.loadingComponent}
-            id="loadingComponent"    
-          />*/}
           <div className={classes.subscribeArea} id="subcribeArea">
-            <Dropzone onDrop={handleUploadFile}>
-              {({getRootProps, getInputProps})=>(
-                <div {...getRootProps()} className={classes.avatarProfile} >
-                  <img 
-                    className={classes.avatarProfile} 
-                    src={files.preview ? files.preview : newUserImg} 
-                    alt="profile"             
-                  />
-                  <input {...getInputProps()} />
-                </div>
-                
-              )}
-            </Dropzone>            
+            <div className={classes.avatarProfile} >
+              <AvatarProfile setSrcImg={setSrcImg}/>
+            </div>                
             <Formik
               initialValues={initialValues}              
               validationSchema={validationsSchema}
@@ -207,7 +159,7 @@ const Subscribe = () => {
                 </div>  
                 </Form>
               )}
-            </Formik>
+            </Formik><code></code>
             <div>              
               <ToastContainer />
             </div>

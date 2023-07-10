@@ -79,7 +79,6 @@ export const useStyles = createUseStyles({
   },
   select:{
     display: 'flex',    
-    maxWidth: '300px',    
     height: '3rem',
     color: 'var(--color-basic-text)',
     backgroundColor: 'var(--color-input-background)',
