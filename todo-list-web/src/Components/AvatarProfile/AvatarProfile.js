@@ -1,5 +1,5 @@
 import { useStyles } from './AvatarProfileStyles';
-import userImg from './../../Assets/default-user-image.png';
+import userImg from './../../assets/default-user-image.png';
 
 const AvatarProfile = (props) =>{
   const { setSrcImg } = props;

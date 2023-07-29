@@ -30,7 +30,7 @@ const Subscribe = () => {
         ...values,
         dateCreate: new Date(),
         dateUpdate: new Date(),
-        UrlAvatar: urlImage ? urlImage : `${default_img_user}`,
+        UrlAvatar: urlImage ? `${urlImage}` : `${default_img_user}`,
       };     
       
       if(newUser.role==='Role'){
@@ -80,14 +80,11 @@ const Subscribe = () => {
 
   const setVisibilityLoading = async () => {
     const subscribeArea = document.getElementById('subcribeArea');
-    const loadingComponent = document.getElementById('loadingComponent');
     
     if(saving){      
       subscribeArea.style.visibility = '20%';
-      loadingComponent.style.visibility = '100%';
     }else{
-      subscribeArea.style.visibility = '100%';
-      loadingComponent.style.visibility = '0%';
+      subscribeArea.style.visibility = '100%';    
     };
   };
 

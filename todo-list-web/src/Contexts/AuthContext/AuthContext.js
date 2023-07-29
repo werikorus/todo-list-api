@@ -51,12 +51,12 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const signOut = () => {    
-    var auth2 = gapi.auth2.getAuthInstance();
-    if(auth2!=null){
-      auth2.signOut().then(function () {
-        console.log('User signed out.');
-      });
-    };
+    //var auth2 = gapi.auth2.getAuthInstance();
+    //if(auth2!=null){
+    //  auth2.signOut().then(function () {
+    //    console.log('User signed out.');
+    //  });
+    //};
     
     setUser({});
     localStorage.removeItem("user_token");

@@ -8,7 +8,7 @@ export const setNewFile = async (valueNewFile) => {
         'charset': 'utf-8',
       },
       "method": "POST",
-      "body": valueNewFile,      
+      "body": `${valueNewFile}`,      
       }).then((response)=>{
         if(Response.ok){          
           const data = response.json();
