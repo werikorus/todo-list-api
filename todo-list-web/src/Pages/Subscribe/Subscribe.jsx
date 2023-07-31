@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Subscribe = () => {
   const classes = useStyles();
   const [saving, setSaving] = useState(false);
-  const [srcImg, setSrcImg] = useState('');
+  const [srcImg, setSrcImg] = useState({});
   const { signUp } = useAuthContext();
   const navigate = useNavigate();
   
@@ -26,11 +26,14 @@ const Subscribe = () => {
       setSaving(true);
 
       const urlImage = await setNewFile(srcImg);
+      //TODO: verificar qual propriedade acessar para retornar a URL depois do cadastro do file.
+      console.log('Url: ', urlImage.current );
+
       let newUser = {
         ...values,
         dateCreate: new Date(),
         dateUpdate: new Date(),
-        UrlAvatar: urlImage ? `${urlImage}` : `${default_img_user}`,
+        UrlAvatar: urlImage ? urlImage : default_img_user,
       };     
       
       if(newUser.role==='Role'){

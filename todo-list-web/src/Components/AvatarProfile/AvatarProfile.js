@@ -10,11 +10,11 @@ const AvatarProfile = (props) =>{
 
     if(file){
       const reader = new FileReader();
-      reader.addEventListener('load', (e) =>{
+      reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
         const img = document.querySelector('#picture__image');
         img.src = readerTarget.result;
-        setSrcImg(reader.result);         
+        setSrcImg({ Image: reader.result });         
       });
 
       reader.readAsDataURL(file);              
