@@ -22,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
       email: email,
       password: password
     };
-    const response = await login(JSON.stringify(user));
+    const response = await login(user);
 
     if(!response){
       return "Email or password incorrect!";
@@ -30,7 +30,6 @@ export const AuthContextProvider = ({ children }) => {
 
     if(response){
       localStorage.setItem("user_token", JSON.stringify({access_token: response.access_token}));
-      
       const decoded = DecodeToken(response.access_token);
       setUser(decoded);     
       return;
@@ -46,7 +45,7 @@ export const AuthContextProvider = ({ children }) => {
       dateUpdate: new Date(),
     };
 
-    let response = await setNewUser(JSON.stringify(newUser));
+    let response = await setNewUser(newUser);
     return response;    
   }
 

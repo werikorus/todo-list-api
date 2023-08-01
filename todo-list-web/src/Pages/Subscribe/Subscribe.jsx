@@ -21,20 +21,22 @@ const Subscribe = () => {
   const onSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
     
-    setTimeout(async () => {    
-      setVisibilityLoading();    
+    setTimeout(async () => {              
       setSaving(true);
 
-      const urlImage = await setNewFile(srcImg);
-      //TODO: verificar qual propriedade acessar para retornar a URL depois do cadastro do file.
-      console.log('Url: ', urlImage.current );
+      const responblob = await setNewFile(srcImg);
+      console.log('Url response: ', responblob.urlImage);
+
+      const today = new Date();
 
       let newUser = {
         ...values,
-        dateCreate: new Date(),
-        dateUpdate: new Date(),
-        UrlAvatar: urlImage ? urlImage : default_img_user,
+        dateCreate: today,
+        dateUpdate: today,
+        UrlAvatar: responblob.urlImage ? responblob.urlImage : default_img_user,
       };     
+
+      console.log('New User: ', newUser);
       
       if(newUser.role==='Role'){
         toast.info('You need to choose a role!');        
@@ -49,8 +51,7 @@ const Subscribe = () => {
       };
 
       setSaving(false);           
-      notifySuccess();        
-      setVisibilityLoading();            
+      notifySuccess();                 
     }, 1000);
     
     setSubmitting(false);
@@ -80,16 +81,6 @@ const Subscribe = () => {
     progress: undefined,
     theme: "light",
   });
-
-  const setVisibilityLoading = async () => {
-    const subscribeArea = document.getElementById('subcribeArea');
-    
-    if(saving){      
-      subscribeArea.style.visibility = '20%';
-    }else{
-      subscribeArea.style.visibility = '100%';    
-    };
-  };
 
   return (
     <body className={classes.body}>      

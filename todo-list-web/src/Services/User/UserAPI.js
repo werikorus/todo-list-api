@@ -25,7 +25,7 @@ export const login = async (user) =>{
         'charset': 'utf-8',
       },
       "method": "POST",
-      "body": user,
+      "body": JSON.stringify(user),
     }).then((response) => {   
       if(response.ok){
         const data = response.json(); 
@@ -51,7 +51,7 @@ export const setNewUser = async (valuesNewUser) => {
         'charset': 'utf-8',
       },
       "method": "POST",
-      "body": valuesNewUser,      
+      "body": JSON.stringify(valuesNewUser),      
       }).then((response)=>{
         if(Response.ok){          
           const data = response.json();
