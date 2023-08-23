@@ -28,7 +28,6 @@ const Login = () =>{
         scope: ""
       })
     }
-
     gapi.load('client:auth2', start);
   },[]);
 
@@ -64,10 +63,6 @@ const Login = () =>{
   
   const classes = useStyles();
 
-  const handleSubscribePage = () => {
-    navigate("/Subscribe");
-  };
-
   return(
     <main className={classes.main}>
       <div className={classes.divArea}>
@@ -100,9 +95,10 @@ const Login = () =>{
           </div>
           
           <div className={classes.buttonsArea}>
-            <ButtonAction txt="Login" clickEvent={handleLogin}/>
-            <ButtonAction txt="Sign Up" clickEvent={handleSubscribePage} />      
+            <ButtonAction txt="Clear" />      
+            <ButtonAction txt="Login" clickEvent={handleLogin}/>            
           </div>
+          <a href="/Subscribe">SignUp</a>
           <div>             
             <ToastContainer />
           </div>       

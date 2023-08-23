@@ -35,11 +35,11 @@ const Aside = () => {
         <scroll className={classes.scroll}>                          
           <ul className={classes.ul}>        
             {lists?.map((list, index) => (
-              <CardLists                 
-                id={list.id}
-                key={list.id}
+              <CardLists 
+                id={list.id} 
+                key={list.id} 
                 index={index} 
-                title={list.descriptionList}          
+                title={list.descriptionList} 
               />
             ))}
           </ul>
@@ -49,13 +49,15 @@ const Aside = () => {
     );    
   };
 
-  const handleSaveNewList = () => {
-    if(descriptionList===null){
+  const handleSaveNewList = async () => {
+    if(!descriptionList){
       alert('Please enter a list description');
       return;
     }
 
-    saveNewList(descriptionList, userId);        
+    //await saveNewList(descriptionList, userId);   
+    lists.push({descriptionList});
+
     setOpen(false);  
     setDescriptionList(null);
   };
@@ -76,7 +78,6 @@ const Aside = () => {
               <Typography id='modal-modal-title' variant='h6' component='h2'>
                 Type your new List bellow
               </Typography>
-
             </header>
             <InputDefault OnChange={(e) => setDescriptionList(e.target.value)} />          
             <footer className={classes.footer}>

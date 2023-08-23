@@ -41,7 +41,7 @@ export const useStyles = createUseStyles({
   },
   buttonArea:{
     display: 'flex',
-    justifySelf: 'right',
+    justifySelf: 'center',
     width: '60%',    
     flexDirection: 'row',
     justifyContent: 'space-evenly',

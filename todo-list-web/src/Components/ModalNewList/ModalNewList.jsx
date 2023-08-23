@@ -29,7 +29,7 @@ const ModalNewList = (open, onClose) => {
       return;
     }
 
-    const response = await setNewList(JSON.stringify(newList));
+    const response = await setNewList(newList);
 
     if(!response.ok){
       alert('Error whem save new list: ', response.status);

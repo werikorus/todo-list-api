@@ -4,7 +4,7 @@ export const getTasksByListIdAndUserId = async (listId, userId) =>{
   var data = [];
 
   try{
-    await fetch(`${externalApiServerURL_v1}/TaskList/ListId/${listId}UserId/${userId}`, {     
+    await fetch(`${externalApiServerURL_v1}/TaskList/ListId=${listId}&UserId=${userId}`, {     
       "headers": {
         'content-Type': 'application/json',
         'charset': 'uft-8',
@@ -16,7 +16,7 @@ export const getTasksByListIdAndUserId = async (listId, userId) =>{
         data = response.json();     
         return data;      
       };
-    }).catch((error) => console.log(error));
+    }).catch((error) => console.log(`Error when request tasks: ${error}`));
     
   }catch(error){
     console.log(error);

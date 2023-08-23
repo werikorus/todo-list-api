@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState } from "react";
 import { useStyles } from "./CardListsStyles";
 import { useListsContext } from "../../Hooks";
 
@@ -17,12 +17,7 @@ const CardLists = (prop) => {
   }
 
   return(
-    <li 
-      key={id} 
-      id={`item[${index}]-${id}`}    
-      className={classes.card} 
-      onClick={handleGetTasks}   
-    >
+    <li key={id} id={`item[${index}]-${id}`} className={classes.card} onClick={handleGetTasks}>
       <h2>{title}</h2>
     </li>     
   );

@@ -11,10 +11,10 @@ export const useStyles = createUseStyles({
   divArea : {
     height: '50%',
     width: '50%',
-    display: 'flex',
-    color: 'var(--color-input-background)',
+    display: 'flex',    
     boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    borderRadius: '10px',
   },
 
   loginArea : {
@@ -31,7 +31,7 @@ export const useStyles = createUseStyles({
 
   buttonsArea: {
     display: 'flex',
-    justifyContent: 'space-Evenly',
+    justifyContent: 'center',    
     width: '100%'
   },
 

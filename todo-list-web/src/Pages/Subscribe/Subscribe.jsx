@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../Hooks";
 import { setNewFile } from "../../Services/UploladFiles";
 import  AvatarProfile  from '../../Components/AvatarProfile';
-import {default_img_user} from '../../Helper/Helper';
+import { default_img_user } from '../../Helper/Helper';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Subscribe = () => {
@@ -23,10 +23,7 @@ const Subscribe = () => {
     
     setTimeout(async () => {              
       setSaving(true);
-
       const responblob = await setNewFile(srcImg);
-      console.log('Url response: ', responblob.urlImage);
-
       const today = new Date();
 
       let newUser = {
@@ -36,8 +33,6 @@ const Subscribe = () => {
         UrlAvatar: responblob.urlImage ? responblob.urlImage : default_img_user,
       };     
 
-      console.log('New User: ', newUser);
-      
       if(newUser.role==='Role'){
         toast.info('You need to choose a role!');        
         return;
@@ -57,7 +52,7 @@ const Subscribe = () => {
     setSubmitting(false);
     setTimeout(() => {
       navigate('/');  
-    }, 6000);    
+    }, 6000);
   };
 
   const notifySuccess = () => toast.success('User successfully registered!', {
@@ -98,56 +93,27 @@ const Subscribe = () => {
             >
               {({ values, isValid, isSubmitting, resetForm }) => (
                 <Form className={classes.form}>
-                <Field 
-                  className={classes.input}
-                  type="text"
-                  name="name"
-                  placeholder='Name'                  
-                />
-                <ErrorMessage 
-                  name="name" 
-                  style={{color: "red", fontSize: "15px" }}
-                  component="span"
-                />  
+                  <Field className={classes.input} type="text" name="name" placeholder='Name' />
+                  <ErrorMessage name="name" style={{color: "red", fontSize: "15px" }} component="span" />  
 
-                <Field 
-                  className={classes.input} 
-                  name="email"
-                  placeholder="Email" 
-                  type="email"
-                />
-                <ErrorMessage 
-                  name="email"                   
-                  style={{color: "red", fontSize: "15px" }}
-                  component="span"
-                />  
+                  <Field className={classes.input} name="email" placeholder="Email" type="email" />
+                  <ErrorMessage name="email" style={{color: "red", fontSize: "15px" }} component="span" />
 
-                <Field 
-                  className={classes.input} 
-                  name="password"
-                  placeholder="Password" 
-                  type="password"
-                />
-                <ErrorMessage 
-                  name="password" 
-                  style={{color: "red", fontSize: "15px" }}
-                  component="span"
-                />  
+                  <Field className={classes.input} name="password" placeholder="Password" type="password" />
+                  <ErrorMessage name="password" style={{color: "red", fontSize: "15px" }} component="span" />  
 
-                <Field className={classes.select} name="role" placeholder="Role" as="select">
-                  <option defaultChecked className={classes.options}>Role</option>
-                  <option value='Admin' className={classes.options}>Admin</option>
-                  <option value='User' className={classes.options}>User</option>                  
-                </Field>
-                <ErrorMessage 
-                  name="role" 
-                  style={{color: "red", fontSize: "15px" }}
-                  component="span"
-                />  
-                <div className={classes.buttonArea}>
-                  <ButtonAction txt="Clear" clickEvent={resetForm}/>    
-                  <ButtonAction txt="Subscribe" disabled={isSubmitting}/>                      
-                </div>  
+                  <Field className={classes.select} name="role" placeholder="Role" as="select">
+                    <option defaultChecked className={classes.options}>Role</option>
+                    <option value='Admin' className={classes.options}>Admin</option>
+                    <option value='User' className={classes.options}>User</option>                  
+                  </Field>
+                  <ErrorMessage name="role" style={{color: "red", fontSize: "15px" }} component="span" />
+
+                  <div className={classes.buttonArea}>
+                    <ButtonAction txt="Backward" clickEvent={() => navigate('/')} />
+                    <ButtonAction txt="Clear" clickEvent={resetForm}/>    
+                    <ButtonAction txt="Save" disabled={isSubmitting}/>                      
+                  </div>  
                 </Form>
               )}
             </Formik><code></code>

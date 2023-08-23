@@ -27,7 +27,7 @@ export function ListsContextProvider ({ children }){
       }
       setLoading(false);     
     })()
-  },[userId]);
+  },[user, userId]);
 
   return(
     <ListsContext.Provider
