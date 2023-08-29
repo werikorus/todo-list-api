@@ -51,6 +51,8 @@ export const setNewTask = async (newTask) =>{
 };
 
 export const deleteTask = async (taskId) => {
+  let deleteSucessFully = false;
+
   try{
     await fetch(`${externalApiServerURL_v1}/TaskList/${taskId}`, {
       headers: {
@@ -60,16 +62,16 @@ export const deleteTask = async (taskId) => {
       "method": "DELETE",
       signal: new AbortController().signal
       }).then((response)=>{
-        if(!response.ok){
-          return false;
-        }        
+        deleteSucessFully = response.ok;
       }).catch((error)=>{
         console.log('Error Ocurred when delete task: ', JSON.parse(error));
-        return false;
+        deleteSucessFully = false;
       });
       
   }catch(error){
     console.log(error);
     return false;
   };
+
+  return deleteSucessFully;
 };

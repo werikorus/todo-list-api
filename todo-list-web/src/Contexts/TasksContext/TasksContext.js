@@ -30,19 +30,16 @@ export const TasksContextProvider = ({ children }) => {
     })()
   },[userId, currentListId]);
 
-  const deleteCurrentTask = async () => {
-    if(window.confirm(`Are you sure you want to delete this task?`)){
-      setLoading(true)
-      const response = await deleteTask(currentTaskId);
+  const deleteCurrentTask = async (taskId) => {
+    if(window.confirm(`Are you sure you want to delete this task?`)){    
+      const response = await deleteTask(taskId);
       
       if(!response){
-        alert('Error when deleting!');
+        alert(`Error when deleting! ${response}`);
         setLoading(false);
         return;
-      }
-      
+      }      
       alert('Task deleted Successfully!');
-      setLoading(false);
     };
   }
 

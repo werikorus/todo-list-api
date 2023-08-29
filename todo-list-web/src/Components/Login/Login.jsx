@@ -98,7 +98,7 @@ const Login = () =>{
             <ButtonAction txt="Clear" />      
             <ButtonAction txt="Login" clickEvent={handleLogin}/>            
           </div>
-          <a href="/Subscribe">SignUp</a>
+          <a href="/Subscribe">SignUp!</a>
           <div>             
             <ToastContainer />
           </div>       

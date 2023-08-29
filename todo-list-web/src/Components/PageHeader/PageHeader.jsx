@@ -19,8 +19,7 @@ const PageHeader = (props) => {
   }
 
   const  { user } = useAuthContext();
-  console.log('User  logged: ', user);
-    
+
   return (
     <header className={classes.headerPage}>
       <Avatar 
