@@ -8,14 +8,13 @@ const CardTasks = (item, key, index) => {
   const task = item.item;
 
   const handleDelete = async () => {    
-    await setCurrentTaskId(task.id);    
-    console.log('Current Task ID: ', task.id);
+    setCurrentTaskId(task.id);        
     await deleteCurrentTask(task.id);
   }
   const handleDoneTask = async () => {
+    setCurrentTaskId(task.id);
     const taskItem = document.getElementById(task.id);    
     console.log(`Task: ${taskItem.value}`);    
-    //setCurrentTaskId(task.id);
     
     //await setTaskDone();
    }

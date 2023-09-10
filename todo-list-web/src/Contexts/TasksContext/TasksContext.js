@@ -39,6 +39,9 @@ export const TasksContextProvider = ({ children }) => {
         setLoading(false);
         return;
       }      
+
+      const currentTask = document.getElementById(taskId);
+      currentTask.remove();
       alert('Task deleted Successfully!');
     };
   }

@@ -50,6 +50,14 @@ const Login = () =>{
     navigate("/Home");
   };
 
+  const handleClear = () => {
+    const email = document.getElementById('loginInput');
+    email.value = '';
+
+    const password = document.getElementById('passwordInput');
+    password.value = '';
+  };
+
   const notifyFail = (message) => toast.error(`Login fail: ${message}`, {    
     position: "top-right",
     autoClose: 5000,
@@ -95,7 +103,7 @@ const Login = () =>{
           </div>
           
           <div className={classes.buttonsArea}>
-            <ButtonAction txt="Clear" />      
+            <ButtonAction txt="Clear" clickEvent={handleClear}/>      
             <ButtonAction txt="Login" clickEvent={handleLogin}/>            
           </div>
           <a href="/Subscribe">SignUp!</a>
