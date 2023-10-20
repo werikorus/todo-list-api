@@ -76,16 +76,17 @@ export const deleteTask = async (taskId) => {
   return deleteSucessFully;
 };
 
-export const updateTask = async (taskId) => {
+export const updateTask = async (task) => {
   let updated = false;
   try{
-    await fetch(`${externalApiServerURL_v1}/TaskList/${taskId}`,{
+    await fetch(`${externalApiServerURL_v1}/TaskList/${task.taskId}`,{
       headers: {
         'content-Type': 'application/json',
         'charset': 'uft-8',
       },
       method: "PUT",
-      signal: new AbortController().signal
+      signal: new AbortController().signal,
+      body: JSON.stringify(task)
     }).then((response)=>{
       updated = response.ok;
     }).catch((error)=>{
@@ -94,8 +95,8 @@ export const updateTask = async (taskId) => {
     });
   }catch(error){
     console.log(error);
-    return false;
-  }
+    updated = false;
+  };
 
   return updated;
 }

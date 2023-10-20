@@ -4,11 +4,7 @@ import { useTasksContext } from "../../Hooks";
 
 const CardTasks = (item, key, index) => {
   const classes = useStyles();
-  const { 
-    deleteCurrentTask, 
-    setCurrentTaskId, 
-    setTaskDone,
-  } = useTasksContext();
+  const { deleteCurrentTask, setCurrentTaskId, setTaskDone } = useTasksContext();
   const task = item.item;
 
   const handleDelete = async () => {    
@@ -23,7 +19,7 @@ const CardTasks = (item, key, index) => {
     setCurrentTaskId(task.id);
     let label = document.getElementById(`label-${task.id}`);
 
-    if(await setTaskDone(task.id)){
+    if(await setTaskDone(task)){
       if(label.style.textDecorationLine === '' || label.style.textDecorationLine === 'none'){
         label.style.textDecorationLine = 'line-through';
         label.style.fontStyle = 'italic';
@@ -37,7 +33,7 @@ const CardTasks = (item, key, index) => {
   }
 
   return (  
-    <li id={task.id} key={key} className={classes.items}> 
+    <li id={task.id} key={`${key-index}`} className={classes.items}> 
       <input 
         className={classes.input}
         name="checkItem"
