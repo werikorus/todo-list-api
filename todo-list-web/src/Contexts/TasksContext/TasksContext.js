@@ -1,6 +1,11 @@
 import React, { createContext, useState, useEffect, useRef } from "react";
 import PropTypes from 'prop-types';
-import { getTasksByListIdAndUserId, setNewTask, deleteTask } from "../../Services/Tasks/TasksService";
+import { 
+  getTasksByListIdAndUserId, 
+  setNewTask, 
+  deleteTask, 
+  updateTask 
+} from "../../Services/Tasks/TasksService";
 import { useAuthContext, useListsContext } from "../../Hooks";
 
 export const TasksContext = createContext();
@@ -42,7 +47,14 @@ export const TasksContextProvider = ({ children }) => {
     };
   };
 
-   const setTaskDone = (taskId) => true;
+  const setTaskDone = (task) => {
+    const updateTaskDoneStatus = {
+      id: task.id,
+      done: !task.done      
+    }
+    console.log('Task atual: ', updateTaskDoneStatus)
+    return updateTask(updateTaskDoneStatus) || true;
+  };
 
   return (
     <TasksContext.Provider 
