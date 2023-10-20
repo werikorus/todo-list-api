@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect, useRef } from "react";
 import PropTypes from 'prop-types';
 import { getTasksByListIdAndUserId, setNewTask, deleteTask } from "../../Services/Tasks/TasksService";
-import { useAuthContext } from "../../Hooks";
-import { useListsContext } from "../../Hooks";
+import { useAuthContext, useListsContext } from "../../Hooks";
 
 export const TasksContext = createContext();
 
@@ -39,12 +38,11 @@ export const TasksContextProvider = ({ children }) => {
         setLoading(false);
         return;
       }      
-
-      const currentTask = document.getElementById(taskId);
-      currentTask.remove();
       alert('Task deleted Successfully!');
     };
-  }
+  };
+
+   const setTaskDone = (taskId) => true;
 
   return (
     <TasksContext.Provider 
@@ -56,7 +54,8 @@ export const TasksContextProvider = ({ children }) => {
         currentTaskId,
         setCurrentTaskId,
         deleteCurrentTask,
-        setCurrentTasks
+        setCurrentTasks,
+        setTaskDone,
       }}
     >
       {children}

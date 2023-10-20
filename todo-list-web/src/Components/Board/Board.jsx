@@ -20,11 +20,7 @@ const Board = () =>{
         {(tasks?.length === 0) 
           ? <span>Create your first task right now! :)</span>            
           : tasks?.map((item, key, index) => (
-            <CardTasks 
-              item={item} 
-              key={key} 
-              index={index} 
-            />
+            <CardTasks item={item} key={key} index={index} />
           )
         )}           
       </> 
