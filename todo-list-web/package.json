@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "coverage": "npx jest --coverage"
+    "coverage": "react-scripts --coverage"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "jest": "^29.5.0"
   }
 }

@@ -4,35 +4,47 @@ import { useTasksContext } from "../../Hooks";
 
 const CardTasks = (item, key, index) => {
   const classes = useStyles();
-  const { deleteCurrentTask, setCurrentTaskId } = useTasksContext();
+  const { 
+    deleteCurrentTask, 
+    setCurrentTaskId, 
+    setTaskDone,
+  } = useTasksContext();
   const task = item.item;
 
   const handleDelete = async () => {    
-    setCurrentTaskId(task.id);        
+    setCurrentTaskId(task.id);
     await deleteCurrentTask(task.id);
+
+    const currentTask = document.getElementById(task.id);
+    currentTask.remove();
   }
+
   const handleDoneTask = async () => {
     setCurrentTaskId(task.id);
-    const taskItem = document.getElementById(task.id);    
-    //console.log(`Task: ${taskItem.value}`);    
-    
-    //await setTaskDone();
-   }
+    let label = document.getElementById(`label-${task.id}`);
+
+    if(await setTaskDone(task.id)){
+      if(label.style.textDecorationLine === '' || label.style.textDecorationLine === 'none'){
+        label.style.textDecorationLine = 'line-through';
+        label.style.fontStyle = 'italic';
+        label.style.opacity = 0.5;
+      } else {
+        label.style.textDecorationLine = 'none';
+        label.style.fontStyle = 'normal';
+        label.style.opacity = 1;
+      };
+    };
+  }
 
   return (  
-    <li 
-      id={task.id}
-      key={key}       
-      className={classes.items}      
-    > 
+    <li id={task.id} key={key} className={classes.items}> 
       <input 
         className={classes.input}
         name="checkItem"
-        type="checkbox"
-        checked={task.done}
-        onChange={handleDoneTask}        
+        type="checkbox"        
+        onChange={() => handleDoneTask()}
       />
-      <label>{task.descriptionTask}</label>
+      <label id={`label-${task.id}`}>{task.descriptionTask}</label>
       <button className={classes.button} onClick={handleDelete}>
         <img 
           className={classes.delImg}

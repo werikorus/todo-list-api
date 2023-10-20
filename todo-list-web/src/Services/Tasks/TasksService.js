@@ -75,3 +75,27 @@ export const deleteTask = async (taskId) => {
 
   return deleteSucessFully;
 };
+
+export const updateTask = async (taskId) => {
+  let updated = false;
+  try{
+    await fetch(`${externalApiServerURL_v1}/TaskList/${taskId}`,{
+      headers: {
+        'content-Type': 'application/json',
+        'charset': 'uft-8',
+      },
+      method: "PUT",
+      signal: new AbortController().signal
+    }).then((response)=>{
+      updated = response.ok;
+    }).catch((error)=>{
+      console.log('Error ocurred when updating task: ', JSON.parse(error));
+      updated = false;
+    });
+  }catch(error){
+    console.log(error);
+    return false;
+  }
+
+  return updated;
+}
