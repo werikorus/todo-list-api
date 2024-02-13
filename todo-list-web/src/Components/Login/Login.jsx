@@ -76,7 +76,7 @@ const Login = () =>{
       <div className={classes.divArea}>
         <img className={classes.divImage} src={linkLoginImage} alt="loading"/>
         <div className={classes.loginArea}>
-          <h2 className={classes.title}>Your To Do List</h2>
+          <h2 className={classes.title}>My To Do List</h2>
           <hr className={classes.line}/>
           <span className={classes.subtitle}>Log in to your account</span>
 

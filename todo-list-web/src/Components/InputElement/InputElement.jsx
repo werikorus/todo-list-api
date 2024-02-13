@@ -30,8 +30,9 @@ const InputElement = (props) =>{
     };
     
     setLoading(true);
-    await setNewTask(newTask);
-    //setCurrentTasks([...tasks, newTask]);    
+    const taskCreated = await setNewTask(newTask);
+    console.log('Task Created: ', taskCreated || 'Sem retorno');
+    setCurrentTasks([...tasks, newTask]);
     setLoading(false);
   }
   

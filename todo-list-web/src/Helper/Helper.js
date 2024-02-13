@@ -30,7 +30,7 @@ export const validationsSchema = yup.object().shape({
     .required('Role is required!'),
 });
 
-export const  GetAtualDate = () =>{
+export const  GetActualDate = () =>{
   const date = new Date();
   const day = date.getUTCDate();
   const month = date.getUTCMonth()+1;

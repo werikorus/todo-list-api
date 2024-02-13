@@ -27,7 +27,7 @@ export const getListsByUserId = async (userId) =>{
 
 export const setNewList = async (newList) => {  
   try{
-    await fetch(`${externalApiServerURL_v1}/List`, {
+    return await fetch(`${externalApiServerURL_v1}/List`, {
       headers: {
         'content-Type': 'application/json',
         'charset': 'uft-8',

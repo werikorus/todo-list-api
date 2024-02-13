@@ -7,16 +7,15 @@ import InputDefault from '../InputDefault/InputDefault';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-
 import { useAuthContext, useListsContext } from '../../Hooks';
 
-const Aside = () => {  
+const Aside = () => { 
   const [ open, setOpen ] = useState(false);
   const [descriptionList, setDescriptionList] = useState(null);  
   const classes = useStyles();
   const { user } = useAuthContext();
   const userId = user.given_name;
-  const { lists, loading, saveNewList } = useListsContext();
+  const { lists, loading, saveNewList, setCurrentListId } = useListsContext();
   
   const handleComponent = () => {
     if(loading){
@@ -55,11 +54,15 @@ const Aside = () => {
       return;
     }
 
-    //await saveNewList(descriptionList, userId);   
-    lists.push({descriptionList});
+    const newList = await saveNewList(descriptionList, userId);   
 
+    console.log('response: ', newList?.id);
+
+    setCurrentListId(newList?.id);
+    lists.push({descriptionList});
+    
     setOpen(false);  
-    setDescriptionList(null);
+    setDescriptionList(null);   
   };
 
   return(

@@ -4,16 +4,24 @@ import { useTasksContext } from "../../Hooks";
 
 const CardTasks = (item, key, index) => {
   const classes = useStyles();
-  const { deleteCurrentTask, setCurrentTaskId, setTaskDone } = useTasksContext();
+  const { 
+    deleteCurrentTask, 
+    setCurrentTaskId,    
+    setTaskDone, 
+    tasks 
+  } = useTasksContext();
+
   const task = item.item;
 
-  const handleDelete = async () => {    
+  const handleDelete = async () => {      
     setCurrentTaskId(task.id);
-    await deleteCurrentTask(task.id);
-
-    const currentTask = document.getElementById(task.id);
-    currentTask.remove();
-  }
+  
+    if(window.confirm('Have you sure you want to delete this task?')){
+      const taskIndex = tasks.indexOf(tasks.find(x => x.id === task.id));
+      tasks.splice(taskIndex, 1);
+      await deleteCurrentTask(task.id);
+    };
+  };
 
   const handleDoneTask = async () => {
     setCurrentTaskId(task.id);
