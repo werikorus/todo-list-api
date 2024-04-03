@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+auth.txt
+client_secret_51556282843-fopgvec8n955nkvomoug2n3o8lrhkhpn.apps.googleusercontent.com.json

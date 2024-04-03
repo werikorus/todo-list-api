@@ -1,12 +1,19 @@
 import React from "react";
-import { Button } from "./ButtonActionStyles";
+import { useStyles } from "./ButtonActionStyles";
 
 const ButtonAction = (props) =>{
-  const { clickEvent, txt } = props;
+  const classes = useStyles();
+  const { clickEvent, txt, disabled } = props;
+
   return (
-    <Button onClick={clickEvent}>
+    <button 
+      type="submit" 
+      className={classes.button} 
+      onClick={clickEvent}
+      disabled={disabled}
+    >
       {txt}
-    </Button>
+    </button>
   );
 };
 

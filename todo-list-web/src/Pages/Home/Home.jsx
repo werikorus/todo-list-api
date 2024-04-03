@@ -1,14 +1,15 @@
 import React  from "react";
 import PageHeader from "../../Components/PageHeader";
-import { Main } from "./HomeStyles";
+import Board from "../../Components/Board";
+import PageFooter from "../../Components/PageFooter/PageFooter";
 
-const Home = () => {
-  return(
-    <Main>
-      <PageHeader
-        title="MY TO DO"
-      />    
-    </Main>    
+const Home = () => {  
+  return(   
+    <>      
+      <PageHeader title="MY TO DO"/>      
+      <Board />
+      <PageFooter />  
+    </>     
   );
 }
 

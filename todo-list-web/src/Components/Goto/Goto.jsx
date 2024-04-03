@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {Button} from '../Goto/GotoStyles';
+import { useStyles } from "./GotoStyles";
 
 const Goto = (props) =>{
-  const { destine, txt } = props;
+  const classes = useStyles();
+
+  const { destiny, txt } = props;
   return (
-    <Button>
-      <Link to={destine}>
-        {txt}
-      </Link>
-    </Button>
+    <Link to={destiny} className={classes.button}>
+      {txt}     
+    </Link>
   );
 };
 

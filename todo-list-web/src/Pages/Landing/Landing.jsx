@@ -1,11 +1,15 @@
 import React  from "react";
-import { Link } from "react-router-dom";
 import Login from "../../Components/Login";
+import { useStyles } from "./LandingStyles";
 
 const Landing = () => {
+  const classes = useStyles();
+
   return(
-    <Login />
-  )
+    <main className={classes.main}>
+      <Login />
+    </main>    
+  );
 }
 
 export default Landing;

@@ -1,12 +1,35 @@
 import React from "react";
-import { HeaderPage } from './PageHeaderStyles';
+import InputElement from "../InputElement";
+import { useStyles } from "./PageHeaderStyles"
+import Avatar from "../Avatar/Avatar";
+import { useAuthContext } from "../../Hooks";
+import { useNavigate } from "react-router-dom";
 
 const PageHeader = (props) => {
-  const {title} = props;
+  const { signOut } = useAuthContext();
+  const classes = useStyles();
+  
+  const navigate = useNavigate();
+
+  const signOutEvent =  () => {
+    setTimeout( async() => {
+      await signOut();  
+      navigate("/");
+    },2000);
+  }
+
+  const  { user } = useAuthContext();
+
   return (
-    <HeaderPage>
-      <h1>{title}</h1>
-    </HeaderPage>
+    <header className={classes.headerPage}>
+      <Avatar 
+        name = {user?.unique_name} 
+        url_img_user = {user?.website}
+        onClick = {signOutEvent}         
+      />
+      <h1 className={classes.title}>{props.title}</h1>       
+      <InputElement placeholder="Type a text here.."/>      
+    </header>    
   );
 };
 

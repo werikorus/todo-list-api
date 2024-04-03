@@ -1,0 +1,40 @@
+:root{  
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  --color-background: #f0f0f7;
+  --color-input-background: #f8f8fc;
+  --color-input-hover: #dfdfdf;
+  --color-input-border:  #8BC6EC;
+  --color-line-in-white: #e6e6f0;  
+  --color-footer: #fafafc; 
+  --color-header-background: #8BC6EC;
+  --color-header-background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  --color-basic-text: rgb(73, 73, 73);
+  --color-list-background: #dbeefa;
+}
+
+html {
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing:  border-box;
+  min-height: 100vh;  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Poppins, sans-serif;
+  /*background: var(--color-background);*/
+  /*background: blueviolet;*/
+  color: var(--color-basic-text); 
+  overflow: hidden;
+}
+
+a{
+  text-decoration: none;
+}

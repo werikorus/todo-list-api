@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import { createUseStyles } from 'react-jss';
 
-export const Main = styled.main`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+export const useStyles = createUseStyles({
+  main: {        
+    width: '100vw', 
+  }
+});
